@@ -34,5 +34,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Welcome to your shiny new Codespace running React! We've got everything fired up and running for you to explore React.",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "arnavkrishnan.github.io"
+  },
+  "author": "Arnav Krishnan",
+  "license": "MIT"
 }
