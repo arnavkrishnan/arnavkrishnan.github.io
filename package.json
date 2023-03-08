@@ -1,7 +1,8 @@
 {
   "name": "codespaces-react",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -35,13 +36,4 @@
       "last 1 safari version"
     ]
   },
-  "description": "Welcome to your shiny new Codespace running React! We've got everything fired up and running for you to explore React.",
-  "main": "index.js",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "arnavkrishnan.github.io"
-  },
-  "author": "Arnav Krishnan",
-  "license": "MIT"
 }
