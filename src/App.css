@@ -29,23 +29,3 @@
 .small {
   font-size: 0.75rem;
 }
-
-/*  */
-
-.board {
-	width: 80vh;
-	height: 80vh;
-	border: 2vh;
-  border-color: #8b6914;
-  border-style: solid;
-	display: grid;
-	grid-template: repeat(8, 1fr) / repeat(8, 1fr);
-}
-
-.light {
-	background-color: #deb887;
-}
-
-.dark {
-	background-color: #8b4513;
-}
