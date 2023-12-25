@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Warning banner for non-mobile users -->
+<div class="warning-banner">
+  <p>This website is not optimized for mobile devices. Please use a desktop or laptop for the best experience.</p>
+</div>
+
+<div class="gallery-container">
+  <div class="gallery">
+    <div class="button-container">
+      <button class="gallery-button" onclick="showMedia(0)">Sailing</button>
+      <button class="gallery-button" onclick="showMedia(1)">Music</button>
+      <button class="gallery-button" onclick="showMedia(2)">Community Service & Volunteering</button>
+      <button class="gallery-button" onclick="showMedia(3)">Mandarin</button>
+      <button class="gallery-button" onclick="showMedia(4)">Coding & Teaching</button>
+      <!-- Add more buttons as needed -->
+    </div>
+
+    <div class="gallery-media" id="galleryMedia">
+      <div class="image-container">
+        <img id="selectedImage" class="gallery-media-item" alt="Selected Image" src="assets/sailing-docks.jpg">
+      </div>
+      <video id="selectedVideo" class="gallery-media-item" controls>
+        <source src="assets/bach-invention-13-a-minor.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <img id="selectedImage2" class="gallery-media-item" alt="Selected Image" src="assets/sandwich-giving.jpg">
+      <img id="selectedImage3" class="gallery-media-item" alt="Selected Image" src="assets/mandarin-essay-page-1.png">
+      <video id="selectedVideo2" class="gallery-media-item" controls>
+        <source src="assets/coding.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    
+    <div class="gallery-text-container">
+      <p id="galleryText" class="full-description">Description for Media</p>
+      <a id="readMoreButton" class="waves-effect waves-light btn-small" onclick="toggleDescription()">Read More...</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
