@@ -37,18 +37,14 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Update description content
     function updateDescription() {
-      const shortDescription = `Description for Media ${currentIndex + 1}:\n${shortDescriptions[currentIndex]}`;
-      const fullDescription = `Extended description for Media ${currentIndex + 1}:\n${fullDescriptions[currentIndex]}`;
-  
-      galleryText.textContent = isFullDescription ? fullDescription : shortDescription;
-      if (galleryText.textContent != "undefined") {
+      galleryText.textContent = isFullDescription ? fullDescriptions[currentIndex] : shortDescriptions[currentIndex];
+      if (typeof galleryText !== "undefined") {
         readMoreButton.disabled = false;
         readMoreButton.textContent = isFullDescription ? "Read Less" : "Read More...";
       } else {
         galleryText.textContent = "Click on any button to begin!";
         readMoreButton.disabled = true;
-        readMoreButton.textContent = "Click on any other button first!";
-    }
+      }
   
     // Toggle between short and full descriptions
     readMoreButton.addEventListener("click", toggleDescription);
