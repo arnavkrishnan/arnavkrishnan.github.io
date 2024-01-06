@@ -41,7 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const fullDescription = `Extended description for Media ${currentIndex + 1}:\n${fullDescriptions[currentIndex]}`;
   
       galleryText.textContent = isFullDescription ? fullDescription : shortDescription;
-      readMoreButton.textContent = isFullDescription ? "Read Less" : "Read More...";
+      if (galleryText.textContent != "undefined") {
+        readMoreButton.disabled = false;
+        readMoreButton.textContent = isFullDescription ? "Read Less" : "Read More...";
+      } else {
+        galleryText.textContent = "Click on any button to begin!";
+        readMoreButton.disabled = true;
+        readMoreButton.textContent = "Click on any other button first!";
     }
   
     // Toggle between short and full descriptions
