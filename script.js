@@ -38,14 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Update description content
     function updateDescription() {
       galleryText.textContent = isFullDescription ? fullDescriptions[currentIndex] : shortDescriptions[currentIndex];
-      if (typeof galleryText !== "undefined") {
-        readMoreButton.disabled = false;
-        readMoreButton.textContent = isFullDescription ? "Read Less" : "Read More...";
-      } else {
+      if (typeof galleryText === "undefined") {
         galleryText.textContent = "Click on any button to begin!";
-        readMoreButton.disabled = true;
+        readMoreButton.setAttribute('disabled','disabled');
+      } else {
+        readMoreButton.removeAttribute('disabled','');
+        readMoreButton.textContent = isFullDescription ? "Read Less" : "Read More...";
       }
-  
+    }
+
     // Toggle between short and full descriptions
     readMoreButton.addEventListener("click", toggleDescription);
   
