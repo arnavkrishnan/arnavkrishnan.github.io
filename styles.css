@@ -14,20 +14,20 @@ html, body {
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow-x: hidden; /* Disable horizontal scrolling */
   }
   
   .gallery-container {
     position: relative;
     width: 100%;
     max-width: 100vw;
-    height: 100vh;
+    min-height: 100vh; /* Ensure a minimum height of the viewport */
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     text-align: center;
-    overflow: hidden;
-    margin-top: 145px;
+    margin-top: 145px; /* Adjusted margin to accommodate the banner */
   }
   
   .gallery {
@@ -88,8 +88,10 @@ html, body {
   }
   
   .gallery-text-container {
-    text-align: left;
-  }
+    text-align: center;
+    max-width: 600px; /* Set a maximum width for the text container */
+    margin: 0 auto; /* Center the text container horizontally */
+}
   
   .short-description {
     margin-top: 10px;
@@ -133,7 +135,7 @@ html, body {
   }
   
   .warning-banner {
-    position: absolute;
+    position: fixed; /* Fixed position to keep it at the top */
     top: 0;
     left: 0;
     width: 100%;
@@ -144,5 +146,5 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1; /* Place the banner above other elements */
   }
-  
