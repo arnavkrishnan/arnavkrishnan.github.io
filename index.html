@@ -2,16 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- <meta http-equiv="Refresh" content="0; url='__url__'" /> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <title>Arnav</title>
+    <script>
+        function checkNgrokStatus() {
+            const ngrokUrl = "https://vervet-infinite-reliably.ngrok-free.app/";
+            fetch(ngrokUrl, { method: 'GET', mode: 'no-cors' })
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById("ngrok-status").innerHTML = 'Also my <a href="https://vervet-infinite-reliably.ngrok-free.app/">ngrok Website</a> is available right now.';
+                    } else {
+                        document.getElementById("ngrok-status").innerHTML = '';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById("ngrok-status").innerHTML = '';
+                });
+        }
+
+        // Call the function when the page loads
+        window.onload = checkNgrokStatus;
+    </script>
 </head>
 <body style="padding-left: 20vw; padding-top: 20vh;">
     <h1>Hey, I'm Arnav Krishnan.</h1>
     <h3>I'm currently updating this website. In the meantime, feel free to look at my <a href="https://github.com/arnavkrishnan">GitHub</a>.</h3>
-    <h5>Alternatively, you can see if my <a href="https://vervet-infinite-reliably.ngrok-free.app/">ngrok Website</a> is available right now.</h5>
+    <h5 id="ngrok-status"></h5>
 </body>
 </html>
