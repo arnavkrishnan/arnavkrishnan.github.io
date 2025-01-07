@@ -22,11 +22,10 @@
                     }
                 })
                 .catch(error => {
-                    document.getElementById("ngrok-status").innerHTML = 'The ngrok website is currently down.';
+                    document.getElementById("ngrok-status").innerHTML = '';
                 });
         }
 
-        // Call the function when the page loads
         window.onload = () => {
             checkNgrokStatus();
             setInterval(checkNgrokStatus, 5000);
