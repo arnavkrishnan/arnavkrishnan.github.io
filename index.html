@@ -11,21 +11,25 @@
     <script>
         function checkNgrokStatus() {
             const ngrokUrl = "https://vervet-infinite-reliably.ngrok-free.app/";
-            fetch(ngrokUrl, { method: 'GET', mode: 'no-cors' })
+
+            fetch(ngrokUrl)
                 .then(response => {
-                    if (response.ok) {
+                    if (response.status === 200) {
                         document.getElementById("ngrok-status").innerHTML = 'Also my <a href="https://vervet-infinite-reliably.ngrok-free.app/">ngrok Website</a> is available right now.';
                     } else {
-                        document.getElementById("ngrok-status").innerHTML = '';
+                        document.getElementById("ngrok-status").innerHTML = 'The ngrok website is currently down.';
                     }
                 })
                 .catch(error => {
-                    document.getElementById("ngrok-status").innerHTML = '';
+                    document.getElementById("ngrok-status").innerHTML = 'The ngrok website is currently down.';
                 });
         }
 
         // Call the function when the page loads
-        window.onload = checkNgrokStatus;
+        window.onload = () => {
+            checkNgrokStatus();
+            setInterval(checkNgrokStatus, 5000);
+        };
     </script>
 </head>
 <body style="padding-left: 20vw; padding-top: 20vh;">
