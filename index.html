@@ -15,8 +15,6 @@
     <meta property="og:url" content="https://arnavkrishnan.github.io" />
     <meta property="og:type" content="website" />
 
-    <!-- Structured Data (JSON-LD) for SEO -->
-    <!-- Update the URLs for your profiles and image -->
     <script type="application/ld+json">
         {
             "@context": "http://schema.org",
@@ -50,7 +48,8 @@
             fetch(ngrokUrl)
                 .then(response => {
                     if (response.status === 200) {
-                        document.getElementById("ngrok-status").innerHTML = 'Also, my <a href="https://vervet-infinite-reliably.ngrok-free.app/">ngrok Website</a> is live right now.'; <!-- Change this URL if needed -->
+                        document.getElementById("ngrok-status").innerHTML = 'Also, my <a href="https://vervet-infinite-reliably.ngrok-free.app/">ngrok Website</a> is live right now.';
+                    
                     } else {
                         document.getElementById("ngrok-status").innerHTML = '';
                     }
