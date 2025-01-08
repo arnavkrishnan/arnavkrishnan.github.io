@@ -39,8 +39,7 @@
 <body>
     <header style="padding-left: 20vw; padding-top: 20vh;">
         <h1>Hey, I'm Arnav Krishnan</h1>
-        <p>Welcome to my personal website! I'm a developer working on various projects.</p>
-        <h3>I'm Currently updating this website. Meanwhile, check out my <a href="https://github.com/arnavkrishnan">GitHub</a> for my latest work.</h3>
+        <h3>I'm currently updating this website. Meanwhile, check out my <a href="https://github.com/arnavkrishnan">GitHub</a> for my latest work.</h3>
         <h5 id="ngrok-status"></h5>
     </header>
     
@@ -51,9 +50,9 @@
             fetch(ngrokUrl)
                 .then(response => {
                     if (response.status === 200) {
-                        document.getElementById("ngrok-status").innerHTML = 'Also, my <a href="https://vervet-infinite-reliably.ngrok-free.app/">ngrok Website</a> is live RIGHT NOW!'; <!-- Change this URL if needed -->
+                        document.getElementById("ngrok-status").innerHTML = 'Also, my <a href="https://vervet-infinite-reliably.ngrok-free.app/">ngrok Website</a> is live right now.'; <!-- Change this URL if needed -->
                     } else {
-                        document.getElementById("ngrok-status").innerHTML = 'The ngrok website is currently down.';
+                        document.getElementById("ngrok-status").innerHTML = '';
                     }
                 })
                 .catch(error => {
