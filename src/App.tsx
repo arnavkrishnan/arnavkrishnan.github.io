@@ -1,4 +1,4 @@
-import BubbleBackgroundDemo from '@/demos/BubbleBackgroundDemo';
+import BubbleBackgroundDemo from '@/components/BubbleBackgroundDemo';
 
 const App = () => {
   return (

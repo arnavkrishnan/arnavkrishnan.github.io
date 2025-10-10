@@ -1,5 +1,5 @@
 import { BubbleBackground } from '@/components/ui/shadcn-io/bubble-background';
-import FallingTextDemo from '@/demos/FallingTextDemo.tsx';
+import FallingTextDemo from '@/components/FallingTextDemo.tsx';
 
 export default function BubbleBackgroundDemo() {
   return (
