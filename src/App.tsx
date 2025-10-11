@@ -1,9 +1,9 @@
-import BubbleBackgroundDemo from '@/components/BubbleBackgroundDemo';
+import CursorDemo from '@/components/CursorDemo';
 
 const App = () => {
   return (
     <div className="relative w-screen h-screen">
-      <BubbleBackgroundDemo />
+      <CursorDemo />
     </div>
   );
 };
