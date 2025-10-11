@@ -1,16 +1,12 @@
-import {
-  Cursor,
-  CursorFollow,
-  CursorProvider,
-} from '@/components/ui/shadcn-io/animated-cursor';
+import { Cursor, CursorFollow, CursorProvider } from '@/components/ui/shadcn-io/animated-cursor';
 import BubbleBackgroundDemo from '@/components/BubbleBackgroundDemo';
- 
+
 export const CursorDemo = () => {
   return (
     <div className="relative w-screen h-screen">
-        <div className="relative w-screen h-screen">
-            <BubbleBackgroundDemo />
-        </div>
+      <div className="relative w-screen h-screen">
+        <BubbleBackgroundDemo />
+      </div>
       <CursorProvider>
         <Cursor>
           <svg
@@ -33,4 +29,5 @@ export const CursorDemo = () => {
     </div>
   );
 };
+
 export default CursorDemo;
