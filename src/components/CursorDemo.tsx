@@ -1,4 +1,4 @@
-import { Cursor, CursorFollow, CursorProvider } from '@/components/ui/shadcn-io/animated-cursor';
+import { Cursor, CursorProvider } from '@/components/ui/shadcn-io/animated-cursor';
 import BubbleBackgroundDemo from '@/components/BubbleBackgroundDemo';
 
 export const CursorDemo = () => {
@@ -20,11 +20,6 @@ export const CursorDemo = () => {
             />
           </svg>
         </Cursor>
-        <CursorFollow>
-          <div className="bg-blue-500 text-white px-2 py-1 rounded-lg text-sm shadow-lg">
-            Try Dragging Text!
-          </div>
-        </CursorFollow>
       </CursorProvider>
     </div>
   );

@@ -9,7 +9,7 @@ const FallingTextDemo = () => {
         backgroundColor="transparent"
         wireframes={false}
         gravity={0.5}
-        fontSize="clamp(5rem, 2vw, 7rem)"
+        fontSize="clamp(3rem, 2vw, 5rem)"
         mouseConstraintStiffness={0.7}
       />
     </div>
