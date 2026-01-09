@@ -3,8 +3,8 @@ const FallingTextDemo = () => {
   return (
     <div className="relative w-full h-full">
       <FallingText
-        text="Hey! I'm Arnav Krishnan. I'm currently updating this website."
-        highlightWords={["Arnav", "Krishnan"]}
+        text="Hello EJ Kaleba! Stop looking for me."
+        highlightWords={["EJ", "Kaleba"]}
         trigger="hover"
         backgroundColor="transparent"
         wireframes={false}
