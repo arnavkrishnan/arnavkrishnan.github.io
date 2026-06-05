@@ -2,7 +2,116 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const base = '/portfolio';
 ---
-<BaseLayout title="Home" base={base}>
+<BaseLayout title="Arnav Krishnan" base={base}>
   <h1>Arnav Krishnan</h1>
-  <p>Use the navigation bar to learn more about me, or see my projects.</p>
+  <div style="display:flex; flex-direction:column; align-items:flex-start; margin-bottom:1rem;">
+  <img
+    src={`${base}/images/me.jpg`}
+    alt="Arnav Krishnan"
+    style="width:320px; height:auto; border:1px solid #ddd;"
+  />
+
+  <p style="margin-top:0.5rem; font-size:0.9rem; color:#666;">
+    Me in Hawaii, one of the many U.S. states in which I do not
+    <a href={`${base}/images/Map.png`} target="_blank" rel="noopener">
+      reside
+    </a>.
+  </p>
+</div>
+  <p>
+    I am a student at
+    <a href="https://lahs.mvla.net" target="_blank" rel="noopener">
+      Los Altos High School
+    </a>
+    (class of 2028).
+  </p>
+
+  <section>
+    <h4>Achievements / Awards</h2>
+    <p>
+      <a href="https://www.usaco.org" target="_blank" rel="noopener">
+        USA Computing Olympiad
+      </a>
+      , silver division.
+    </p>
+  </section>
+
+  <section>
+    <h4>Strengths</h2>
+    <p>
+      I enjoy 
+      <a href="https://en.wikipedia.org/wiki/Mathematics" target="_blank" rel="noopener">
+        Mathematics
+      </a>
+      , both pure and applied.
+    </p>
+  </section>
+
+  <section>
+    <h4>Hobbies / Passions</h2>
+    <p>
+      I enjoy 
+      <a href="https://en.wikipedia.org/wiki/420_(dinghy)" target="_blank" rel="noopener">
+        Club 420 sailing
+      </a>
+      .
+    </p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Feel free to contact me via the methods below:</p>
+    <ul style="list-style: none; padding: 0;">
+      <li style="margin-bottom: 0.5rem;">
+        Email:
+        <a id="email-link"></a>
+        <small>(obfuscated to reduce spam)</small>
+        <button class="copy-btn" data-copy="arnav.s.krishnan@gmail.com">Copy</button>
+      </li>
+      <li>
+        GitHub:
+        <a href="https://github.com/arnavkrishnan" target="_blank" rel="noopener">
+          github.com/arnavkrishnan
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <script>
+    const user = "arnav.s.krishnan";
+    const domain = "gmail.com";
+
+    const email = `${user}@${domain}`;
+    const link = document.getElementById("email-link");
+
+    link.href = `mailto:${email}`;
+    link.textContent = "arnav dot s dot krishnan at gmail dot com";
+  </script>
+
+  <script type="module">
+    const buttons = document.querySelectorAll('.copy-btn');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.dataset.copy;
+
+        navigator.clipboard.writeText(text).then(() => {
+          const original = btn.textContent;
+
+          btn.textContent = '👍';
+          btn.style.opacity = 0;
+          btn.style.transition = 'opacity 0.2s';
+          requestAnimationFrame(() => btn.style.opacity = 1);
+
+          setTimeout(() => {
+            btn.style.opacity = 0;
+            setTimeout(() => {
+              btn.textContent = original;
+              btn.style.opacity = 1;
+            }, 200);
+          }, 1000);
+        });
+      });
+    });
+  </script>
 </BaseLayout>
