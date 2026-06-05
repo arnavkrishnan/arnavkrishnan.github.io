@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Pagination from '../../../components/Pagination.astro';
 const base = '/portfolio';
+const previous = 'huffman-compression';
+const next = 'rslk';
 ---
 <BaseLayout title="Hashes" base={base}>
+  <Pagination base={base} section="projects/aden" previous={previous} next={next} />
   <h1>Hashes</h1>
   <p>Placeholder page for ADEN Hashes project.</p>
 </BaseLayout>

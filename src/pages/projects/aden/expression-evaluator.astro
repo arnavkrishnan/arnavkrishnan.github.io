@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Pagination from '../../../components/Pagination.astro';
 const base = '/portfolio';
+const previous = null;
+const next = 'elevator';
 ---
 <BaseLayout title="Expression Evaluator" base={base}>
+  <Pagination base={base} section="projects/aden" previous={previous} next={next} />
   <h1>Expression Evaluator</h1>
   <p>Placeholder page for ADEN Expression Evaluator project.</p>
 </BaseLayout>

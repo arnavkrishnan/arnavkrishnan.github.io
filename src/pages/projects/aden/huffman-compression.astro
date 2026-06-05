@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Pagination from '../../../components/Pagination.astro';
 const base = '/portfolio';
+const previous = 'elevator';
+const next = 'hashes';
 ---
 <BaseLayout title="Huffman Compression" base={base}>
+  <Pagination base={base} section="projects/aden" previous={previous} next={next} />
   <h1>Huffman Compression</h1>
   <p>Placeholder page for ADEN Huffman Compression project.</p>
 </BaseLayout>

@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Pagination from '../../../components/Pagination.astro';
 const base = '/portfolio';
+const previous = 'hashes';
+const next = null;
 ---
 <BaseLayout title="RSLK" base={base}>
+  <Pagination base={base} section="projects/aden" previous={previous} next={next} />
   <h1>RSLK</h1>
   <p>Placeholder page for ADEN RSLK project.</p>
 </BaseLayout>

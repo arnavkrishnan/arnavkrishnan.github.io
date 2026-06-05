@@ -8,7 +8,7 @@ const base = '/portfolio';
 
 // Define previous and next projects (null if none)
 const previous = null; // No previous project yet
-const next = null; // No next project yet
+const next = 'minibot';
 
 const videos = [
   `${base}/videos/TB_vid_1.mp4`,
@@ -18,7 +18,7 @@ const videos = [
 ---
 
 <BaseLayout title="Test Board" base={base}>
-  <Pagination base={base} section="projects" previous={previous} next={next} />
+  <Pagination base={base} section="projects" listHref={`${base}/projects/robotics`} previous={previous} next={next} />
   
   <h1>Test Board</h1>
   <h2 style="font-weight: normal; color: #555; margin-top: 0.5rem; font-size: 1.25rem;">

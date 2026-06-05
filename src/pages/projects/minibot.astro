@@ -6,7 +6,7 @@ import VideoCarousel from '../../components/VideoCarousel.jsx';
 const base = '/portfolio';
 
 // Define previous and next projects
-const previous = { title: 'Test Board', link: '/portfolio/projects/test-board' };
+const previous = 'test-board';
 const next = null; // Add future projects as needed
 
 const videos = [
@@ -19,7 +19,7 @@ const hasVideos = videos.filter(v => !v.includes('undefined')).length > 0;
 ---
 
 <BaseLayout title="Minibot" base={base}>
-  <Pagination base={base} section="projects" previous={previous} next={next} />
+  <Pagination base={base} section="projects" listHref={`${base}/projects/robotics`} previous={previous} next={next} />
   
   <h1>Minibot</h1>
   <h2 style="font-weight: normal; color: #555; margin-top: 0.5rem; font-size: 1.25rem;">

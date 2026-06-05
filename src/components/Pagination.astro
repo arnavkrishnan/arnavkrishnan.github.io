@@ -1,18 +1,44 @@
 ---
-const { base, section, previous, next } = Astro.props;
-// section is either 'projects' or 'certifications'
+const { base, section, previous, next, listHref } = Astro.props;
+
+function resolveLink(item) {
+  if (!item) return null;
+  if (typeof item === 'string') {
+    return `${base}/${section}/${item}`;
+  }
+  if (typeof item === 'object' && item.link) {
+    return item.link;
+  }
+  if (typeof item === 'object' && item.slug) {
+    return `${base}/${section}/${item.slug}`;
+  }
+  return null;
+}
+
+function resolveLabel(item, defaultLabel) {
+  if (!item) return defaultLabel;
+  if (typeof item === 'string') return defaultLabel;
+  if (typeof item === 'object' && item.title) return item.title;
+  return defaultLabel;
+}
+
+const previousLink = resolveLink(previous);
+const nextLink = resolveLink(next);
+const previousLabel = resolveLabel(previous, '← Previous');
+const nextLabel = resolveLabel(next, 'Next →');
+const listLink = listHref || `${base}/${section}`;
 ---
 <nav class="pagination">
-  {previous ? (
-    <a href={`${base}/${section}/${previous}`}>← Previous</a>
+  {previousLink ? (
+    <a href={previousLink}>{previousLabel}</a>
   ) : (
     <span class="disabled">← Previous</span>
   )}
   
-  <a href={`${base}/${section}`}>List</a>
+  <a href={listLink}>List</a>
   
-  {next ? (
-    <a href={`${base}/${section}/${next}`}>Next →</a>
+  {nextLink ? (
+    <a href={nextLink}>{nextLabel}</a>
   ) : (
     <span class="disabled">Next →</span>
   )}
