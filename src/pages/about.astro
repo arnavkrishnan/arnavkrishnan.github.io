@@ -5,16 +5,35 @@ const base = '/portfolio';
 
 <BaseLayout title="About Me" base={base}>
   <h1>About Me</h1>
+
+<div style="display:flex; flex-direction:column; align-items:flex-start; margin-bottom:1rem;">
+  <img
+    src={`${base}/images/me.jpg`}
+    alt="Arnav Krishnan"
+    style="width:320px; height:auto; border:1px solid #ddd;"
+  />
+
+  <p style="margin-top:0.5rem; font-size:0.9rem; color:#666;">
+    Me in Hawaii, one of the many U.S. states in which I do not
+    <a href={`${base}/images/Map.png`} target="_blank" rel="noopener">
+      reside
+    </a>.
+  </p>
+</div>
+
+<div>
   <p>
-  I am a student at
-  <a href="https://lahs.mvla.net" target="_blank" rel="noopener">
-    Los Altos High School
-  </a>
-  (class of 2028). I like
-  <a href="https://en.wikipedia.org/wiki/Mathematics" target="_blank" rel="noopener">
-    mathematics
-  </a>.
-</p>
+    I am a student at
+    <a href="https://lahs.mvla.net" target="_blank" rel="noopener">
+      Los Altos High School
+    </a>
+    (class of 2028). I like
+    <a href="https://en.wikipedia.org/wiki/Mathematics" target="_blank" rel="noopener">
+      mathematics
+    </a>.
+  </p>
+</div>
+ 
   <p>Feel free to contact me via the methods below:</p>
 
   <section>

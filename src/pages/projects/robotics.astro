@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = '/portfolio';
+---
+<BaseLayout title="Robotics Projects" base={base}>
+  <h1>Robotics Projects</h1>
+  <ul>
+    <li><a href={`${base}/projects/test-board`}>Test Board</a></li>
+    <li><a href={`${base}/projects/minibot`}>Minibot</a></li>
+  </ul>
+</BaseLayout>

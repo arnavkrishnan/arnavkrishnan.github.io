@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+const base = '/portfolio';
+---
+<BaseLayout title="ADEN Projects" base={base}>
+  <h1>ADEN Projects</h1>
+  <p>Placeholder pages for ADEN coursework and exercises.</p>
+  <ul>
+    <li><a href={`${base}/projects/aden/expression-evaluator`}>Expression Evaluator</a></li>
+    <li><a href={`${base}/projects/aden/elevator`}>Elevator</a></li>
+    <li><a href={`${base}/projects/aden/huffman-compression`}>Huffman Compression</a></li>
+    <li><a href={`${base}/projects/aden/hashes`}>Hashes</a></li>
+    <li><a href={`${base}/projects/aden/rslk`}>RSLK</a></li>
+  </ul>
+</BaseLayout>
