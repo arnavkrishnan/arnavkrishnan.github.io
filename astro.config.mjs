@@ -12,7 +12,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://arnavkrishnan.github.io',
-  base: '/robotics-portfolio',
+  base: '/portfolio',
   output: 'static',
   vite: {
     // @ts-ignore

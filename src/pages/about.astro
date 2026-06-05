@@ -1,11 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = '/robotics-portfolio';
+const base = '/portfolio';
 ---
 
 <BaseLayout title="About Me" base={base}>
   <h1>About Me</h1>
-  <p>I'm a sophomore at Los Altos High School. I'm interested in Engineering and Physics, and enjoy sailing.</p>
+  <p>
+  I am a student at
+  <a href="https://lahs.mvla.net" target="_blank" rel="noopener">
+    Los Altos High School
+  </a>
+  (class of 2028). I like
+  <a href="https://en.wikipedia.org/wiki/Mathematics" target="_blank" rel="noopener">
+    mathematics
+  </a>.
+</p>
   <p>Feel free to contact me via the methods below:</p>
 
   <section>
@@ -13,13 +22,21 @@ const base = '/robotics-portfolio';
     <ul style="list-style: none; padding: 0;">
       <li style="margin-bottom: 0.5rem;">
         Email: 
-        <a href="mailto:arnav.s.krishnan@gmail.com">arnav.s.krishnan@gmail.com</a>
+        <a id="email-link"></a>
+
+<script>
+const user = "arnav.s.krishnan";
+const domain = "gmail.com";
+
+const email = `${user}@${domain}`;
+const link = document.getElementById("email-link");
+
+link.href = `mailto:${email}`;
+link.textContent =
+  "arnav dot s dot krishnan at gmail dot com";
+</script>
+<small>(obfuscated to reduce spam)</small>
         <button class="copy-btn" data-copy="arnav.s.krishnan@gmail.com">Copy</button>
-      </li>
-      <li style="margin-bottom: 0.5rem;">
-        Phone: 
-        <span>6509779050</span>
-        <button class="copy-btn" data-copy="6509779050">Copy</button>
       </li>
       <li>
         GitHub: 

@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Pagination from '../../components/Pagination.astro';
+import VideoCarousel from '../../components/VideoCarousel.jsx';
+
+const base = '/portfolio';
+
+// Define previous and next projects
+const previous = { title: 'Test Board', link: '/portfolio/projects/test-board' };
+const next = null; // Add future projects as needed
+
+const videos = [
+  // `${base}/videos/minibot_vid_1.mp4`,
+  // `${base}/videos/minibot_vid_2.mp4`,
+  // `${base}/videos/minibot_vid_3.mp4`
+];
+
+const hasVideos = videos.filter(v => !v.includes('undefined')).length > 0;
+---
+
+<BaseLayout title="Minibot" base={base}>
+  <Pagination base={base} section="projects" previous={previous} next={next} />
+  
+  <h1>Minibot</h1>
+  <h2 style="font-weight: normal; color: #555; margin-top: 0.5rem; font-size: 1.25rem;">
+    Design a minibot to tackle an obstacle course through iterative design, assembly, testing, and continuous improvement.
+  </h2>
+
+  {hasVideos && <VideoCarousel client:load videos={videos} width="100%" height="100%" />}
+
+  <!-- DEFINE SECTION -->
+  <h2 style="margin-top: 2rem; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Define</h2>
+  <p>
+    The goal of this project was to design and build a minibot drive base capable of navigating a challenging obstacle course in the shortest amount of time. Through this build process, we learned about:
+  </p>
+  <ul>
+    <li>Iterative design methodology and rapid prototyping</li>
+    <li>Drive system optimization for different terrain types</li>
+    <li>Structural integrity and weight distribution</li>
+    <li>Testing protocols and performance metrics</li>
+  </ul>
+
+  <!-- CONCEPT AND CAD DESIGN SECTION -->
+  <h2 style="margin-top: 2rem; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Concept and CAD Design</h2>
+  
+  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Initial Concepts</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
+    <figure style="flex: 1; min-width: 250px;">
+      <img src={`${base}/images/placeholder-concept-1.png`} alt="Concept sketch 1" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
+      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Concept Sketch 1</figcaption>
+    </figure>
+    <figure style="flex: 1; min-width: 250px;">
+      <img src={`${base}/images/placeholder-concept-2.png`} alt="Concept sketch 2" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
+      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Concept Sketch 2</figcaption>
+    </figure>
+  </div>
+
+  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">CAD Designs</h3>
+  <p>
+    Below are the 3D models and technical drawings for the final design iteration:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
+    <figure style="flex: 1; min-width: 250px;">
+      <img src={`${base}/images/placeholder-cad-1.png`} alt="CAD model front view" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
+      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">CAD Model - Front View</figcaption>
+    </figure>
+    <figure style="flex: 1; min-width: 250px;">
+      <img src={`${base}/images/placeholder-cad-2.png`} alt="CAD model isometric view" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
+      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">CAD Model - Isometric View</figcaption>
+    </figure>
+  </div>
+
+  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Machined Parts</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
+    <figure style="flex: 1; min-width: 250px;">
+      <img src={`${base}/images/placeholder-part-1.png`} alt="Machined part 1" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
+      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Machined Part 1</figcaption>
+    </figure>
+    <figure style="flex: 1; min-width: 250px;">
+      <img src={`${base}/images/placeholder-part-2.png`} alt="Machined part 2" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
+      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Machined Part 2</figcaption>
+    </figure>
+  </div>
+
+  <!-- TEST AND ITERATE SECTION -->
+  <h2 style="margin-top: 2rem; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Test and Iterate</h2>
+  
+  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Prototype Testing</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
+    <figure style="flex: 1; min-width: 250px;">
+      <img src={`${base}/images/placeholder-prototype-1.png`} alt="Prototype v1" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
+      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Prototype v1</figcaption>
+    </figure>
+    <figure style="flex: 1; min-width: 250px;">
+      <img src={`${base}/images/placeholder-prototype-2.png`} alt="Prototype v2" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
+      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Prototype v2</figcaption>
+    </figure>
+  </div>
+
+  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Performance Data</h3>
+  <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px; margin: 1.5rem 0; font-family: monospace; font-size: 0.9rem;">
+    <h4 style="margin-top:0;">Test Results Summary</h4>
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr style="background: #e8e8e8;">
+        <th style="border: 1px solid #ccc; padding: 0.5rem; text-align: left;">Iteration</th>
+        <th style="border: 1px solid #ccc; padding: 0.5rem; text-align: left;">Course Time (s)</th>
+        <th style="border: 1px solid #ccc; padding: 0.5rem; text-align: left;">Key Changes</th>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">v1</td>
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">TBD</td>
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">Initial design</td>
+      </tr>
+      <tr style="background: #f9f9f9;">
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">v2</td>
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">TBD</td>
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">Design updates</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">v3</td>
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">TBD</td>
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">Final optimizations</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Key Findings and Improvements</h3>
+  <ul>
+    <li><strong>Traction:</strong> [Document what you learned about wheel selection and traction]</li>
+    <li><strong>Weight Distribution:</strong> [Document findings on how weight affects performance]</li>
+    <li><strong>Power Delivery:</strong> [Document motor/drive system optimization]</li>
+    <li><strong>Structural Issues:</strong> [Document any durability improvements made]</li>
+  </ul>
+
+  <!-- IMPLEMENT SECTION -->
+  <h2 style="margin-top: 2rem; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Implement</h2>
+  
+  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Final Build</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
+    <figure style="flex: 1; min-width: 250px;">
+      <img src={`${base}/images/placeholder-final-1.png`} alt="Final minibot - side view" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
+      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Final Build - Side View</figcaption>
+    </figure>
+    <figure style="flex: 1; min-width: 250px;">
+      <img src={`${base}/images/placeholder-final-2.png`} alt="Final minibot - top view" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
+      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Final Build - Top View</figcaption>
+    </figure>
+  </div>
+
+  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Obstacle Course Performance</h3>
+  <p>
+    [Add description of the final course performance, including time, obstacles completed, and overall results]
+  </p>
+
+  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Video of Final Run</h3>
+  <div style="background: #f0f0f0; border: 2px dashed #ccc; padding: 2rem; border-radius: 8px; text-align: center; margin: 1.5rem 0; min-height: 200px; display: flex; align-items: center; justify-content: center;">
+    <p style="color: #999;">Final obstacle course run video will be placed here</p>
+  </div>
+
+  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Reflection</h3>
+  <p>
+    [Reflect on the design process, what worked well, what could be improved, and what you learned through this iterative design project]
+  </p>
+</BaseLayout>
