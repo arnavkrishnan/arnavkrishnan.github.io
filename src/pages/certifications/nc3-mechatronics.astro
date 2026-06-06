@@ -7,6 +7,7 @@ const previous = 'osha-10';
 const next = 'onshape';
 ---
 <BaseLayout title="NC3 Introduction to Mechatronics" base={base}>
+  <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
   <Pagination base={base} section="certifications" previous={previous} next={next} />
   
   <h1>NC3 Introduction to Mechatronics</h1>
@@ -18,6 +19,8 @@ const next = 'onshape';
     <p>Download the fluid simulation circuit file:</p>
     <p><a href={`${base}/files/fluidsim.circ`} download>fluidsim.circ</a></p>
   </section>
+
+  <!-- </section> -->
 
   <section>
     <h2>Progress Check Completions</h2>
@@ -46,6 +49,8 @@ const next = 'onshape';
     </div>
   </section>
   
+
+  </section>
 </BaseLayout>
 
 <style>

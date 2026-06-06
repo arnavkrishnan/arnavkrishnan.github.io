@@ -7,6 +7,7 @@ const next = null;
 ---
 <BaseLayout title="RSLK Robot | ADEN Project" base={base}>
   <Pagination base={base} section="projects/aden" previous={previous} next={next} />
+  <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
   <h1>RSLK Robot</h1>
 
   <section style="margin-bottom:1.5rem;">
@@ -35,20 +36,54 @@ const next = null;
   </section>
 
   <section id="reflection" style="margin-bottom:1.5rem;">
-    <p>
-      <strong>Reflections:</strong>
-      <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK Line Sensor.html')}`} target="_blank" rel="noopener">Line Sensor (HTML)</a>
-      {' '}|{' '}
-      <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK - SysTick and Interrupts.html')}`} target="_blank" rel="noopener">SysTick & Interrupts (HTML)</a>
-      {' '}|{' '}
-      <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK - Finite State Machines.html')}`} target="_blank" rel="noopener">Finite State Machines (HTML)</a>
-      {' '}|{' '}
-      <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  Working at a bit level.html')}`} target="_blank" rel="noopener">Working at a Bit Level (HTML)</a>
-    </p>
+    <h2>Reflections</h2>
+
+    <div style="display:grid; gap:0.6rem;">
+      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+          <strong>Line Sensor</strong>
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK Line Sensor.html')}`} target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Open HTML</a>
+            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection -  RSLK Line Sensor.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+          <strong>SysTick & Interrupts</strong>
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK - SysTick and Interrupts.html')}`} target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Open HTML</a>
+            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection -  RSLK - SysTick and Interrupts.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+          <strong>Finite State Machines</strong>
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK - Finite State Machines.html')}`} target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Open HTML</a>
+            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection -  RSLK - Finite State Machines.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+          <strong>Working at a Bit Level</strong>
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  Working at a bit level.html')}`} target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Open HTML</a>
+            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection -  Working at a bit level.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section>
     <h2>Navigation</h2>
     <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
   </section>
+</section>
 </BaseLayout>

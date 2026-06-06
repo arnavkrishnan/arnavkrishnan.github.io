@@ -3,10 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const base = '/portfolio';
 ---
 <BaseLayout title="Certifications" base={base}>
+  <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
   <h1>Certifications</h1>
   <ul>
     <li><a href={`${base}/certifications/osha-10`}>OSHA - 10 Hour General Industry</a></li>
     <li><a href={`${base}/certifications/nc3-mechatronics`}>NC3 Introduction to Mechatronics</a></li>
     <li><a href={`${base}/certifications/onshape`}>Onshape</a></li>
   </ul>
+</section>
 </BaseLayout>

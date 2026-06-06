@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const base = '/portfolio';
 ---
 <BaseLayout title="Arnav Krishnan" base={base}>
+  <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
   <h1>Arnav Krishnan</h1>
   <div style="display:flex; flex-direction:column; align-items:flex-start; margin-bottom:1rem;">
   <img
@@ -28,7 +29,19 @@ const base = '/portfolio';
     <a href="https://en.wikipedia.org/wiki/2028" target="_blank" rel="noopener">
       2028
     </a>
-    ). I have lived in Los Altos since my 3rd grade, and have lived in the Bay Area since my 0th birthday. 
+    ). I have lived in Los Altos since my 3rd grade, and have lived in the Bay Area since my 0th birthday. In my free time, I like to 
+    <a href="https://terrytao.wordpress.com/" target="_blank" rel="noopener">
+      read
+    </a>
+    , play 
+    <a href="https://lichess.org/" target="_blank" rel="noopener">
+      chess
+    </a>
+    , and
+    <a href="https://projecteuler.net/" target="_blank" rel="noopener">
+      code
+    </a>
+    .
   </p>
 
   <section>
@@ -38,6 +51,18 @@ const base = '/portfolio';
         USA Computing Olympiad
       </a>
       , silver division.
+    </p>
+    <p>
+      <a href="https://www.cde.ca.gov/sp/ml/sealofbiliteracy.asp" target="_blank" rel="noopener">
+        CA State Seal of Biliteracy Pathway Award
+      </a>
+      , English & Chinese
+    </p>
+    <p>
+      <a href="https://globalyouth.wharton.upenn.edu/competitions/investment-competition/" target="_blank" rel="noopener">
+        Wharton Global High School Investment Competition
+      </a>
+      , top 8% globally
     </p>
   </section>
 
@@ -123,4 +148,5 @@ const base = '/portfolio';
       });
     });
   </script>
+</section>
 </BaseLayout>

@@ -20,6 +20,7 @@ const hasVideos = videos.filter(v => !v.includes('undefined')).length > 0;
 
 <BaseLayout title="Minibot" base={base}>
   <Pagination base={base} section="projects" listHref={`${base}/projects/robotics`} previous={previous} next={next} />
+  <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
   
   <h1>Minibot</h1>
   <h2 style="font-weight: normal; color: #555; margin-top: 0.5rem; font-size: 1.25rem;">

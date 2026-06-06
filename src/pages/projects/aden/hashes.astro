@@ -7,6 +7,7 @@ const next = 'rslk';
 ---
 <BaseLayout title="Hashes | ADEN Project" base={base}>
   <Pagination base={base} section="projects/aden" previous={previous} next={next} />
+  <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
   <h1>Hashes</h1>
 
   <section style="margin-bottom:1.5rem;">
@@ -16,13 +17,16 @@ const next = 'rslk';
     <img src={`${base}/images/hash-table.png`} alt="Hash table collision diagram placeholder" style="width:100%; max-width:720px; border-radius:12px; border:1px solid #ddd; margin-top:1rem;" />
   </section>
 
-  <section id="hashing-algorithms" style="margin-bottom:1.5rem;">
-    <h2>Hashing Algorithms</h2>
-    <p>
-      <strong>Reflection:</strong>
-      <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Arnav Krishnan - Hash Analysis.pdf')}`} download target="_blank" rel="noopener">Hash Analysis (PDF)</a>
-    </p>
-  </section>
+    <section id="hashing-algorithms" style="margin-bottom:1.5rem;">
+      <h2>Reflection</h2>
 
-  <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
+      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-bottom:0.75rem; display:flex; justify-content:space-between; align-items:center;">
+        <strong>Hash Analysis</strong>
+        <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Arnav Krishnan - Hash Analysis.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
+      </div>
+
+    </section>
+
+    <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
+  </section>
 </BaseLayout>

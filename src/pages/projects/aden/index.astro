@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 const base = '/portfolio';
 ---
 <BaseLayout title="ADEN Projects" base={base}>
+  <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
   <h1>ADEN Projects</h1>
   <ul>
     <li><a href={`${base}/projects/aden/expression-evaluator`}>Expression Evaluator</a></li>
@@ -11,4 +12,5 @@ const base = '/portfolio';
     <li><a href={`${base}/projects/aden/hashes`}>Hashes</a></li>
     <li><a href={`${base}/projects/aden/rslk`}>RSLK</a></li>
   </ul>
+</section>
 </BaseLayout>

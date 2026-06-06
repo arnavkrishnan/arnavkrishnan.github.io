@@ -1,44 +1,116 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Pagination from '../../../components/Pagination.astro';
+
 const base = '/portfolio';
 const previous = null;
 const next = 'elevator';
+
+const htmlFile = 'Reflection -  ExpressionEvaluator.html';
+const pdfFile = 'Reflection -  ExpressionEvaluator.pdf';
 ---
+
 <BaseLayout title="Expression Evaluator | ADEN Project" base={base}>
-  <Pagination base={base} section="projects/aden" previous={previous} next={next} />
-  <h1>Expression Evaluator</h1>
+<Pagination base={base} section="projects/aden" previous={previous} next={next} />
+  <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
 
-  <section style="margin-bottom:1rem;">
-    <p>
-      A parser and evaluator that processes infix arithmetic expressions with correct operator precedence and parentheses support. Implementation uses a two-stack approach to evaluate expressions deterministically and report clear errors for malformed input.
-    </p>
-  </section>
 
-  <section id="phases" style="margin-bottom:1rem;">
-    <h2>Project Phases</h2>
-    <ol>
-      <li>Specify expression grammar and tokenization rules.</li>
-      <li>Implement parser/evaluator using operator and operand stacks.</li>
-      <li>Create unit tests and a design document covering edge cases.</li>
-      <li>Polish error handling and add robust input validation.</li>
-    </ol>
-  </section>
+    <h1>Expression Evaluator</h1>
 
-  <section id="analysis" style="margin-bottom:1rem;">
-    <h2>Summary of Analysis</h2>
-    <p>
-      The evaluator reliably handles nested parentheses and precedence; performance is linear in the length of the tokenized expression. Attention to error messages helped make the tool usable for classmates testing custom input.
-    </p>
-  </section>
+    {/* DESCRIPTION */}
+    <section style="margin-bottom:1rem;">
+      <p>
+        A parser and evaluator that processes infix arithmetic expressions with correct operator precedence and parentheses support.
+        It uses a two-stack system to evaluate expressions step-by-step and detect malformed input.
+      </p>
+    </section>
+
+    {/* PHASES */}
+    <section id="phases" style="margin-bottom:1rem;">
+      <h2>Project Phases</h2>
+      <ol>
+        <li>Define expression grammar and tokenization rules.</li>
+        <li>Implement stack-based evaluation with operator precedence.</li>
+        <li>Add support for parentheses and nested expressions.</li>
+        <li>Implement static error checking (operators, data, parentheses).</li>
+        <li>Add implicit multiplication and negative number handling.</li>
+        <li>Implement divide-by-zero runtime detection.</li>
+      </ol>
+    </section>
+
+    {/* ANALYSIS */}
+    <section id="analysis" style="margin-bottom:1rem;">
+      <h2>Summary of Analysis</h2>
+      <p>
+        The evaluator processes expressions in linear time using stacks. Careful handling of tokenization
+        and edge cases like negative numbers significantly improved correctness and usability.
+      </p>
+    </section>
+
+    {/* REFLECTIONS */}
     <section id="reflections" style="margin-bottom:1rem;">
       <h2>Reflections</h2>
-      <p>
-        <strong>Reflections:</strong>
-        <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  ExpressionEvaluator.html')}`}>HTML</a>
-        {' '}|{' '}
-        <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection -  ExpressionEvaluator.pdf')}`} download target="_blank" rel="noopener">PDF</a>
+
+      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+          <strong>Expression Evaluator Reflection</strong>
+
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <a
+              href={`${base}/documents/reflections/pdf/${encodeURIComponent(pdfFile)}`}
+              download
+              target="_blank"
+              rel="noopener"
+              style="font-size:0.9rem; color:#0b66c3;"
+            >
+              Download PDF
+            </a>
+
+            <button
+              type="button"
+              class="toggle-btn"
+              data-target="html-view"
+              style="padding:0.35rem 0.5rem; border-radius:6px;"
+            >
+              View HTML
+            </button>
+          </div>
+        </div>
+
+        <div id="html-view" style="margin-top:0.75rem; display:none;">
+          <iframe
+            src={`${base}/documents/reflections/html/${encodeURIComponent(htmlFile)}`}
+            style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
+            loading="lazy"
+            title="Expression Evaluator Reflection"
+          ></iframe>
+        </div>
+      </div>
+
+      <p style="margin-top:1rem;">
+        <a href={`${base}/projects/aden`} style="color:#0055aa; text-decoration:underline;">
+          ← Back to ADEN Course
+        </a>
       </p>
-      <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
     </section>
+
+  </section>
+
+  {/* TOGGLE SCRIPT */}
+  <script>
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.toggle-btn');
+      if (!btn) return;
+
+      const targetId = btn.dataset.target;
+      const panel = document.getElementById(targetId);
+      if (!panel) return;
+
+      const isOpen = panel.style.display === 'block';
+
+      panel.style.display = isOpen ? 'none' : 'block';
+      btn.textContent = isOpen ? 'View HTML' : 'Hide HTML';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  </script>
 </BaseLayout>

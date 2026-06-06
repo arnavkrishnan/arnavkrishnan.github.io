@@ -3,9 +3,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = '/portfolio';
 ---
 <BaseLayout title="Robotics Projects" base={base}>
+  <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
   <h1>Robotics Projects</h1>
   <ul>
     <li><a href={`${base}/projects/test-board`}>Test Board</a></li>
     <li><a href={`${base}/projects/minibot`}>Minibot</a></li>
   </ul>
+</section>
 </BaseLayout>
