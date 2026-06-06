@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import 'katex/dist/katex.min.css';
+
+const base = '/portfolio';
+---
+
+<BaseLayout title="404" base={base}>
+  <section style="text-align:center; padding:4rem 1rem;">
+    <div id="equation"></div>
+
+    <p>Page not found.</p>
+    <a href={`${base}/`}>Return Home</a>
+  </section>
+</BaseLayout>
+
+<script>
+  import katex from "katex";
+
+  katex.render(
+    "\\sum_{n=2}^{17}\\frac{5n+3}{2}=404",
+    document.getElementById("equation"),
+    {
+      throwOnError: false,
+      displayMode: true
+    }
+  );
+</script>
