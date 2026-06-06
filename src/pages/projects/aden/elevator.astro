@@ -1,78 +1,367 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Pagination from '../../../components/Pagination.astro';
+
 const base = '/portfolio';
 const previous = 'expression-evaluator';
 const next = 'huffman-compression';
 ---
+
 <BaseLayout title="Elevator | ADEN Project" base={base}>
-  <Pagination base={base} section="projects/aden" previous={previous} next={next} />
+  <Pagination
+    base={base}
+    section="projects/aden"
+    previous={previous}
+    next={next}
+  />
+
   <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
     <h1>Elevator Control System</h1>
 
     <section style="margin-bottom:1rem;">
+      <h2>Project Description</h2>
+
       <p>
-        Embedded control project modeling elevators, scheduling, and finite state machines. Focus areas were sensor integration, state transitions, and measuring user-facing metrics such as wait time.
+        Embedded control project modeling elevators, scheduling, and finite
+        state machines. Focus areas included sensor integration, state
+        transitions, passenger scheduling, and measuring user-facing metrics
+        such as wait time, ride time, total travel time, and overall system
+        performance.
       </p>
     </section>
 
-    <section id="reflections" style="margin-bottom:1rem;">
-      <h2>Reflections</h2>
+    <section id="phases" style="margin-bottom:1rem;">
+      <h2>Project Phases</h2>
 
-      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-bottom:0.75rem;">
+      <ol>
+        <li>Requirements Analysis and Elevator Modeling</li>
+        <li>Finite State Machine Design</li>
+        <li>Passenger Scheduling and Request Handling</li>
+        <li>Simulation Development and Testing</li>
+        <li>Performance Analysis</li>
+        <li>Configuration Comparison and Recommendation</li>
+      </ol>
+
+      <!-- FINAL DESIGN DOC -->
+      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
         <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-          <strong>Elevator Reflection 1</strong>
+          <strong>Elevator Design Document (Final)</strong>
+
           <div style="display:flex; gap:0.5rem; align-items:center;">
-            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Elevator Reflection 1.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
-            <button type="button" aria-expanded="false" class="toggle-btn" data-target={`ref-elevator-1`} style="padding:0.35rem 0.5rem; border-radius:6px;">View HTML</button>
+            <a
+              href={`${base}/documents/ADEN_docs/pdf/${encodeURIComponent(
+                'Elevator Simulation Updog Design Document, vFinal.pdf'
+              )}`}
+              download
+              target="_blank"
+              rel="noopener"
+              style="font-size:0.9rem; color:#0b66c3;"
+            >
+              Download PDF
+            </a>
+
+            <button
+              type="button"
+              class="toggle-btn"
+              data-target="design-final"
+              style="padding:0.35rem 0.5rem; border-radius:6px;"
+            >
+              View HTML
+            </button>
           </div>
         </div>
-        <div id={`ref-elevator-1`} style="margin-top:0.5rem; display:none;">
-          <iframe src={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Reflection 1.html')}`} style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;" loading="lazy" title="Elevator Reflection 1"></iframe>
+
+        <div id="design-final" style="margin-top:0.5rem; display:none;">
+          <iframe
+            src={`${base}/documents/ADEN_docs/html/Elevator Simulation Updog Design Document, vFinal/ElevatorSimulationUpdogDesignDocumentvFinal.html`}
+            style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
+            loading="lazy"
+            title="Elevator Design Document Final"
+          ></iframe>
         </div>
       </div>
 
-      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-bottom:0.75rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-          <strong>Elevator Weekly Reflection 2</strong>
-          <div style="display:flex; gap:0.5rem; align-items:center;">
-            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Elevator Weekly Reflection 2.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
-            <button type="button" aria-expanded="false" class="toggle-btn" data-target={`ref-elevator-2`} style="padding:0.35rem 0.5rem; border-radius:6px;">View HTML</button>
+      <!-- DESIGN DOCS V1 -->
+      <div style="margin-top:1.25rem;">
+        <h3>Design Document Versions</h3>
+
+        <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+            <strong>Design Document v1</strong>
+
+            <div style="display:flex; gap:0.5rem; align-items:center;">
+              <a
+                href={`${base}/documents/ADEN_docs/pdf/${encodeURIComponent(
+                  'Elevator Simulation Updog Design Document, v1.pdf'
+                )}`}
+                download
+                target="_blank"
+                rel="noopener"
+                style="font-size:0.9rem; color:#0b66c3;"
+              >
+                Download PDF
+              </a>
+
+              <button
+                type="button"
+                class="toggle-btn"
+                data-target="design-v1"
+                style="padding:0.35rem 0.5rem; border-radius:6px;"
+              >
+                View HTML
+              </button>
+            </div>
+          </div>
+
+          <div id="design-v1" style="margin-top:0.5rem; display:none;">
+            <iframe
+              src={`${base}/documents/ADEN_docs/html/Elevator Simulation Updog Design Document, v1/ElevatorSimulationUpdogDesignDocumentv1.html`}
+              style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
+              loading="lazy"
+              title="Design Document v1"
+            ></iframe>
           </div>
         </div>
-        <div id={`ref-elevator-2`} style="margin-top:0.5rem; display:none;">
-          <iframe src={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Weekly Reflection 2.html')}`} style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;" loading="lazy" title="Elevator Weekly Reflection 2"></iframe>
-        </div>
-      </div>
 
-      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-bottom:0.75rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-          <strong>Elevator Weekly Reflection 3</strong>
-          <div style="display:flex; gap:0.5rem; align-items:center;">
-            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Elevator Weekly Reflection 3.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
-            <button type="button" aria-expanded="false" class="toggle-btn" data-target={`ref-elevator-3`} style="padding:0.35rem 0.5rem; border-radius:6px;">View HTML</button>
+        <!-- DESIGN DOC V2 -->
+        <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+            <strong>Design Document v2</strong>
+
+            <div style="display:flex; gap:0.5rem; align-items:center;">
+              <a
+                href={`${base}/documents/ADEN_docs/pdf/${encodeURIComponent(
+                  'Elevator Simulation Updog Design Document, v2.pdf'
+                )}`}
+                download
+                target="_blank"
+                rel="noopener"
+                style="font-size:0.9rem; color:#0b66c3;"
+              >
+                Download PDF
+              </a>
+
+              <button
+                type="button"
+                class="toggle-btn"
+                data-target="design-v2"
+                style="padding:0.35rem 0.5rem; border-radius:6px;"
+              >
+                View HTML
+              </button>
+            </div>
+          </div>
+
+          <div id="design-v2" style="margin-top:0.5rem; display:none;">
+            <iframe
+              src={`${base}/documents/ADEN_docs/html/Elevator Simulation Updog Design Document, v2/ElevatorSimulationUpdogDesignDocumentv2.html`}
+              style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
+              loading="lazy"
+              title="Design Document v2"
+            ></iframe>
           </div>
         </div>
-        <div id={`ref-elevator-3`} style="margin-top:0.5rem; display:none;">
-          <iframe src={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Weekly Reflection 3.html')}`} style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;" loading="lazy" title="Elevator Weekly Reflection 3"></iframe>
-        </div>
       </div>
-
-      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-bottom:0.75rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-          <strong>Elevator Weekly Reflection 4</strong>
-          <div style="display:flex; gap:0.5rem; align-items:center;">
-            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Elevator Weekly Reflection 4.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
-            <button type="button" aria-expanded="false" class="toggle-btn" data-target={`ref-elevator-4`} style="padding:0.35rem 0.5rem; border-radius:6px;">View HTML</button>
-          </div>
-        </div>
-        <div id={`ref-elevator-4`} style="margin-top:0.5rem; display:none;">
-          <iframe src={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Weekly Reflection 4.html')}`} style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;" loading="lazy" title="Elevator Weekly Reflection 4"></iframe>
-        </div>
-      </div>
-
-      <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
     </section>
+
+    <!-- ANALYSIS -->
+    <section id="analysis" style="margin-bottom:1rem;">
+      <h2>Summary of Analysis</h2>
+
+      <p>During analysis, three elevator configurations were compared:</p>
+
+      <ul>
+        <li>Capacity = 15, floorTicks = 5, doorTicks = 2, passPerTick = 3</li>
+        <li>Capacity = 20, floorTicks = 7, doorTicks = 3, passPerTick = 4</li>
+        <li>Capacity = 10, floorTicks = 3, doorTicks = 2, passPerTick = 3</li>
+      </ul>
+
+      <p>
+        We evaluated completion rate, average wait time, average total time,
+        weighted passenger travel time, ride time per floor, and standard deviation metrics.
+      </p>
+
+      <p>
+        All three elevators achieved excellent completion rates, but
+        Configuration 3 consistently provided the fastest service and most reliable passenger experience.
+      </p>
+
+      <p>
+        Although Configuration 3 had the smallest capacity, its faster movement
+        and higher throughput outweighed the larger designs.
+      </p>
+    </section>
+
+    <!-- LEARNINGS -->
+    <section id="learnings" style="margin-bottom:1rem;">
+      <h2>Key Learnings</h2>
+
+      <ul>
+        <li>Finite state machines provide a structured framework for embedded control systems.</li>
+        <li>Data-driven analysis is essential when comparing competing designs.</li>
+        <li>Smaller-capacity systems can outperform larger systems when optimized for throughput.</li>
+        <li>User-facing metrics such as wait time and consistency are critical indicators of quality.</li>
+        <li>Simulation is a valuable engineering tool for evaluating designs before deployment.</li>
+      </ul>
+    </section>
+
+    <!-- REFLECTIONS -->
+    <section id="reflections" style="margin-bottom:1rem;">
+    <h2>Reflections</h2>
+
+    <!-- Reflection 1 -->
+    <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+        <strong>Elevator Reflection 1</strong>
+
+        <div style="display:flex; gap:0.5rem; align-items:center;">
+          <a
+            href={`${base}/documents/reflections/pdf/${encodeURIComponent('Elevator Reflection 1.pdf')}`}
+            download
+            target="_blank"
+            rel="noopener"
+            style="font-size:0.9rem; color:#0b66c3;"
+          >
+            Download PDF
+          </a>
+
+          <button
+            type="button"
+            class="toggle-btn"
+            data-target="ref-1"
+            style="padding:0.35rem 0.5rem; border-radius:6px;"
+          >
+            View HTML
+          </button>
+        </div>
+      </div>
+
+      <div id="ref-1" style="margin-top:0.5rem; display:none;">
+        <iframe
+          src={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Reflection 1.html')}`}
+          style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
+          loading="lazy"
+          title="Elevator Reflection 1"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Reflection 2 -->
+    <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+        <strong>Elevator Weekly Reflection 2</strong>
+
+        <div style="display:flex; gap:0.5rem; align-items:center;">
+          <a
+            href={`${base}/documents/reflections/pdf/${encodeURIComponent('Elevator Weekly Reflection 2.pdf')}`}
+            download
+            target="_blank"
+            rel="noopener"
+            style="font-size:0.9rem; color:#0b66c3;"
+          >
+            Download PDF
+          </a>
+
+          <button
+            type="button"
+            class="toggle-btn"
+            data-target="ref-2"
+            style="padding:0.35rem 0.5rem; border-radius:6px;"
+          >
+            View HTML
+          </button>
+        </div>
+      </div>
+
+      <div id="ref-2" style="margin-top:0.5rem; display:none;">
+        <iframe
+          src={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Weekly Reflection 2.html')}`}
+          style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
+          loading="lazy"
+          title="Elevator Weekly Reflection 2"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Reflection 3 -->
+    <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+        <strong>Elevator Weekly Reflection 3</strong>
+
+        <div style="display:flex; gap:0.5rem; align-items:center;">
+          <a
+            href={`${base}/documents/reflections/pdf/${encodeURIComponent('Elevator Weekly Reflection 3.pdf')}`}
+            download
+            target="_blank"
+            rel="noopener"
+            style="font-size:0.9rem; color:#0b66c3;"
+          >
+            Download PDF
+          </a>
+
+          <button
+            type="button"
+            class="toggle-btn"
+            data-target="ref-3"
+            style="padding:0.35rem 0.5rem; border-radius:6px;"
+          >
+            View HTML
+          </button>
+        </div>
+      </div>
+
+      <div id="ref-3" style="margin-top:0.5rem; display:none;">
+        <iframe
+          src={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Weekly Reflection 3.html')}`}
+          style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
+          loading="lazy"
+          title="Elevator Weekly Reflection 3"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Reflection 4 -->
+    <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+        <strong>Elevator Weekly Reflection 4</strong>
+
+        <div style="display:flex; gap:0.5rem; align-items:center;">
+          <a
+            href={`${base}/documents/reflections/pdf/${encodeURIComponent('Elevator Weekly Reflection 4.pdf')}`}
+            download
+            target="_blank"
+            rel="noopener"
+            style="font-size:0.9rem; color:#0b66c3;"
+          >
+            Download PDF
+          </a>
+
+          <button
+            type="button"
+            class="toggle-btn"
+            data-target="ref-4"
+            style="padding:0.35rem 0.5rem; border-radius:6px;"
+          >
+            View HTML
+          </button>
+        </div>
+      </div>
+
+      <div id="ref-4" style="margin-top:0.5rem; display:none;">
+        <iframe
+          src={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Weekly Reflection 4.html')}`}
+          style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
+          loading="lazy"
+          title="Elevator Weekly Reflection 4"
+        ></iframe>
+      </div>
+    </div>
+
+    <p style="margin-top:1rem;">
+      <a href={`${base}/projects/aden`} style="color:#0055aa; text-decoration:underline;">
+        ← Back to ADEN Course
+      </a>
+    </p>
   </section>
 </BaseLayout>
 
@@ -86,7 +375,6 @@ const next = 'huffman-compression';
     if (!panel) return;
 
     const isOpen = panel.style.display !== 'none';
-
     panel.style.display = isOpen ? 'none' : 'block';
     btn.textContent = isOpen ? 'View HTML' : 'Hide HTML';
     btn.setAttribute('aria-expanded', String(!isOpen));
