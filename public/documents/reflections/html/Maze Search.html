@@ -1,0 +1,61 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <title>Maze Search: Arnav Krishnan</title>
+</head>
+<body>
+<h1>Maze Search: Arnav Krishnan</h1>
+<div style="width: 600px; margin: 20px auto; border: 1px solid #888; padding: 20px;">
+  <p>&nbsp;</p>
+<p><br>Maze:</p>
+<p>&nbsp;</p>
+<p><br>**********</p>
+<p>*--------*</p>
+<p>*-******-*</p>
+<p>*---*--*-*</p>
+<p>***-*-**-*</p>
+<p>*---*----*</p>
+<p>*-******-*</p>
+<p>*------*-*</p>
+<p>******-*-*</p>
+<p>*--------*</p>
+<p>&nbsp;</p>
+<p><br>DFS Search:</p>
+<p>&nbsp;</p>
+<p><br>**********</p>
+<p>*S-------*</p>
+<p>*o******-*</p>
+<p>*ooo*--*-*</p>
+<p>***o*-**-*</p>
+<p>*ooo*----*</p>
+<p>*o******-*</p>
+<p>*oooooo*-*</p>
+<p>******o*-*</p>
+<p>*-----ooG*</p>
+<p>&nbsp;</p>
+<p><br>BFS Search:</p>
+<p>&nbsp;</p>
+<p><br>**********</p>
+<p>*Sooooooo*</p>
+<p>*-******o*</p>
+<p>*---*--*o*</p>
+<p>***-*-**o*</p>
+<p>*---*---o*</p>
+<p>*-******o*</p>
+<p>*------*o*</p>
+<p>******-*o*</p>
+<p>*-------G</p>
+<p>&nbsp;</p>
+<p><br>The fundamental distinction between DFS and BFS lies in their approach to exploration, with the former employing a Stack while the latter utilizes a queue. &nbsp;While BFS offers advantages in terms of guaranteeing the shortest path, these benefits come at the cost of memory usage, particularly in scenarios where the graph necessitates many nodes being held in the queue simultaneously. This was seen in my results, with BFS indeed finding the shortest path, whereas DFS opted for a longer, meandering path that I intentionally made knowing that DFS would opt for it.&nbsp;</p>
+<p>Although not a key part of the write-up, I would like to include this strip from a comic I frequently read:</p>
+<p><img src="/users/16052/files/3819931/preview?verifier=4NRMLweFrC4V1Re6u4O9g4P5PVFFJIlsrsUA6Q1n" alt="image.png"></p>
+<p>This xkcd comic is relevant as it highlights the difference between breadth and depth first searches.</p>
+<p>&nbsp;</p>
+</div>
+</body>
+</html>

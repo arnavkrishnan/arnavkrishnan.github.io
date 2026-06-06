@@ -1,0 +1,19 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <title>Reflection: RSLK - Finite State Machines: Arnav Krishnan</title>
+</head>
+<body>
+<h1>Reflection: RSLK - Finite State Machines: Arnav Krishnan</h1>
+<div style="width: 600px; margin: 20px auto; border: 1px solid #888; padding: 20px;">
+  <p>1. I gained a greater appreciation for how each FSM state holds not just its outputs but also an array of pointers to the next states, clearly showing how the robot transitions between its different possibilities. This enables the main loop to stay much simpler.&nbsp;</p>
+<p>2. One thing that worked well was using #define aliases like Center, LeftOff1, etc., which made the FSM table human-readable. There was a point where my only issue was a FSM table mismatch; debugging would have been significantly worse if I hadn't used aliases.&nbsp;</p>
+<p>3. For the elevator, we used more conditional logic for FSM transitions, instead of an FSM table. I wonder when a table-based FSM is more useful/harder to use than explicit conditional logic, and whether one implementation has favorable performance.&nbsp;</p>
+</div>
+</body>
+</html>

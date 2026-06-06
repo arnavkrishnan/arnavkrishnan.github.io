@@ -5,8 +5,46 @@ const base = '/portfolio';
 const previous = null;
 const next = 'elevator';
 ---
-<BaseLayout title="Expression Evaluator" base={base}>
+<BaseLayout title="Expression Evaluator | ADEN Project" base={base}>
   <Pagination base={base} section="projects/aden" previous={previous} next={next} />
   <h1>Expression Evaluator</h1>
-  <p>Placeholder page for ADEN Expression Evaluator project.</p>
+
+  <section style="margin-bottom:1rem;">
+    <p>
+      A parser and evaluator that processes infix arithmetic expressions with correct operator precedence and parentheses support. Implementation uses a two-stack approach to evaluate expressions deterministically and report clear errors for malformed input.
+    </p>
+    <img src={`${base}/images/sprocket-shaft-drawing.png`} alt="Expression evaluator diagram placeholder" style="width:100%; max-width:720px; border-radius:12px; border:1px solid #ddd; margin-top:1rem;" />
+  </section>
+
+  <section id="phases" style="margin-bottom:1rem;">
+    <h2>Project Phases</h2>
+    <ol>
+      <li>Specify expression grammar and tokenization rules.</li>
+      <li>Implement parser/evaluator using operator and operand stacks.</li>
+      <li>Create unit tests and a design document covering edge cases.</li>
+      <li>Polish error handling and add robust input validation.</li>
+    </ol>
+  </section>
+
+  <section id="analysis" style="margin-bottom:1rem;">
+    <h2>Summary of Analysis</h2>
+    <p>
+      The evaluator reliably handles nested parentheses and precedence; performance is linear in the length of the tokenized expression. Attention to error messages helped make the tool usable for classmates testing custom input.
+    </p>
+  </section>
+
+  <section id="reflections" style="margin-bottom:1rem;">
+    <h2>Key Learnings & Reflections</h2>
+    <ul>
+      <li>Converting grammar into deterministic code simplifies testing and maintenance.</li>
+      <li>Careful tokenization avoids many common parsing bugs.</li>
+    </ul>
+    <p>
+      <strong>Reflections:</strong>
+      <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  ExpressionEvaluator.html')}`}>HTML</a>
+      {' '}|{' '}
+      <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection -  ExpressionEvaluator.pdf')}`} download target="_blank" rel="noopener">PDF</a>
+    </p>
+    <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
+  </section>
 </BaseLayout>

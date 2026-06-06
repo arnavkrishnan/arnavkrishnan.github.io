@@ -1,12 +1,192 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
 const base = '/portfolio';
+
+const reflections = [
+  {
+    title: 'Expression Evaluator',
+    html: 'Reflection -  ExpressionEvaluator.html',
+    pdf: 'Reflection -  ExpressionEvaluator.pdf'
+  },
+  {
+    title: 'Huffman Compression',
+    html: 'Reflection - HuffmanCompression 1.html',
+    pdf: 'Reflection - HuffmanCompression 1.pdf'
+  },
+  {
+    title: 'File I/O & Benchmarking',
+    html: 'Reflection -  FileIO, Benchmarking and RegEx.html',
+    pdf: 'Reflection -  FileIO, Benchmarking and RegEx.pdf'
+  },
+  {
+    title: 'Elevator #1',
+    html: 'Elevator Reflection 1.html',
+    pdf: 'Elevator Reflection 1.pdf'
+  },
+  {
+    title: 'Elevator Weekly #2',
+    html: 'Elevator Weekly Reflection 2.html',
+    pdf: 'Elevator Weekly Reflection 2.pdf'
+  },
+  {
+    title: 'Elevator Weekly #3',
+    html: 'Elevator Weekly Reflection 3.html',
+    pdf: 'Elevator Weekly Reflection 3.pdf'
+  },
+  {
+    title: 'Elevator Weekly #4',
+    html: 'Elevator Weekly Reflection 4.html',
+    pdf: 'Elevator Weekly Reflection 4.pdf'
+  },
+  {
+    title: 'RSLK Line Sensor',
+    html: 'Reflection -  RSLK Line Sensor.html',
+    pdf: 'Reflection -  RSLK Line Sensor.pdf'
+  },
+  {
+    title: 'RSLK SysTick & Interrupts',
+    html: 'Reflection -  RSLK - SysTick and Interrupts.html',
+    pdf: 'Reflection -  RSLK - SysTick and Interrupts.pdf'
+  },
+  {
+    title: 'RSLK FSM',
+    html: 'Reflection -  RSLK - Finite State Machines.html',
+    pdf: 'Reflection -  RSLK - Finite State Machines.pdf'
+  },
+  {
+    title: 'Working at a Bit Level',
+    html: 'Reflection -  Working at a bit level.html',
+    pdf: 'Reflection -  Working at a bit level.pdf'
+  },
+  {
+    title: 'Maze Search',
+    html: 'Maze Search.html',
+    pdf: 'Maze Search.pdf'
+  },
+  {
+    title: 'Integer Convert',
+    html: 'Reflection -  Integer Convert.html',
+    pdf: 'Reflection -  Integer Convert.pdf'
+  }
+];
 ---
-<BaseLayout title="ADEN Course" base={base}>
-  <h1>ADEN Course</h1>
-  <p>I took this ADEN course in 10th grade and earned an overall grade of A.</p>
-  <p><strong>ADEN</strong> stands for <strong>A</strong>dvanced <strong>D</strong>ata Structures, <strong>E</strong>mbedded Systems, and <strong>N</strong>etworking. It is taught by Mr. Scott Murray. The course is designed as an extension of AP Computer Science A and covers a variety of computer science topics. There is both individual and group work during the course.</p>
-  <ul>
-    <li><a href={`${base}/projects/aden`}>ADEN Projects</a></li>
-  </ul>
+
+<BaseLayout title="ADEN Course | Digital Portfolio" base={base}>
+  <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
+    <h1 style="margin-bottom:0.25rem;">ADEN Course</h1>
+
+    <p style="color:#444; margin-top:0; line-height:1.5;">
+  ADEN is an advanced computer science course that builds on AP Computer Science A by focusing on how software systems are designed, optimized, and applied to real-world problems. Students go beyond basic programming to work with data structures, embedded systems, performance analysis, and hardware interaction. ADEN, taught by Mr. Scott Murray, is a *very* loose acronym for Advanced Data Structures, Embedded Systems, and Networking. 
+</p>
+
+<p style="color:#444; margin-top:0.75rem; line-height:1.5;">
+  Throughout the course, students design and evaluate solutions using advanced data structures such as queues, trees, maps, hashes, and graphs. A major emphasis is placed on performance trade-offs, testing and validation, and writing reliable code as part of a structured development process using Git.
+</p>
+
+<p style="color:#444; margin-top:0.75rem; line-height:1.5;">
+  In embedded systems units, students work with hardware-level programming including sensors, motors, finite state machines, interrupts, and timing systems. Projects also explore communication systems such as Bluetooth and wireless data transfer in applied contexts.
+</p>
+
+<p style="color:#444; margin-top:0.75rem; line-height:1.5;">
+  By the end of the course, students are able to build and evaluate complex software systems, collaborate effectively in development teams, and understand how software interacts with hardware and performance constraints in real applications.
+</p>
+
+    <nav style="display:flex; gap:0.5rem; margin:1rem 0 2rem 0; flex-wrap:wrap;">
+      <a href={`${base}/projects/aden/expression-evaluator`} style="padding:0.5rem 0.75rem; background:#f0f4ff; border-radius:8px; text-decoration:none; color:#083a8a;">
+        Expression Evaluator
+      </a>
+
+      <a href={`${base}/projects/aden/elevator`} style="padding:0.5rem 0.75rem; background:#fff8e6; border-radius:8px; text-decoration:none; color:#8a4b00;">
+        Elevator
+      </a>
+
+      <a href={`${base}/projects/aden/huffman-compression`} style="padding:0.5rem 0.75rem; background:#f7fff6; border-radius:8px; text-decoration:none; color:#0b5d2b;">
+        Huffman
+      </a>
+
+      <a href={`${base}/projects/aden/hashes`} style="padding:0.5rem 0.75rem; background:#fbf8ff; border-radius:8px; text-decoration:none; color:#3b1460;">
+        Hashes
+      </a>
+
+      <a href={`${base}/projects/aden/rslk`} style="padding:0.5rem 0.75rem; background:#fffaf2; border-radius:8px; text-decoration:none; color:#5a3b00;">
+        RSLK
+      </a>
+    </nav>
+
+    <section>
+      <h2 style="font-size:1.05rem; margin-bottom:0.5rem;">
+        Reflections (embedded HTML, PDF downloadable)
+      </h2>
+
+      <p style="color:#555; margin-top:0;">
+        Click "View HTML" to expand a reflection. Use "Download PDF" to open or download the PDF version.
+      </p>
+
+      <div>
+        {reflections.map((r, i) => (
+          <div
+            style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-bottom:0.75rem;"
+          >
+            <div
+              style="display:flex; justify-content:space-between; align-items:center; gap:1rem;"
+            >
+              <strong>{r.title}</strong>
+
+              <div style="display:flex; gap:0.5rem; align-items:center;">
+                <a
+                  href={`${base}/documents/reflections/pdf/${encodeURIComponent(r.pdf)}`}
+                  download
+                  target="_blank"
+                  rel="noopener"
+                  style="font-size:0.9rem; color:#0b66c3;"
+                >
+                  Download PDF
+                </a>
+
+                <button
+                  type="button"
+                  aria-expanded="false"
+                  class="toggle-btn"
+                  data-target={`ref-${i}`}
+                  style="padding:0.35rem 0.5rem; border-radius:6px;"
+                >
+                  View HTML
+                </button>
+              </div>
+            </div>
+
+            <div
+              id={`ref-${i}`}
+              style="margin-top:0.5rem; display:none;"
+            >
+              <iframe
+                src={`${base}/documents/reflections/html/${encodeURIComponent(r.html)}`}
+                style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
+                loading="lazy"
+                title={r.title}
+              ></iframe>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </section>
+
+  <script>
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.toggle-btn');
+      if (!btn) return;
+
+      const targetId = btn.dataset.target;
+      const panel = document.getElementById(targetId);
+      if (!panel) return;
+
+      const isOpen = panel.style.display !== 'none';
+
+      panel.style.display = isOpen ? 'none' : 'block';
+      btn.textContent = isOpen ? 'View HTML' : 'Hide HTML';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  </script>
 </BaseLayout>

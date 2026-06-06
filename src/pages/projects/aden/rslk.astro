@@ -5,8 +5,59 @@ const base = '/portfolio';
 const previous = 'hashes';
 const next = null;
 ---
-<BaseLayout title="RSLK" base={base}>
+<BaseLayout title="RSLK Robot | ADEN Project" base={base}>
   <Pagination base={base} section="projects/aden" previous={previous} next={next} />
-  <h1>RSLK</h1>
-  <p>Placeholder page for ADEN RSLK project.</p>
+  <h1>RSLK Robot</h1>
+
+  <section style="margin-bottom:1.5rem;">
+    <p>
+      The RSLK (Robotics System Learning Kit) project develops a small robot using the Texas Instruments platform. I programmed sensors, motors, timers, and interrupts to enable line following and autonomous navigation. This was my first deep dive into embedded systems programming close to the hardware.
+    </p>
+  </section>
+
+  <section style="margin-bottom:1.5rem;">
+    <h2>Development Components</h2>
+    <ul>
+      <li><strong>Input/Output:</strong> Processed digital and analog sensor readings, controlled motor outputs via PWM.</li>
+      <li><strong>Line Sensor:</strong> Used reflectance sensors that measure discharge time from a capacitor — darker surfaces cause faster discharge. Bitmasking extracted position data from 8 sensors.</li>
+      <li><strong>Interrupts:</strong> SysTick interrupts fired every 1ms (at 48MHz) to manage sensor reads without busy-waiting, using a <code>dataValid</code> flag to communicate with the main loop.</li>
+      <li><strong>Motors:</strong> Implemented PID-style control for smoother line following.</li>
+      <li><strong>Finite State Machines:</strong> Table-based FSM with <code>#define</code> aliases (Center, LeftOff1, etc.) made transitions human-readable and debuggable.</li>
+      <li><strong>Encoders:</strong> Measured wheel rotation for distance control and drift correction.</li>
+    </ul>
+  </section>
+
+  <section style="margin-bottom:1.5rem;">
+    <h2>Visuals / Video</h2>
+    <video controls style="width:100%; max-width:720px; border:1px solid #ddd; border-radius:12px; background:#000;" src={`${base}/videos/TB_vid_1.mp4`}>
+      Your browser does not support video playback.
+    </video>
+    <p style="margin-top:0.75rem; color:#666;">Demo video of the robot following a black line on white background, using the 8-sensor array and FSM control.</p>
+    <img src={`${base}/images/wheel-shaft-drawing.png`} alt="RSLK robot diagram placeholder" style="width:100%; max-width:720px; border-radius:12px; border:1px solid #ddd; margin-top:1rem;" />
+  </section>
+
+  <section id="reflection" style="margin-bottom:1.5rem;">
+    <h2>Key Learnings</h2>
+    <ul>
+      <li>Physics matters: reflectance sensors work by charging a capacitor and measuring discharge time.</li>
+      <li>Interrupts free the main loop from timing responsibilities, but careful synchronization is required.</li>
+      <li>Table-based FSMs with human-readable aliases are much easier to debug than nested conditionals.</li>
+      <li>Bitmasking and bitwise operations (AND, OR, XOR) are essential for efficient embedded code.</li>
+    </ul>
+    <p>
+      <strong>Reflections:</strong>
+      <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK Line Sensor.html')}`} target="_blank" rel="noopener">Line Sensor (HTML)</a>
+      {' '}|{' '}
+      <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK - SysTick and Interrupts.html')}`} target="_blank" rel="noopener">SysTick & Interrupts (HTML)</a>
+      {' '}|{' '}
+      <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK - Finite State Machines.html')}`} target="_blank" rel="noopener">Finite State Machines (HTML)</a>
+      {' '}|{' '}
+      <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  Working at a bit level.html')}`} target="_blank" rel="noopener">Working at a Bit Level (HTML)</a>
+    </p>
+  </section>
+
+  <section>
+    <h2>Navigation</h2>
+    <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
+  </section>
 </BaseLayout>

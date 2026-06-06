@@ -1,0 +1,20 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <title>Reflection: ExpressionEvaluator: Arnav Krishnan</title>
+</head>
+<body>
+<h1>Reflection: ExpressionEvaluator: Arnav Krishnan</h1>
+<div style="width: 600px; margin: 20px auto; border: 1px solid #888; padding: 20px;">
+  <p>What I learned from this project that I found most interesting was our method of evaluating expressions, from left to right, using operator precedence. I thought this was interesting as the algorithmic approach doesn't really match the way I would evaluate an expression- I would start with the 'nested-most' parens, and work going from inside the parens to out. I thought our paren logic was quite neat and I really liked the table/chart you presented based on what our curToken is (whether we evaluate, add to stack, error, etc.). I have many questions that I still wonder about after this project, with the main 3 being:</p>
+<p>&nbsp;1. How might we adapt this expression evaluator to use variables (such as (x+1)(3x+2)=3x^2+5x+2)? I know it would be very difficult, especially if we let the user use any letter as a variable.</p>
+<p>&nbsp;2. Is this 2-stack approach the same way programming languages, such as java, evaluate expressions? Do they use recursion in their implementation, and could we?</p>
+<p>&nbsp;3. How would our implementation change if we used pre/postfix instead of infix? What if we allowed functions such as sin() or sqrt()?</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <title>Reflection: RSLK Line Sensor: Arnav Krishnan</title>
+</head>
+<body>
+<h1>Reflection: RSLK Line Sensor: Arnav Krishnan</h1>
+<div style="width: 600px; margin: 20px auto; border: 1px solid #888; padding: 20px;">
+  <p>1. I learned about the physics behind the line sensors, and how they work by charging a capacitor and measuring how fast it discharges, with darker surfaces causing faster discharge. We capture this discharge over 1mc using Reflectance_Start() and Reflectance_End(). I was also able to see the actual applications of bitmasking.&nbsp;</p>
+<p>2. The bitmasking approach to drive the RGB LED worked quite well, and it gave easy and intuitive (and visual) feedback about the robot's position without needing to a debugger/real time data collection. The LEDs made it easy for me (and Mr. Murray) to validate the correctness of our robot's behavior</p>
+<p>3. I wonder why we don't use a weighted average of all 8 bits rather than just looking at bits 3 and 4. I imagine this could give much smoother line-following at best and would have no impact at worst.</p>
+</div>
+</body>
+</html>
