@@ -19,11 +19,9 @@ const next = null;
     <h2>Development Components</h2>
     <ul>
       <li><strong>Input/Output:</strong> Processed digital and analog sensor readings, controlled motor outputs via PWM.</li>
-      <li><strong>Line Sensor:</strong> Used reflectance sensors that measure discharge time from a capacitor — darker surfaces cause faster discharge. Bitmasking extracted position data from 8 sensors.</li>
-      <li><strong>Interrupts:</strong> SysTick interrupts fired every 1ms (at 48MHz) to manage sensor reads without busy-waiting, using a <code>dataValid</code> flag to communicate with the main loop.</li>
-      <li><strong>Motors:</strong> Implemented PID-style control for smoother line following.</li>
-      <li><strong>Finite State Machines:</strong> Table-based FSM with <code>#define</code> aliases (Center, LeftOff1, etc.) made transitions human-readable and debuggable.</li>
-      <li><strong>Encoders:</strong> Measured wheel rotation for distance control and drift correction.</li>
+      <li><strong>Line Sensor:</strong> Used reflectance sensors that measure discharge time from a capacitor — darker surfaces cause faster discharge.</li>
+      <li><strong>Interrupts:</strong> SysTick interrupts used for sensor timing and non-blocking reads.</li>
+      <li><strong>Motors:</strong> Motor control tuned for stable line following.</li>
     </ul>
   </section>
 
@@ -37,13 +35,6 @@ const next = null;
   </section>
 
   <section id="reflection" style="margin-bottom:1.5rem;">
-    <h2>Key Learnings</h2>
-    <ul>
-      <li>Physics matters: reflectance sensors work by charging a capacitor and measuring discharge time.</li>
-      <li>Interrupts free the main loop from timing responsibilities, but careful synchronization is required.</li>
-      <li>Table-based FSMs with human-readable aliases are much easier to debug than nested conditionals.</li>
-      <li>Bitmasking and bitwise operations (AND, OR, XOR) are essential for efficient embedded code.</li>
-    </ul>
     <p>
       <strong>Reflections:</strong>
       <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK Line Sensor.html')}`} target="_blank" rel="noopener">Line Sensor (HTML)</a>

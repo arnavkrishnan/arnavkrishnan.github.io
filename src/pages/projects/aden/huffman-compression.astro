@@ -13,32 +13,11 @@ const next = 'hashes';
     <p>
       Implemented Huffman coding to produce prefix-free variable-length codes based on symbol frequency. The implementation supports encoding and decoding with validation tests to ensure lossless restoration.
     </p>
-    <img src={`${base}/images/wheel-shaft-drawing.png`} alt="Huffman algorithm visual placeholder" style="width:100%; max-width:720px; border-radius:12px; border:1px solid #ddd; margin-top:1rem;" />
   </section>
-
-  <section id="phases" style="margin-bottom:1rem;">
-    <h2>Project Phases</h2>
-    <ol>
-      <li>Collect sample inputs and compute frequency tables.</li>
-      <li>Construct Huffman tree and assign prefix codes.</li>
-      <li>Implement encoder/decoder and create test harnesses.</li>
-      <li>Measure compression ratios and analyze overheads.</li>
-    </ol>
-  </section>
-
-  <section id="analysis" style="margin-bottom:1rem;">
-    <h2>Summary of Analysis</h2>
-    <p>
-      Compression results show large gains for repetitive datasets. Small inputs may not compress well due to metadata overhead. The project reinforced tradeoffs between compression ratio and implementation complexity.
-    </p>
   </section>
 
   <section id="reflections" style="margin-bottom:1rem;">
-    <h2>Key Learnings & Reflections</h2>
-    <ul>
-      <li>Prefix-free encoding ensures unique decodability without separators.</li>
-      <li>Frequency analysis drives encoding efficiency—profiling inputs helps choose strategies.</li>
-    </ul>
+    <h2>Reflections</h2>
     <p>
       <strong>Reflection:</strong>
       <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection - HuffmanCompression 1.html')}`} target="_blank" rel="noopener">HTML</a>

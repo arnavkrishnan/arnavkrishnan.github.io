@@ -13,40 +13,11 @@ const next = 'huffman-compression';
     <p>
       Embedded control project modeling elevators, scheduling, and finite state machines. Focus areas were sensor integration, state transitions, and measuring user-facing metrics such as wait time.
     </p>
-    <img src={`${base}/images/sprocket-shaft-drawing.png`} alt="Elevator diagram placeholder" style="width:100%; max-width:720px; border-radius:12px; border:1px solid #ddd; margin-top:1rem;" />
   </section>
-
-  <section id="phases" style="margin-bottom:1rem;">
-    <h2>Project Phases</h2>
-    <ol>
-      <li>Requirements and sensor selection: define floor detection and safety requirements.</li>
-      <li>Control design: finite state machine for elevator motion and call assignment logic.</li>
-      <li>Implementation: motor control, sensor debouncing, and timing logic.</li>
-      <li>Testing & analysis: metrics collection, performance tuning, and reflection.</li>
-    </ol>
-  </section>
-
-  <section id="design" style="margin-bottom:1rem; padding:1rem; border:1px solid #ddd; border-radius:10px; background:#fff8f0;">
-    <h2>Design Notes</h2>
-    <p>
-      Design artifacts and notes are included in the reflections linked below; these contain wiring sketches, state diagrams, and the decision rationale for safety and timing choices.
-    </p>
-  </section>
-
-  <section id="analysis" style="margin-bottom:1rem;">
-    <h2>Summary of Analysis</h2>
-    <p>
-      Analysis focused on responsiveness versus stability tradeoffs: more aggressive timing reduced wait times but increased overshoot. The chosen configuration balanced smoothness and responsiveness for the simulated environment.
-    </p>
   </section>
 
   <section id="reflections" style="margin-bottom:1rem;">
-    <h2>Key Learnings & Reflections</h2>
-    <ul>
-      <li>Finite state machines make control logic explicit and testable.</li>
-      <li>Real-time timing (SysTick) and debouncing are critical for reliable sensors.</li>
-      <li>Documenting design decisions speeds up debugging and peer review.</li>
-    </ul>
+    <h2>Reflections</h2>
     <p>
       <strong>Reflections:</strong>
       <a href={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Reflection 1.html')}`} target="_blank" rel="noopener">#1</a>

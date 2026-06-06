@@ -13,7 +13,6 @@ const next = 'elevator';
     <p>
       A parser and evaluator that processes infix arithmetic expressions with correct operator precedence and parentheses support. Implementation uses a two-stack approach to evaluate expressions deterministically and report clear errors for malformed input.
     </p>
-    <img src={`${base}/images/sprocket-shaft-drawing.png`} alt="Expression evaluator diagram placeholder" style="width:100%; max-width:720px; border-radius:12px; border:1px solid #ddd; margin-top:1rem;" />
   </section>
 
   <section id="phases" style="margin-bottom:1rem;">
@@ -32,19 +31,14 @@ const next = 'elevator';
       The evaluator reliably handles nested parentheses and precedence; performance is linear in the length of the tokenized expression. Attention to error messages helped make the tool usable for classmates testing custom input.
     </p>
   </section>
-
-  <section id="reflections" style="margin-bottom:1rem;">
-    <h2>Key Learnings & Reflections</h2>
-    <ul>
-      <li>Converting grammar into deterministic code simplifies testing and maintenance.</li>
-      <li>Careful tokenization avoids many common parsing bugs.</li>
-    </ul>
-    <p>
-      <strong>Reflections:</strong>
-      <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  ExpressionEvaluator.html')}`}>HTML</a>
-      {' '}|{' '}
-      <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection -  ExpressionEvaluator.pdf')}`} download target="_blank" rel="noopener">PDF</a>
-    </p>
-    <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
-  </section>
+    <section id="reflections" style="margin-bottom:1rem;">
+      <h2>Reflections</h2>
+      <p>
+        <strong>Reflections:</strong>
+        <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  ExpressionEvaluator.html')}`}>HTML</a>
+        {' '}|{' '}
+        <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection -  ExpressionEvaluator.pdf')}`} download target="_blank" rel="noopener">PDF</a>
+      </p>
+      <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
+    </section>
 </BaseLayout>

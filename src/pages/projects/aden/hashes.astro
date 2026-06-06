@@ -24,25 +24,5 @@ const next = 'rslk';
     </p>
   </section>
 
-  <section id="analysis" style="margin-bottom:1.5rem;">
-    <h2>Summary of Hash Analysis</h2>
-    <p>
-      I benchmarked each algorithm on integer keys, short strings, and long text passages. The division method was fastest but had collision rates up to 30% with real-world data. Polynomial rolling hash had slightly higher computation cost but near-perfect distribution. The analysis reinforced that hash function choice depends on data type and performance requirements.
-    </p>
-    <p><a href={`${base}/documents/hash-analysis.pdf`} style="text-decoration:underline;" target="_blank" rel="noopener">View Full Hash Analysis (PDF)</a></p>
-  </section>
-
-  <section id="reflection">
-    <h2>Key Learnings</h2>
-    <ul>
-      <li>No single hash function is optimal for all use cases — speed vs. collision resistance is a tradeoff.</li>
-      <li>Benchmarking with realistic data (not just synthetic tests) reveals unexpected collision patterns.</li>
-      <li>Hash functions are foundational for dictionaries, caches, and cryptographic integrity checks.</li>
-    </ul>
-    <p>
-      <strong>Reflection:</strong>
-      <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Arnav Krishnan - Hash Analysis.pdf')}`} download target="_blank" rel="noopener">Hash Analysis (PDF)</a>
-    </p>
-    <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
-  </section>
+  <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
 </BaseLayout>
