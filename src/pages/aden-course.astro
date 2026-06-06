@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import DocCard from '../components/DocCard.astro';
 
 const base = '/portfolio';
 
@@ -16,8 +17,8 @@ const reflections = [
   },
   {
     title: 'File I/O & Benchmarking',
-    html: 'Reflection -  FileIO, Benchmarking and RegEx.html',
-    pdf: 'Reflection -  FileIO, Benchmarking and RegEx.pdf'
+    html: 'Reflection - FileIO Benchmarking and RegEx.html',
+    pdf: 'Reflection - FileIO Benchmarking and RegEx.pdf'
   },
   {
     title: 'Elevator #1',
@@ -125,68 +126,18 @@ const reflections = [
 
       <div>
         {reflections.map((r, i) => (
-          <div
-            style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-bottom:0.75rem;"
-          >
-            <div
-              style="display:flex; justify-content:space-between; align-items:center; gap:1rem;"
-            >
-              <strong>{r.title}</strong>
-
-              <div style="display:flex; gap:0.5rem; align-items:center;">
-                <a
-                  href={`${base}/documents/reflections/pdf/${encodeURIComponent(r.pdf)}`}
-                  download
-                  target="_blank"
-                  rel="noopener"
-                  style="font-size:0.9rem; color:#0b66c3;"
-                >
-                  Download PDF
-                </a>
-
-                <button
-                  type="button"
-                  aria-expanded="false"
-                  class="toggle-btn"
-                  data-target={`ref-${i}`}
-                  style="padding:0.35rem 0.5rem; border-radius:6px;"
-                >
-                  View HTML
-                </button>
-              </div>
-            </div>
-
-            <div
-              id={`ref-${i}`}
-              style="margin-top:0.5rem; display:none;"
-            >
-              <iframe
-                src={`${base}/documents/reflections/html/${encodeURIComponent(r.html)}`}
-                style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
-                loading="lazy"
-                title={r.title}
-              ></iframe>
-            </div>
-          </div>
+          <DocCard
+            title={r.title}
+            pdfHref={`${base}/documents/reflections/pdf/${encodeURIComponent(r.pdf)}`}
+            htmlHref={`${base}/documents/reflections/html/${encodeURIComponent(r.html)}`}
+            iframeId={`ref-${i}`}
+            iframeTitle={r.title}
+          />
         ))}
       </div>
     </section>
   </section>
 
-  <script>
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.toggle-btn');
-      if (!btn) return;
-
-      const targetId = btn.dataset.target;
-      const panel = document.getElementById(targetId);
-      if (!panel) return;
-
-      const isOpen = panel.style.display !== 'none';
-
-      panel.style.display = isOpen ? 'none' : 'block';
-      btn.textContent = isOpen ? 'View HTML' : 'Hide HTML';
-      btn.setAttribute('aria-expanded', String(!isOpen));
     });
   </script>
 

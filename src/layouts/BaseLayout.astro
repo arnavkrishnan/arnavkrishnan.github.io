@@ -24,5 +24,22 @@ const currentPath = Astro.url.pathname;
     <footer>
       <Footer />
     </footer>
+
+    <script type="text/javascript">
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.toggle-btn');
+        if (!btn) return;
+
+        const targetId = btn.dataset.target;
+        const panel = document.getElementById(targetId);
+        if (!panel) return;
+
+        const isOpen = panel.style.display === 'block';
+
+        panel.style.display = isOpen ? 'none' : 'block';
+        btn.textContent = isOpen ? 'View HTML' : 'Hide HTML';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    </script>
   </body>
 </html>

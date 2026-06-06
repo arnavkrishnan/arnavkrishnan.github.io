@@ -1,38 +1,111 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Pagination from '../../../components/Pagination.astro';
+import DocCard from '../../../components/DocCard.astro';
+
 const base = '/portfolio';
 const previous = 'elevator';
 const next = 'hashes';
 ---
+
 <BaseLayout title="Huffman Compression | ADEN Project" base={base}>
   <Pagination base={base} section="projects/aden" previous={previous} next={next} />
+
   <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
     <h1>Huffman Compression</h1>
 
-    <section style="margin-bottom:1rem;">
+    {/* DESCRIPTION */}
+    <section id="description" style="margin-bottom:1rem;">
+      <h2>Project Description</h2>
+
       <p>
-        Implemented Huffman coding to produce prefix-free variable-length codes based on symbol frequency. The implementation supports encoding and decoding with validation tests to ensure lossless restoration.
+        Implemented Huffman coding to generate prefix-free variable-length codes
+        based on symbol frequency. The system supports full encoding and decoding,
+        with validation tests ensuring lossless reconstruction of input data.
       </p>
     </section>
 
-    <section id="reflections" style="margin-bottom:1rem;">
-      <h2>Reflections</h2>
+    {/* PHASES */}
+    <section id="phases" style="margin-bottom:1rem;">
+      <h2>Project Phases</h2>
 
-      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-bottom:0.75rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-          <strong>Huffman Compression Reflection</strong>
-          <div style="display:flex; gap:0.5rem; align-items:center;">
-            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection - HuffmanCompression 1.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
-            <button type="button" aria-expanded="false" class="toggle-btn" data-target={`ref-huffman-1`} style="padding:0.35rem 0.5rem; border-radius:6px;">View HTML</button>
-          </div>
-        </div>
-        <div id={`ref-huffman-1`} style="margin-top:0.5rem; display:none;">
-          <iframe src={`${base}/documents/reflections/html/${encodeURIComponent('Reflection - HuffmanCompression 1.html')}`} style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;" loading="lazy" title="Huffman Reflection"></iframe>
-        </div>
-      </div>
+      <ol>
+        <li>Frequency Analysis of Input Text</li>
+        <li>Construction of Huffman Tree</li>
+        <li>Prefix Code Generation</li>
+        <li>Encoding Pipeline Implementation</li>
+        <li>Decoding and Validation Testing</li>
+        <li>Performance Evaluation</li>
+      </ol>
+    </section>
 
-      <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
+    {/* ANALYSIS */}
+    <section id="analysis" style="margin-bottom:1rem;">
+      <h2>Summary of Analysis</h2>
+
+      <p>
+        Huffman compression was consistently effective across all files, with performance
+        strongly dependent on how closely the weight distribution matched the target text.
+      </p>
+
+      <p>
+        Across all experiments, compression achieved an average ratio of approximately
+        0.614 with a standard deviation of 0.047.
+      </p>
+
+      <p>
+        Best performance occurred when files were compressed using their own frequency
+        distributions, such as “War and Peace” and “Cat in the Hat”.
+      </p>
+
+      <p>
+        Cross-file compression still performed well overall, suggesting that natural language
+        shares broadly similar statistical structure across different texts.
+      </p>
+
+      <p>
+        If selecting a single universal weighting model, “War and Peace” performed best overall,
+        achieving the most consistent compression results (~0.60 average CR).
+      </p>
+
+      <DocCard
+  title="Huffman Analysis Report"
+  iframeId="huffman-analysis"
+  pdfHref={`${base}/documents/ADEN_docs/pdf/${encodeURIComponent('Arnav Krishnan - HuffComp - Analysis.pdf')}`}
+  htmlHref={`${base}/documents/ADEN_docs/html/Arnav Krishnan - HuffComp - Analysis/ArnavKrishnanHuffCompAnalysis.html`}
+  iframeTitle="Huffman Analysis Report"
+/>
+    </section>
+
+    {/* KEY LEARNINGS */}
+    <section id="learnings" style="margin-bottom:1rem;">
+      <h2>Key Learnings</h2>
+
+      <ul>
+        <li>Compression efficiency depends heavily on symbol frequency distributions.</li>
+        <li>Huffman coding converts statistical structure into optimal prefix codes.</li>
+        <li>Natural language maintains consistent redundancy patterns across texts.</li>
+        <li>Cross-domain frequency models can still generalize effectively.</li>
+        <li>Choice of weighting file significantly impacts compression performance.</li>
+      </ul>
+
+      <DocCard
+        title="Huffman Reflection"
+        iframeId="huffman-reflection"
+        pdfHref={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection - HuffmanCompression 1.pdf')}`}
+        htmlHref={`${base}/documents/reflections/html/${encodeURIComponent('Reflection - HuffmanCompression 1.html')}`}
+        iframeTitle="Huffman Reflection"
+      />
+    </section>
+
+    {/* NAVIGATION */}
+    <section style="margin-top:2rem;">
+      <a
+        href={`${base}/aden-course`}
+        style="color:#0055aa; text-decoration:underline;"
+      >
+        ← Back to ADEN Course
+      </a>
     </section>
   </section>
 </BaseLayout>

@@ -1,9 +1,41 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Pagination from '../../../components/Pagination.astro';
+import DocCard from '../../../components/DocCard.astro';
 const base = '/portfolio';
 const previous = 'hashes';
 const next = null;
+
+const reflections = [
+  {
+    title: 'Line Sensor',
+    pdf: 'Reflection -  RSLK Line Sensor.pdf',
+    html: 'Reflection -  RSLK Line Sensor.html',
+    iframeId: 'ref-line-sensor',
+    iframeTitle: 'RSLK Line Sensor'
+  },
+  {
+    title: 'SysTick & Interrupts',
+    pdf: 'Reflection -  RSLK - SysTick and Interrupts.pdf',
+    html: 'Reflection -  RSLK - SysTick and Interrupts.html',
+    iframeId: 'ref-systick',
+    iframeTitle: 'RSLK SysTick & Interrupts'
+  },
+  {
+    title: 'Finite State Machines',
+    pdf: 'Reflection -  RSLK - Finite State Machines.pdf',
+    html: 'Reflection -  RSLK - Finite State Machines.html',
+    iframeId: 'ref-fsm',
+    iframeTitle: 'RSLK Finite State Machines'
+  },
+  {
+    title: 'Working at a Bit Level',
+    pdf: 'Reflection -  Working at a bit level.pdf',
+    html: 'Reflection -  Working at a bit level.html',
+    iframeId: 'ref-bit-level',
+    iframeTitle: 'Working at a Bit Level'
+  }
+];
 ---
 <BaseLayout title="RSLK Robot | ADEN Project" base={base}>
   <Pagination base={base} section="projects/aden" previous={previous} next={next} />
@@ -39,49 +71,15 @@ const next = null;
     <h2>Reflections</h2>
 
     <div style="display:grid; gap:0.6rem;">
-      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-          <strong>Line Sensor</strong>
-          <div style="display:flex; gap:0.5rem; align-items:center;">
-            <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK Line Sensor.html')}`} target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Open HTML</a>
-            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection -  RSLK Line Sensor.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
-          </div>
-        </div>
-      </div>
-
-      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-          <strong>SysTick & Interrupts</strong>
-          <div style="display:flex; gap:0.5rem; align-items:center;">
-            <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK - SysTick and Interrupts.html')}`} target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Open HTML</a>
-            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection -  RSLK - SysTick and Interrupts.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
-          </div>
-        </div>
-      </div>
-
-      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-          <strong>Finite State Machines</strong>
-          <div style="display:flex; gap:0.5rem; align-items:center;">
-            <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  RSLK - Finite State Machines.html')}`} target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Open HTML</a>
-            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection -  RSLK - Finite State Machines.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
-          </div>
-        </div>
-      </div>
-
-      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-          <strong>Working at a Bit Level</strong>
-          <div style="display:flex; gap:0.5rem; align-items:center;">
-            <a href={`${base}/documents/reflections/html/${encodeURIComponent('Reflection -  Working at a bit level.html')}`} target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Open HTML</a>
-            <a href={`${base}/documents/reflections/pdf/${encodeURIComponent('Reflection -  Working at a bit level.pdf')}`} download target="_blank" rel="noopener" style="font-size:0.9rem; color:#0b66c3;">Download PDF</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
+      {reflections.map((reflection) => (
+        <DocCard
+          title={reflection.title}
+          pdfHref={`${base}/documents/reflections/pdf/${encodeURIComponent(reflection.pdf)}`}
+          htmlHref={`${base}/documents/reflections/html/${encodeURIComponent(reflection.html)}`}
+          iframeId={reflection.iframeId}
+          iframeTitle={reflection.iframeTitle}
+        />
+      ))}
     <h2>Navigation</h2>
     <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
   </section>

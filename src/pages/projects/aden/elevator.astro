@@ -1,10 +1,66 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Pagination from '../../../components/Pagination.astro';
+import DocCard from '../../../components/DocCard.astro';
 
 const base = '/portfolio';
 const previous = 'expression-evaluator';
 const next = 'huffman-compression';
+
+const designDocs = [
+  {
+    title: 'Elevator Design Document (Final)',
+    pdf: 'Elevator Simulation Updog Design Document, vFinal.pdf',
+    html: 'Elevator Simulation Updog Design Document, vFinal/ElevatorSimulationUpdogDesignDocumentvFinal.html',
+    iframeId: 'design-final',
+    iframeTitle: 'Elevator Design Document Final'
+  },
+  {
+    title: 'Design Document v1',
+    pdf: 'Elevator Simulation Updog Design Document, v1.pdf',
+    html: 'Elevator Simulation Updog Design Document, v1/ElevatorSimulationUpdogDesignDocumentv1.html',
+    iframeId: 'design-v1',
+    iframeTitle: 'Elevator Design Document v1'
+  },
+  {
+    title: 'Design Document v2',
+    pdf: 'Elevator Simulation Updog Design Document, v2.pdf',
+    html: 'Elevator Simulation Updog Design Document, v2/ElevatorSimulationUpdogDesignDocumentv2.html',
+    iframeId: 'design-v2',
+    iframeTitle: 'Elevator Design Document v2'
+  }
+];
+
+const reflections = [
+  {
+    title: 'Elevator Reflection 1',
+    pdf: 'Elevator Reflection 1.pdf',
+    html: 'Elevator Reflection 1.html',
+    iframeId: 'ref-1',
+    iframeTitle: 'Elevator Reflection 1'
+  },
+  {
+    title: 'Elevator Weekly Reflection 2',
+    pdf: 'Elevator Weekly Reflection 2.pdf',
+    html: 'Elevator Weekly Reflection 2.html',
+    iframeId: 'ref-2',
+    iframeTitle: 'Elevator Weekly Reflection 2'
+  },
+  {
+    title: 'Elevator Weekly Reflection 3',
+    pdf: 'Elevator Weekly Reflection 3.pdf',
+    html: 'Elevator Weekly Reflection 3.html',
+    iframeId: 'ref-3',
+    iframeTitle: 'Elevator Weekly Reflection 3'
+  },
+  {
+    title: 'Elevator Weekly Reflection 4',
+    pdf: 'Elevator Weekly Reflection 4.pdf',
+    html: 'Elevator Weekly Reflection 4.html',
+    iframeId: 'ref-4',
+    iframeTitle: 'Elevator Weekly Reflection 4'
+  }
+];
 ---
 
 <BaseLayout title="Elevator | ADEN Project" base={base}>
@@ -42,125 +98,18 @@ const next = 'huffman-compression';
         <li>Configuration Comparison and Recommendation</li>
       </ol>
 
-      <!-- FINAL DESIGN DOC -->
-      <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-          <strong>Elevator Design Document (Final)</strong>
-
-          <div style="display:flex; gap:0.5rem; align-items:center;">
-            <a
-              href={`${base}/documents/ADEN_docs/pdf/${encodeURIComponent(
-                'Elevator Simulation Updog Design Document, vFinal.pdf'
-              )}`}
-              download
-              target="_blank"
-              rel="noopener"
-              style="font-size:0.9rem; color:#0b66c3;"
-            >
-              Download PDF
-            </a>
-
-            <button
-              type="button"
-              class="toggle-btn"
-              data-target="design-final"
-              style="padding:0.35rem 0.5rem; border-radius:6px;"
-            >
-              View HTML
-            </button>
-          </div>
-        </div>
-
-        <div id="design-final" style="margin-top:0.5rem; display:none;">
-          <iframe
-            src={`${base}/documents/ADEN_docs/html/Elevator Simulation Updog Design Document, vFinal/ElevatorSimulationUpdogDesignDocumentvFinal.html`}
-            style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
-            loading="lazy"
-            title="Elevator Design Document Final"
-          ></iframe>
-        </div>
-      </div>
-
-      <!-- DESIGN DOCS V1 -->
       <div style="margin-top:1.25rem;">
-        <h3>Design Document Versions</h3>
+        <h3>Design Documents</h3>
 
-        <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
-          <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-            <strong>Design Document v1</strong>
-
-            <div style="display:flex; gap:0.5rem; align-items:center;">
-              <a
-                href={`${base}/documents/ADEN_docs/pdf/${encodeURIComponent(
-                  'Elevator Simulation Updog Design Document, v1.pdf'
-                )}`}
-                download
-                target="_blank"
-                rel="noopener"
-                style="font-size:0.9rem; color:#0b66c3;"
-              >
-                Download PDF
-              </a>
-
-              <button
-                type="button"
-                class="toggle-btn"
-                data-target="design-v1"
-                style="padding:0.35rem 0.5rem; border-radius:6px;"
-              >
-                View HTML
-              </button>
-            </div>
-          </div>
-
-          <div id="design-v1" style="margin-top:0.5rem; display:none;">
-            <iframe
-              src={`${base}/documents/ADEN_docs/html/Elevator Simulation Updog Design Document, v1/ElevatorSimulationUpdogDesignDocumentv1.html`}
-              style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
-              loading="lazy"
-              title="Design Document v1"
-            ></iframe>
-          </div>
-        </div>
-
-        <!-- DESIGN DOC V2 -->
-        <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
-          <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-            <strong>Design Document v2</strong>
-
-            <div style="display:flex; gap:0.5rem; align-items:center;">
-              <a
-                href={`${base}/documents/ADEN_docs/pdf/${encodeURIComponent(
-                  'Elevator Simulation Updog Design Document, v2.pdf'
-                )}`}
-                download
-                target="_blank"
-                rel="noopener"
-                style="font-size:0.9rem; color:#0b66c3;"
-              >
-                Download PDF
-              </a>
-
-              <button
-                type="button"
-                class="toggle-btn"
-                data-target="design-v2"
-                style="padding:0.35rem 0.5rem; border-radius:6px;"
-              >
-                View HTML
-              </button>
-            </div>
-          </div>
-
-          <div id="design-v2" style="margin-top:0.5rem; display:none;">
-            <iframe
-              src={`${base}/documents/ADEN_docs/html/Elevator Simulation Updog Design Document, v2/ElevatorSimulationUpdogDesignDocumentv2.html`}
-              style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
-              loading="lazy"
-              title="Design Document v2"
-            ></iframe>
-          </div>
-        </div>
+        {designDocs.map((doc) => (
+          <DocCard
+            title={doc.title}
+            pdfHref={`${base}/documents/ADEN_docs/pdf/${encodeURIComponent(doc.pdf)}`}
+            htmlHref={`${base}/documents/ADEN_docs/html/${doc.html}`}
+            iframeId={doc.iframeId}
+            iframeTitle={doc.iframeTitle}
+          />
+        ))}
       </div>
     </section>
 
@@ -207,176 +156,23 @@ const next = 'huffman-compression';
 
     <!-- REFLECTIONS -->
     <section id="reflections" style="margin-bottom:1rem;">
-    <h2>Reflections</h2>
+      <h2>Reflections</h2>
 
-    <!-- Reflection 1 -->
-    <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-        <strong>Elevator Reflection 1</strong>
+      {reflections.map((reflection) => (
+        <DocCard
+          title={reflection.title}
+          pdfHref={`${base}/documents/reflections/pdf/${encodeURIComponent(reflection.pdf)}`}
+          htmlHref={`${base}/documents/reflections/html/${encodeURIComponent(reflection.html)}`}
+          iframeId={reflection.iframeId}
+          iframeTitle={reflection.iframeTitle}
+        />
+      ))}
 
-        <div style="display:flex; gap:0.5rem; align-items:center;">
-          <a
-            href={`${base}/documents/reflections/pdf/${encodeURIComponent('Elevator Reflection 1.pdf')}`}
-            download
-            target="_blank"
-            rel="noopener"
-            style="font-size:0.9rem; color:#0b66c3;"
-          >
-            Download PDF
-          </a>
-
-          <button
-            type="button"
-            class="toggle-btn"
-            data-target="ref-1"
-            style="padding:0.35rem 0.5rem; border-radius:6px;"
-          >
-            View HTML
-          </button>
-        </div>
-      </div>
-
-      <div id="ref-1" style="margin-top:0.5rem; display:none;">
-        <iframe
-          src={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Reflection 1.html')}`}
-          style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
-          loading="lazy"
-          title="Elevator Reflection 1"
-        ></iframe>
-      </div>
-    </div>
-
-    <!-- Reflection 2 -->
-    <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-        <strong>Elevator Weekly Reflection 2</strong>
-
-        <div style="display:flex; gap:0.5rem; align-items:center;">
-          <a
-            href={`${base}/documents/reflections/pdf/${encodeURIComponent('Elevator Weekly Reflection 2.pdf')}`}
-            download
-            target="_blank"
-            rel="noopener"
-            style="font-size:0.9rem; color:#0b66c3;"
-          >
-            Download PDF
-          </a>
-
-          <button
-            type="button"
-            class="toggle-btn"
-            data-target="ref-2"
-            style="padding:0.35rem 0.5rem; border-radius:6px;"
-          >
-            View HTML
-          </button>
-        </div>
-      </div>
-
-      <div id="ref-2" style="margin-top:0.5rem; display:none;">
-        <iframe
-          src={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Weekly Reflection 2.html')}`}
-          style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
-          loading="lazy"
-          title="Elevator Weekly Reflection 2"
-        ></iframe>
-      </div>
-    </div>
-
-    <!-- Reflection 3 -->
-    <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-        <strong>Elevator Weekly Reflection 3</strong>
-
-        <div style="display:flex; gap:0.5rem; align-items:center;">
-          <a
-            href={`${base}/documents/reflections/pdf/${encodeURIComponent('Elevator Weekly Reflection 3.pdf')}`}
-            download
-            target="_blank"
-            rel="noopener"
-            style="font-size:0.9rem; color:#0b66c3;"
-          >
-            Download PDF
-          </a>
-
-          <button
-            type="button"
-            class="toggle-btn"
-            data-target="ref-3"
-            style="padding:0.35rem 0.5rem; border-radius:6px;"
-          >
-            View HTML
-          </button>
-        </div>
-      </div>
-
-      <div id="ref-3" style="margin-top:0.5rem; display:none;">
-        <iframe
-          src={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Weekly Reflection 3.html')}`}
-          style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
-          loading="lazy"
-          title="Elevator Weekly Reflection 3"
-        ></iframe>
-      </div>
-    </div>
-
-    <!-- Reflection 4 -->
-    <div style="border:1px solid #eee; padding:0.75rem; border-radius:8px; margin-top:0.75rem;">
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-        <strong>Elevator Weekly Reflection 4</strong>
-
-        <div style="display:flex; gap:0.5rem; align-items:center;">
-          <a
-            href={`${base}/documents/reflections/pdf/${encodeURIComponent('Elevator Weekly Reflection 4.pdf')}`}
-            download
-            target="_blank"
-            rel="noopener"
-            style="font-size:0.9rem; color:#0b66c3;"
-          >
-            Download PDF
-          </a>
-
-          <button
-            type="button"
-            class="toggle-btn"
-            data-target="ref-4"
-            style="padding:0.35rem 0.5rem; border-radius:6px;"
-          >
-            View HTML
-          </button>
-        </div>
-      </div>
-
-      <div id="ref-4" style="margin-top:0.5rem; display:none;">
-        <iframe
-          src={`${base}/documents/reflections/html/${encodeURIComponent('Elevator Weekly Reflection 4.html')}`}
-          style="width:100%; height:520px; border:1px solid #ddd; border-radius:6px;"
-          loading="lazy"
-          title="Elevator Weekly Reflection 4"
-        ></iframe>
-      </div>
-    </div>
-
-    <p style="margin-top:1rem;">
-      <a href={`${base}/projects/aden`} style="color:#0055aa; text-decoration:underline;">
-        ← Back to ADEN Course
-      </a>
-    </p>
+      <p style="margin-top:1rem;">
+        <a href={`${base}/projects/aden`} style="color:#0055aa; text-decoration:underline;">
+          ← Back to ADEN Course
+        </a>
+      </p>
+    </section>
   </section>
 </BaseLayout>
-
-<script>
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.toggle-btn');
-    if (!btn) return;
-
-    const targetId = btn.dataset.target;
-    const panel = document.getElementById(targetId);
-    if (!panel) return;
-
-    const isOpen = panel.style.display !== 'none';
-    panel.style.display = isOpen ? 'none' : 'block';
-    btn.textContent = isOpen ? 'View HTML' : 'Hide HTML';
-    btn.setAttribute('aria-expanded', String(!isOpen));
-  });
-</script>
