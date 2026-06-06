@@ -1,5 +1,53 @@
 ---
+import { execSync } from "node:child_process";
+
 const year = new Date().getFullYear();
+
+const repo = "https://github.com/arnavkrishnan/portfolio";
+
+let commitHash = "unknown";
+let lastUpdated = "unknown";
+
+try {
+  commitHash = execSync(
+    "git rev-parse --short=12 HEAD"
+  ).toString().trim();
+
+  const rawDate = execSync(
+    "git log -1 --date=iso-strict --format=%cd"
+  ).toString().trim();
+
+  lastUpdated = new Date(rawDate).toLocaleString("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZoneName: "short",
+  });
+} catch (err) {
+  console.error("Could not retrieve git metadata:", err);
+}
 ---
+
 <hr />
+
 <p>&copy; {year} Arnav Krishnan</p>
+
+<footer>
+  <p>
+    <a href={repo}>Source repository (git)</a>
+    •
+    <a href={`${repo}/commits/main`}>Revision history</a>
+    •
+    <a href={`${repo}/issues/new`}>Suggest edit</a>
+  </p>
+
+  <p>
+    Updated {lastUpdated} by
+    <a href={`${repo}/commit/${commitHash}`}>
+      <code>{commitHash}</code>
+    </a>
+  </p>
+</footer>
