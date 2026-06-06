@@ -21,8 +21,8 @@ const pdfFile = 'Reflection -  ExpressionEvaluator.pdf';
     {/* DESCRIPTION */}
     <section style="margin-bottom:1rem;">
       <p>
-        A parser and evaluator that processes infix arithmetic expressions with correct operator precedence and parentheses support.
-        It uses a two-stack system to evaluate expressions step-by-step and detect malformed input.
+        This project is an expression parser and evaluator that takes standard infix arithmetic expressions and computes them while respecting operator precedence and parentheses.
+        It’s built around a two-stack approach, allowing the expression to be evaluated step by step while also checking for invalid or malformed input along the way.
       </p>
     </section>
 
@@ -30,12 +30,12 @@ const pdfFile = 'Reflection -  ExpressionEvaluator.pdf';
     <section id="phases" style="margin-bottom:1rem;">
       <h2>Project Phases</h2>
       <ol>
-        <li>Define expression grammar and tokenization rules.</li>
-        <li>Implement stack-based evaluation with operator precedence.</li>
-        <li>Add support for parentheses and nested expressions.</li>
-        <li>Implement static error checking (operators, data, parentheses).</li>
-        <li>Add implicit multiplication and negative number handling.</li>
-        <li>Implement divide-by-zero runtime detection.</li>
+        <li>Start by defining how expressions are structured and how they should be broken into tokens.</li>
+        <li>Build a stack-based evaluation system that correctly handles operator precedence.</li>
+        <li>Extend the system to support parentheses and nested expressions.</li>
+        <li>Add validation to catch common errors like missing values, invalid operators, and mismatched parentheses.</li>
+        <li>Introduce support for implicit multiplication and proper handling of negative numbers.</li>
+        <li>Handle runtime errors such as division by zero.</li>
       </ol>
     </section>
 
@@ -43,8 +43,8 @@ const pdfFile = 'Reflection -  ExpressionEvaluator.pdf';
     <section id="analysis" style="margin-bottom:1rem;">
       <h2>Summary of Key Learnings</h2>
       <p>
-        The evaluator processes expressions in linear time using stacks. Careful handling of tokenization
-        and edge cases like negative numbers significantly improved correctness and usability.
+        The evaluator processes expressions in linear time using a stack-based approach. 
+        Personally, it was quite nice to see how different data types can be applied to speed up, or make posisble, solving a certain problem. This is a main idea in ADEN but this was the first time I really saw that.
       </p>
     </section>
 
