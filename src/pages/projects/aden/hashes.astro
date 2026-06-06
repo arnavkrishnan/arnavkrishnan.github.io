@@ -2,33 +2,135 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Pagination from '../../../components/Pagination.astro';
 import DocCard from '../../../components/DocCard.astro';
+
 const base = '/portfolio';
 const previous = 'huffman-compression';
 const next = 'rslk';
 ---
+
 <BaseLayout title="Hashes | ADEN Project" base={base}>
-  <Pagination base={base} section="projects/aden" previous={previous} next={next} />
+  <Pagination
+    base={base}
+    section="projects/aden"
+    previous={previous}
+    next={next}
+  />
+
   <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
-  <h1>Hashes</h1>
+    <h1>Hashes</h1>
 
-  <section style="margin-bottom:1.5rem;">
-    <p>
-      The Hashes project compares common hashing algorithms and evaluates how they behave for different input data. I studied techniques for fixed-size hashing, collision resistance, and distribution uniformity. This project bridged theory (modulo arithmetic, polynomial rolling) with practical benchmarking.
-    </p>
-    <img src={`${base}/images/hash-table.png`} alt="Hash table collision diagram placeholder" style="width:100%; max-width:720px; border-radius:12px; border:1px solid #ddd; margin-top:1rem;" />
-  </section>
-
-    <section id="hashing-algorithms" style="margin-bottom:1.5rem;">
-      <h2>Reflection</h2>
-
-      <DocCard
-        title="Hash Analysis"
-        pdfHref={`${base}/documents/reflections/pdf/${encodeURIComponent('Arnav Krishnan - Hash Analysis.pdf')}`}
-        iframeTitle="Hash Analysis"
-      />
-
+    {/* PROJECT DESCRIPTION */}
+    <section style="margin-bottom:1.5rem;">
+      <h2>Project Description</h2>
+      <p style="color:#444; line-height:1.6;">
+        The Hashes project explores how hashing functions distribute data into fixed-size tables
+        and how different collision resolution strategies affect performance. I implemented and
+        tested multiple hashing techniques, comparing their efficiency under varying load factors
+        and input distributions.
+      </p>
+      <p style="color:#444; line-height:1.6;">
+        This project bridges theoretical concepts such as modular arithmetic and probability
+        with practical system design decisions used in real-world data structures like hash maps.
+      </p>
     </section>
 
-    <p><a href={`${base}/aden-course`} style="color:#0055aa; text-decoration:underline;">← Back to ADEN Course</a></p>
+    {/* VISUAL */}
+    <section style="margin-bottom:1.5rem;">
+    </section>
+
+    {/* HASHING ALGORITHMS */}
+    <section style="margin-bottom:1.5rem;">
+      <h2>Hashing Algorithms</h2>
+
+      <ul style="color:#444; line-height:1.7;">
+        <li>
+          <strong>Linear Probing:</strong> Resolves collisions by scanning sequential slots.
+          Simple but suffers from primary clustering at high load factors.
+        </li>
+
+        <li>
+          <strong>Quadratic Probing:</strong> Uses quadratic offsets to reduce clustering effects,
+          improving distribution compared to linear probing.
+        </li>
+
+        <li>
+          <strong>Linked List (Chaining):</strong> Stores multiple elements per index using linked lists,
+          making performance more stable under high load factors.
+        </li>
+
+        <li>
+          <strong>Cuckoo Hashing:</strong> Uses two hash functions and relocation (“kicking out” elements),
+          achieving near O(1) lookup performance but with higher implementation complexity and memory use.
+        </li>
+      </ul>
+    </section>
+
+    {/* ANALYSIS */}
+    <section style="margin-bottom:1.5rem;">
+      <h2>Summary of Hash Analysis</h2>
+
+      <p style="color:#444; line-height:1.6;">
+        Across all implementations, performance varied significantly depending on load factor
+        and input distribution. Surprisingly, datasets with clustered values (Dataset D)
+        often performed as well as or better than uniformly distributed data due to the
+        effectiveness of the hashing function in dispersing inputs.
+      </p>
+
+      <p style="color:#444; line-height:1.6;">
+        Linear and quadratic probing showed expected degradation at higher load factors,
+        while linked list chaining remained more stable. Cuckoo hashing consistently
+        delivered the fastest lookup times, though at the cost of increased memory usage.
+      </p>
+
+      <p style="color:#444; line-height:1.6;">
+        Overall, this experiment highlighted the tradeoffs between simplicity, speed,
+        and memory efficiency in hash table design.
+      </p>
+
+      <div style="margin-top:1rem;">
+        <DocCard
+          title="Hash Analysis Report"
+          pdfHref={`${base}/documents/ADEN_docs/pdf/${encodeURIComponent('Arnav Krishnan - Hash Analysis.pdf')}`}
+          htmlHref={`${base}/documents/ADEN_docs/html/Arnav Krishnan - Hash Analysis/ArnavKrishnanHashAnalysis.html`}
+          iframeId="hash-analysis"
+          iframeTitle="Hash Analysis Report"
+        />
+      </div>
+    </section>
+
+    {/* KEY LEARNINGS */}
+    <section style="margin-bottom:1.5rem;">
+      <h2>Key Learnings</h2>
+
+      <ul style="color:#444; line-height:1.7;">
+        <li>
+          Hash function design significantly impacts performance more than input distribution in many cases.
+        </li>
+        <li>
+          Collision resolution strategies each introduce distinct tradeoffs in speed, memory, and complexity.
+        </li>
+        <li>
+          Load factor is a critical predictor of hash table performance degradation.
+        </li>
+        <li>
+          Empirical benchmarking often contradicts theoretical expectations and reveals real system behavior.
+        </li>
+        <li>
+          Cuckoo hashing provides excellent performance but requires careful implementation and memory overhead.
+        </li>
+      </ul>
+    </section>
+
+    {/* NAVIGATION */}
+    <section>
+      <p>
+        <a
+          href={`${base}/aden-course`}
+          style="color:#0055aa; text-decoration:underline;"
+        >
+          ← Back to ADEN Course
+        </a>
+      </p>
+    </section>
   </section>
 </BaseLayout>
