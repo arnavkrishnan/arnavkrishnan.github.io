@@ -23,14 +23,11 @@ const next = 'rslk';
     <section style="margin-bottom:1.5rem;">
       <h2>Project Description</h2>
       <p style="color:#444; line-height:1.6;">
-        The Hashes project explores how hashing functions distribute data into fixed-size tables
-        and how different collision resolution strategies affect performance. I implemented and
-        tested multiple hashing techniques, comparing their efficiency under varying load factors
-        and input distributions.
+        This project explores how hashing functions distribute data across fixed-size tables and how different collision resolution strategies affect performance in practice.
+        I implemented and tested several hashing techniques, then compared how each one behaves under different load factors and input patterns.
       </p>
       <p style="color:#444; line-height:1.6;">
-        This project bridges theoretical concepts such as modular arithmetic and probability
-        with practical system design decisions used in real-world data structures like hash maps.
+        It also connects theoretical/matheatical ideas like modular arithmetic (for cycles) and probability (when it comes to performance) with more practical design decisions used in real-world data structures such as hash maps.
       </p>
     </section>
 
@@ -44,23 +41,24 @@ const next = 'rslk';
 
       <ul style="color:#444; line-height:1.7;">
         <li>
-          <strong>Linear Probing:</strong> Resolves collisions by scanning sequential slots.
-          Simple but suffers from primary clustering at high load factors.
+          <strong>Linear Probing:</strong> Handles collisions by checking the next available slot in sequence.
+          It’s simple to implement, but performance can degrade due to clustering when the table becomes full.
         </li>
 
         <li>
-          <strong>Quadratic Probing:</strong> Uses quadratic offsets to reduce clustering effects,
-          improving distribution compared to linear probing.
+          <strong>Quadratic Probing:</strong> Reduces clustering by using quadratic offsets when searching for an open slot.
+          This improves distribution compared to linear probing, especially at moderate load factors.
         </li>
 
         <li>
-          <strong>Linked List (Chaining):</strong> Stores multiple elements per index using linked lists,
-          making performance more stable under high load factors.
+          <strong>Linked List (Chaining):</strong> Stores multiple values at each index using a linked list.
+          This approach stays more stable under higher load factors since collisions don’t block insertion.
         </li>
 
         <li>
-          <strong>Cuckoo Hashing:</strong> Uses two hash functions and relocation (“kicking out” elements),
-          achieving near O(1) lookup performance but with higher implementation complexity and memory use.
+          <strong>Cuckoo Hashing:</strong> Uses two hash functions and resolves collisions by “kicking out” existing elements and relocating them.
+          It achieves very fast lookups in most cases but comes with higher complexity and memory usage.
+          It is named after the Cuckoo bird, who lay their eggs in other birds' nests and "kick out" the orignal bird's eggs.
         </li>
       </ul>
     </section>
@@ -70,21 +68,17 @@ const next = 'rslk';
       <h2>Summary of Hash Analysis</h2>
 
       <p style="color:#444; line-height:1.6;">
-        Across all implementations, performance varied significantly depending on load factor
-        and input distribution. Surprisingly, datasets with clustered values (Dataset D)
-        often performed as well as or better than uniformly distributed data due to the
-        effectiveness of the hashing function in dispersing inputs.
+        Performance varied quite a bit across implementations depending on load factor and input distribution.
+        Interestingly, datasets with clustered values (Dataset D) sometimes performed just as well as, or even better than, uniformly distributed ones thanks to how effectively the hash function spread values.
       </p>
 
       <p style="color:#444; line-height:1.6;">
-        Linear and quadratic probing showed expected degradation at higher load factors,
-        while linked list chaining remained more stable. Cuckoo hashing consistently
-        delivered the fastest lookup times, though at the cost of increased memory usage.
+        Linear and quadratic probing behaved as expected, with performance dropping as the load factor increased.
+        Chaining remained more stable under heavier loads, while cuckoo hashing consistently produced the fastest lookup times, though with higher memory cost.
       </p>
 
       <p style="color:#444; line-height:1.6;">
-        Overall, this experiment highlighted the tradeoffs between simplicity, speed,
-        and memory efficiency in hash table design.
+        Overall, the results highlight the tradeoffs between simplicity, speed, and memory usage when designing hash tables.
       </p>
 
       <div style="margin-top:1rem;">
@@ -104,19 +98,19 @@ const next = 'rslk';
 
       <ul style="color:#444; line-height:1.7;">
         <li>
-          Hash function design significantly impacts performance more than input distribution in many cases.
+          Good hash function design often matters more than the raw distribution of input data.
         </li>
         <li>
-          Collision resolution strategies each introduce distinct tradeoffs in speed, memory, and complexity.
+          Each collision resolution strategy introduces its own balance of speed, memory usage, and complexity.
         </li>
         <li>
-          Load factor is a critical predictor of hash table performance degradation.
+          Load factor is one of the strongest indicators of how a hash table will perform under stress.
         </li>
         <li>
-          Empirical benchmarking often contradicts theoretical expectations and reveals real system behavior.
+          Real-world benchmarking doesn’t always match theoretical expectations and can reveal unexpected behavior.
         </li>
         <li>
-          Cuckoo hashing provides excellent performance but requires careful implementation and memory overhead.
+          Cuckoo hashing delivers strong lookup performance, but it requires careful implementation and more memory.
         </li>
       </ul>
     </section>
