@@ -2,164 +2,174 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Pagination from '../../components/Pagination.astro';
 import VideoCarousel from '../../components/VideoCarousel.jsx';
+import ImageCarousel from '../../components/ImageCarousel.jsx';
 
 const base = '/portfolio';
 
-// Define previous and next projects
 const previous = 'test-board';
-const next = null; // Add future projects as needed
+const next = null;
 
 const videos = [
-  // `${base}/videos/minibot_vid_1.mp4`,
-  // `${base}/videos/minibot_vid_2.mp4`,
-  // `${base}/videos/minibot_vid_3.mp4`
+  `${base}/videos/MB1.mov`,
+  `${base}/videos/MB2.mov`
 ];
 
-const hasVideos = videos.filter(v => !v.includes('undefined')).length > 0;
+const images = [
+  `${base}/images/minibot/1.jpg`,
+  `${base}/images/minibot/2.jpg`,
+  `${base}/images/minibot/3.jpg`,
+  `${base}/images/minibot/4.jpg`,
+  `${base}/images/minibot/5.jpg`,
+  `${base}/images/minibot/6.jpg`,
+  `${base}/images/minibot/7.jpg`,
+  `${base}/images/minibot/8.jpg`,
+  `${base}/images/minibot/9.jpg`,
+  `${base}/images/minibot/10.jpg`,
+  `${base}/images/minibot/11.jpg`,
+  `${base}/images/minibot/12.jpg`,
+  `${base}/images/minibot/13.jpg`,
+  `${base}/images/minibot/14.jpg`,
+  `${base}/images/minibot/15.jpg`,
+  `${base}/images/minibot/16.jpg`,
+  `${base}/images/minibot/17.jpg`,
+  `${base}/images/minibot/18.jpg`,
+  `${base}/images/minibot/19.jpg`,
+  `${base}/images/minibot/20.jpg`
+];
 ---
 
 <BaseLayout title="Minibot" base={base}>
-  <Pagination base={base} section="projects" listHref={`${base}/projects/robotics`} previous={previous} next={next} />
+  <Pagination
+    base={base}
+    section="projects"
+    listHref={`${base}/projects/robotics`}
+    previous={previous}
+    next={next}
+  />
+
   <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
-  
-  <h1>Minibot</h1>
-  <h2 style="font-weight: normal; color: #555; margin-top: 0.5rem; font-size: 1.25rem;">
-    Design a minibot to tackle an obstacle course through iterative design, assembly, testing, and continuous improvement.
-  </h2>
 
-  {hasVideos && <VideoCarousel client:load videos={videos} width="100%" height="100%" />}
+    <h1>Minibot</h1>
 
-  <!-- DEFINE SECTION -->
-  <h2 style="margin-top: 2rem; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Define</h2>
-  <p>
-    The goal of this project was to design and build a minibot drive base capable of navigating a challenging obstacle course in the shortest amount of time. Through this build process, we learned about:
-  </p>
-  <ul>
-    <li>Iterative design methodology and rapid prototyping</li>
-    <li>Drive system optimization for different terrain types</li>
-    <li>Structural integrity and weight distribution</li>
-    <li>Testing protocols and performance metrics</li>
-  </ul>
+    <h2
+      style="
+        font-weight: normal;
+        color: #555;
+        margin-top: 0.5rem;
+        font-size: 1.25rem;
+      "
+    >
+      Design a minibot capable of navigating an obstacle course through
+      iterative design, fabrication, testing, and continuous improvement.
+    </h2>
 
-  <!-- CONCEPT AND CAD DESIGN SECTION -->
-  <h2 style="margin-top: 2rem; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Concept and CAD Design</h2>
-  
-  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Initial Concepts</h3>
-  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
-    <figure style="flex: 1; min-width: 250px;">
-      <img src={`${base}/images/placeholder-concept-1.png`} alt="Concept sketch 1" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
-      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Concept Sketch 1</figcaption>
-    </figure>
-    <figure style="flex: 1; min-width: 250px;">
-      <img src={`${base}/images/placeholder-concept-2.png`} alt="Concept sketch 2" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
-      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Concept Sketch 2</figcaption>
-    </figure>
-  </div>
+    <VideoCarousel
+      client:load
+      videos={videos}
+      width="100%"
+      height="100%"
+    />
 
-  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">CAD Designs</h3>
-  <p>
-    Below are the 3D models and technical drawings for the final design iteration:
-  </p>
-  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
-    <figure style="flex: 1; min-width: 250px;">
-      <img src={`${base}/images/placeholder-cad-1.png`} alt="CAD model front view" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
-      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">CAD Model - Front View</figcaption>
-    </figure>
-    <figure style="flex: 1; min-width: 250px;">
-      <img src={`${base}/images/placeholder-cad-2.png`} alt="CAD model isometric view" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
-      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">CAD Model - Isometric View</figcaption>
-    </figure>
-  </div>
+    <h2
+      style="
+        margin-top:2rem;
+        border-bottom:2px solid #333;
+        padding-bottom:0.5rem;
+      "
+    >
+      Project Overview
+    </h2>
 
-  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Machined Parts</h3>
-  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
-    <figure style="flex: 1; min-width: 250px;">
-      <img src={`${base}/images/placeholder-part-1.png`} alt="Machined part 1" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
-      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Machined Part 1</figcaption>
-    </figure>
-    <figure style="flex: 1; min-width: 250px;">
-      <img src={`${base}/images/placeholder-part-2.png`} alt="Machined part 2" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
-      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Machined Part 2</figcaption>
-    </figure>
-  </div>
+    <p>
+      The objective of this project was to design and build a compact robot
+      capable of completing a challenging obstacle course as quickly and
+      reliably as possible. The obstacle course in question had a variety of features, including potholes, weighted doors, and limbo; the obstacles were often adjustable.
+      Throughout the process we learned how engineering
+      designs evolve through repeated testing and refinement.
+      This project definitely tested both our technical and teamwork abilities. In the end, our robot was somewhat successful: It was able to move and be controlled by the controller; however, it could only move while rotating, making it unable to complete the vast majority of the obstacles.
+    </p>
 
-  <!-- TEST AND ITERATE SECTION -->
-  <h2 style="margin-top: 2rem; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Test and Iterate</h2>
-  
-  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Prototype Testing</h3>
-  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
-    <figure style="flex: 1; min-width: 250px;">
-      <img src={`${base}/images/placeholder-prototype-1.png`} alt="Prototype v1" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
-      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Prototype v1</figcaption>
-    </figure>
-    <figure style="flex: 1; min-width: 250px;">
-      <img src={`${base}/images/placeholder-prototype-2.png`} alt="Prototype v2" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
-      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Prototype v2</figcaption>
-    </figure>
-  </div>
+    <ImageCarousel client:load images={images} />
 
-  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Performance Data</h3>
-  <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px; margin: 1.5rem 0; font-family: monospace; font-size: 0.9rem;">
-    <h4 style="margin-top:0;">Test Results Summary</h4>
-    <table style="width: 100%; border-collapse: collapse;">
-      <tr style="background: #e8e8e8;">
-        <th style="border: 1px solid #ccc; padding: 0.5rem; text-align: left;">Iteration</th>
-        <th style="border: 1px solid #ccc; padding: 0.5rem; text-align: left;">Course Time (s)</th>
-        <th style="border: 1px solid #ccc; padding: 0.5rem; text-align: left;">Key Changes</th>
-      </tr>
-      <tr>
-        <td style="border: 1px solid #ccc; padding: 0.5rem;">v1</td>
-        <td style="border: 1px solid #ccc; padding: 0.5rem;">TBD</td>
-        <td style="border: 1px solid #ccc; padding: 0.5rem;">Initial design</td>
-      </tr>
-      <tr style="background: #f9f9f9;">
-        <td style="border: 1px solid #ccc; padding: 0.5rem;">v2</td>
-        <td style="border: 1px solid #ccc; padding: 0.5rem;">TBD</td>
-        <td style="border: 1px solid #ccc; padding: 0.5rem;">Design updates</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid #ccc; padding: 0.5rem;">v3</td>
-        <td style="border: 1px solid #ccc; padding: 0.5rem;">TBD</td>
-        <td style="border: 1px solid #ccc; padding: 0.5rem;">Final optimizations</td>
-      </tr>
-    </table>
-  </div>
+    <h2
+      style="
+        margin-top:2rem;
+        border-bottom:2px solid #333;
+        padding-bottom:0.5rem;
+      "
+    >
+      Define
+    </h2>
 
-  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Key Findings and Improvements</h3>
-  <ul>
-    <li><strong>Traction:</strong> [Document what you learned about wheel selection and traction]</li>
-    <li><strong>Weight Distribution:</strong> [Document findings on how weight affects performance]</li>
-    <li><strong>Power Delivery:</strong> [Document motor/drive system optimization]</li>
-    <li><strong>Structural Issues:</strong> [Document any durability improvements made]</li>
-  </ul>
+    <p>
+      Our primary goal was to maximize speed while maintaining reliability
+      across all obstacles. However, as the project continued, we became increasingly pressed for time. In the end, we were simply able to create a robot that would react to the controller. However, this reaction does not imply controllability: movement was always associated with rotation, making the robot essentially impossible to control, and by extension, complete the obstacle course. The steps we took to design our robot though were:
+    </p>
 
-  <!-- IMPLEMENT SECTION -->
-  <h2 style="margin-top: 2rem; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Implement</h2>
-  
-  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Final Build</h3>
-  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
-    <figure style="flex: 1; min-width: 250px;">
-      <img src={`${base}/images/placeholder-final-1.png`} alt="Final minibot - side view" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
-      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Final Build - Side View</figcaption>
-    </figure>
-    <figure style="flex: 1; min-width: 250px;">
-      <img src={`${base}/images/placeholder-final-2.png`} alt="Final minibot - top view" style="width: 100%; height: auto; background: #f0f0f0; border: 2px dashed #ccc; padding: 1rem; min-height: 200px;" />
-      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Final Build - Top View</figcaption>
-    </figure>
-  </div>
+    <ul>
+      <li>Design and fabricate a lightweight and robust wooden drive base.</li>
+      <li>Design and lathe a number of hex shafts.</li>
+      <li>Write code to allow the robot to be controlled through a RadioLink controller.</li>
+      <li>Apply the engineering design process and complete some obstacles!</li>
+    </ul>
 
-  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Obstacle Course Performance</h3>
-  <p>
-    [Add description of the final course performance, including time, obstacles completed, and overall results]
-  </p>
+    <h2
+      style="
+        margin-top:2rem;
+        border-bottom:2px solid #333;
+        padding-bottom:0.5rem;
+      "
+    >
+      Concept and CAD Design 
+    </h2>
 
-  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Video of Final Run</h3>
-  <div style="background: #f0f0f0; border: 2px dashed #ccc; padding: 2rem; border-radius: 8px; text-align: center; margin: 1.5rem 0; min-height: 200px; display: flex; align-items: center; justify-content: center;">
-    <p style="color: #999;">Final obstacle course run video will be placed here</p>
-  </div>
+    <p>
+      Several drivetrain concepts were explored before selecting the final
+      configuration. CAD models were used to verify dimensions for the hex shafts and 3D printed parts, such as the battery case.
+      We used these CAD models to futher check wheel
+      placement, and component clearances before fabrication began. During
+      assembly, adjustments were frequently required to account for real-world
+      tolerances and variation in fabrication. We often had to re-lathe our hex shafts, for instance.
+    </p>
 
-  <h3 style="margin-top: 1.5rem; font-size: 1.1rem;">Reflection</h3>
-  <p>
-    [Reflect on the design process, what worked well, what could be improved, and what you learned through this iterative design project]
-  </p>
+    <h2
+      style="
+        margin-top:2rem;
+        border-bottom:2px solid #333;
+        padding-bottom:0.5rem;
+      "
+    >
+      Test and Iterate
+    </h2>
+
+    <p>
+      Components were assembled, tested, and modified repeatedly as new issues
+      were discovered. This iterative process helped improve overall
+      performance while providing valuable experience with mechanical design,
+      fabrication, and troubleshooting. One main issue that we consistently saw was that our hex shafts did not cleanly fit with our gearboxes. It took many iterations of lathing hex shafts and slightly adjusting the gearbox for it to fully work in the end.
+    </p>
+
+    <p>
+      Repeated testing demonstrated the importance (and in fact, neccesity) of validating designs
+      experimentally rather than relying solely on theoretical expectations from CAD designs.
+    </p>
+
+    <h2
+      style="
+        margin-top:2rem;
+        border-bottom:2px solid #333;
+        padding-bottom:0.5rem;
+      "
+    >
+      Final Implementation
+    </h2>
+
+    <p>
+      Our final robot was not a complete success, neither was it a complete failure. 
+      Indeed, our robot was able to be controlled through the RadioLink controller. 
+      However, as has been mentioned a few times, it lacked a significant amount of control. 
+      This made the robot somewhat inneffective on the obstacle course. We were only able to complete the Limbo, with help from the natural slope of the ground.
+    </p>
+
+  </section>
 </BaseLayout>
