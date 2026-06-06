@@ -19,9 +19,8 @@ const next = 'hashes';
       <h2>Project Description</h2>
 
       <p>
-        Implemented Huffman coding to generate prefix-free variable-length codes
-        based on symbol frequency. The system supports full encoding and decoding,
-        with validation tests ensuring lossless reconstruction of input data.
+        This project implements Huffman coding to generate prefix-free, variable-length codes based on the frequency of symbols in a given input.
+        It supports both encoding and decoding, with validation tests to ensure the original data can be perfectly reconstructed.
       </p>
     </section>
 
@@ -30,12 +29,12 @@ const next = 'hashes';
       <h2>Project Phases</h2>
 
       <ol>
-        <li>Frequency Analysis of Input Text</li>
-        <li>Construction of Huffman Tree</li>
-        <li>Prefix Code Generation</li>
-        <li>Encoding Pipeline Implementation</li>
-        <li>Decoding and Validation Testing</li>
-        <li>Performance Evaluation</li>
+        <li>Analyzing symbol frequencies in the input text</li>
+        <li>Building the Huffman tree from those frequencies</li>
+        <li>Generating prefix codes from the tree structure</li>
+        <li>Implementing the encoding pipeline</li>
+        <li>Decoding encoded data and verifying correctness</li>
+        <li>Evaluating overall compression performance</li>
       </ol>
     </section>
 
@@ -44,37 +43,32 @@ const next = 'hashes';
       <h2>Summary of Analysis</h2>
 
       <p>
-        Huffman compression was consistently effective across all files, with performance
-        strongly dependent on how closely the weight distribution matched the target text.
+        Huffman compression performed consistently well across all tested files, with results largely influenced by how closely the frequency model matched the input text.
       </p>
 
       <p>
-        Across all experiments, compression achieved an average ratio of approximately
-        0.614 with a standard deviation of 0.047.
+        Across experiments, the average compression ratio was about 0.614, with a standard deviation of 0.047.
       </p>
 
       <p>
-        Best performance occurred when files were compressed using their own frequency
-        distributions, such as “War and Peace” and “Cat in the Hat”.
+        The best results were seen when each file was compressed using its own frequency distribution—for example, texts like “War and Peace” and “The Cat in the Hat” produced especially strong compression.
       </p>
 
       <p>
-        Cross-file compression still performed well overall, suggesting that natural language
-        shares broadly similar statistical structure across different texts.
+        Even when using cross-file frequency models, performance remained solid overall, which suggests that natural language tends to share similar statistical patterns across different sources.
       </p>
 
       <p>
-        If selecting a single universal weighting model, “War and Peace” performed best overall,
-        achieving the most consistent compression results (~0.60 average CR).
+        If a single universal model is chosen, the frequency distribution from “War and Peace” performed the most reliably, producing an average compression ratio of around 0.60.
       </p>
 
       <DocCard
-  title="Huffman Analysis Report"
-  iframeId="huffman-analysis"
-  pdfHref={`${base}/documents/ADEN_docs/pdf/${encodeURIComponent('Arnav Krishnan - HuffComp - Analysis.pdf')}`}
-  htmlHref={`${base}/documents/ADEN_docs/html/Arnav Krishnan - HuffComp - Analysis/ArnavKrishnanHuffCompAnalysis.html`}
-  iframeTitle="Huffman Analysis Report"
-/>
+        title="Huffman Analysis Report"
+        iframeId="huffman-analysis"
+        pdfHref={`${base}/documents/ADEN_docs/pdf/${encodeURIComponent('Arnav Krishnan - HuffComp - Analysis.pdf')}`}
+        htmlHref={`${base}/documents/ADEN_docs/html/Arnav Krishnan - HuffComp - Analysis/ArnavKrishnanHuffCompAnalysis.html`}
+        iframeTitle="Huffman Analysis Report"
+      />
     </section>
 
     {/* KEY LEARNINGS */}
@@ -82,11 +76,10 @@ const next = 'hashes';
       <h2>Key Learnings</h2>
 
       <ul>
-        <li>Compression efficiency depends heavily on symbol frequency distributions.</li>
-        <li>Huffman coding converts statistical structure into optimal prefix codes.</li>
-        <li>Natural language maintains consistent redundancy patterns across texts.</li>
-        <li>Cross-domain frequency models can still generalize effectively.</li>
-        <li>Choice of weighting file significantly impacts compression performance.</li>
+        <li>Compression performance is strongly influenced by symbol frequency distributions (This is pretty fundamental).</li>
+        <li>Huffman coding translates statistical patterns into efficient prefix-free representations. </li>
+        <li>Natural language tends to preserve consistent redundancy across different texts. </li>
+        <li>Frequency models from one domain can still generalize reasonably well to others. (i.e., one huffman compression will often work moderately ok for another file).</li>
       </ul>
 
       <DocCard
