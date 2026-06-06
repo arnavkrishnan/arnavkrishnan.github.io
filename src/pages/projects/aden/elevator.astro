@@ -78,11 +78,13 @@ const reflections = [
       <h2>Project Description</h2>
 
       <p>
-        Embedded project modeling elevators, scheduling, and finite
-        state machines. Focus areas included sensor integration, state
-        transitions, passenger scheduling, and measuring user-facing metrics
-        such as wait time, ride time, total travel time, and overall system
-        performance.
+        This embedded systems project models elevator behavior using scheduling logic and finite state machines.
+        It focuses on how elevators respond to sensor inputs, manage state transitions, and handle passenger requests efficiently.
+        Key metrics such as wait time, ride time, total travel time, and overall system performance were used to evaluate different designs.
+      </p>
+
+      <p>
+        I worked on this project in a pair. My partner was Sarp Akalin. I've known Sarp since elementary school, huge thanks to him for working on this project together! Wouldn't have been possible otherwise.
       </p>
     </section>
 
@@ -90,12 +92,12 @@ const reflections = [
       <h2>Project Phases</h2>
 
       <ol>
-        <li>Requirements Analysis and Elevator Modeling</li>
-        <li>Finite State Machine Design</li>
-        <li>Passenger Scheduling and Request Handling</li>
-        <li>Simulation Development and Testing</li>
-        <li>Performance Analysis</li>
-        <li>Configuration Comparison and Recommendation</li>
+        <li>Understanding requirements and building a model of elevator behavior</li>
+        <li>Designing a finite state machine to manage elevator operations</li>
+        <li>Implementing passenger scheduling and request handling logic</li>
+        <li>Building and testing the simulation</li>
+        <li>Analyzing performance across different configurations</li>
+        <li>Comparing results and identifying the most effective setup</li>
       </ol>
 
       <div style="margin-top:1.25rem;">
@@ -117,7 +119,9 @@ const reflections = [
     <section id="analysis" style="margin-bottom:1rem;">
       <h2>Summary of Analysis</h2>
 
-      <p>During analysis, three elevator configurations were compared:</p>
+      <p>
+        Three elevator configurations were tested and compared:
+      </p>
 
       <ul>
         <li>Capacity = 15, floorTicks = 5, doorTicks = 2, passPerTick = 3</li>
@@ -126,18 +130,15 @@ const reflections = [
       </ul>
 
       <p>
-        We evaluated completion rate, average wait time, average total time,
-        weighted passenger travel time, ride time per floor, and standard deviation metrics.
+        The evaluation focused on completion rate, average wait time, total travel time, weighted passenger time, ride time per floor, and variability in performance.
       </p>
 
       <p>
-        All three elevators achieved excellent completion rates, but
-        Configuration 3 consistently provided the fastest service and most reliable passenger experience.
+        While all three configurations performed well overall, Configuration 3 consistently delivered the fastest and most reliable passenger experience.
       </p>
 
       <p>
-        Although Configuration 3 had the smallest capacity, its faster movement
-        and higher throughput outweighed the larger designs.
+        Even though it had the smallest capacity, its faster movement and higher throughput made it more efficient than the larger alternatives.
       </p>
     </section>
 
@@ -146,11 +147,11 @@ const reflections = [
       <h2>Key Learnings</h2>
 
       <ul>
-        <li>Finite state machines provide a structured framework for embedded control systems.</li>
-        <li>Data-driven analysis is essential when comparing competing designs.</li>
-        <li>Smaller-capacity systems can outperform larger systems when optimized for throughput.</li>
-        <li>User-facing metrics such as wait time and consistency are critical indicators of quality.</li>
-        <li>Simulation is a valuable engineering tool for evaluating designs before deployment.</li>
+        <li>Finite state machines are a reliable way to structure embedded control systems.</li>
+        <li>Data-driven comparison is essential when evaluating design tradeoffs.</li>
+        <li>Smaller systems can outperform larger ones when optimized for flow and timing.</li>
+        <li>User-focused metrics like wait time and consistency matter just as much as raw capacity.</li>
+        <li>Simulation is a powerful way to test and refine system designs before implementation.</li>
       </ul>
     </section>
 
