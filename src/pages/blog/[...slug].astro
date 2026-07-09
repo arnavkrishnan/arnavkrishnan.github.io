@@ -1,0 +1,70 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog'))
+    .filter((p) => !p.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      // newer = previous in list (list is newest-first)
+      newer: i > 0 ? posts[i - 1] : null,
+      older: i < posts.length - 1 ? posts[i + 1] : null,
+    },
+  }));
+}
+
+const base = '';
+const { post, newer, older } = Astro.props;
+const { Content } = await render(post);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+---
+<BlogLayout title={`${post.data.title} — What's New`} base={base} activeId={post.id}>
+  <h1>{post.data.title}</h1>
+  <p class="post-meta">
+    {fmt(post.data.date)}
+    {post.data.tags.length > 0 && (
+      <span class="post-tags">
+        {post.data.tags.map((tag) => (
+          <a class="tag" href={`${base}/blog/tags/${tag.toLowerCase()}`}>{tag}</a>
+        ))}
+      </span>
+    )}
+  </p>
+
+  <Content />
+
+  <hr style="margin-top:2.5rem;" />
+  <nav class="post-nav">
+    <span>
+      {older && <a href={`${base}/blog/${older.id}`}>&larr; {older.data.title}</a>}
+    </span>
+    <span>
+      {newer && <a href={`${base}/blog/${newer.id}`}>{newer.data.title} &rarr;</a>}
+    </span>
+  </nav>
+
+  <style>
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+    .post-nav span {
+      max-width: 48%;
+    }
+  </style>
+</BlogLayout>

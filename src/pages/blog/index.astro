@@ -1,0 +1,76 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { getCollection } from 'astro:content';
+
+const base = '';
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+---
+<BlogLayout title="What's New" base={base}>
+  <h1>What&rsquo;s New</h1>
+  <p class="post-meta">ad hoc notes &amp; updates &mdash; Arnav Krishnan.</p>
+
+  <p>
+    A running collection of short notes: things I&rsquo;m thinking about, working on,
+    or have just figured out. No particular schedule or scope. Pick an entry to start
+    reading.
+  </p>
+
+  {allTags.length > 0 && (
+    <p class="tag-cloud">
+      Tags:
+      {allTags.map((tag) => (
+        <a class="tag" href={`${base}/blog/tags/${tag.toLowerCase()}`}>{tag}</a>
+      ))}
+    </p>
+  )}
+
+  <h2>All posts</h2>
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li>
+        <a href={`${base}/blog/${post.id}`}>{post.data.title}</a>
+        <span class="date"> &mdash; {fmt(post.data.date)}</span>
+        {post.data.tags.map((tag) => (
+          <a class="tag" href={`${base}/blog/tags/${tag.toLowerCase()}`}>{tag}</a>
+        ))}
+        {post.data.description && <div class="desc">{post.data.description}</div>}
+      </li>
+    ))}
+  </ul>
+
+  <style>
+    .tag-cloud {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .post-list {
+      list-style: none;
+      padding: 0;
+    }
+    .post-list li {
+      margin-bottom: 1rem;
+    }
+    .post-list .date {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .post-list .desc {
+      color: #444;
+      font-size: 0.9rem;
+      margin-top: 0.15rem;
+    }
+  </style>
+</BlogLayout>

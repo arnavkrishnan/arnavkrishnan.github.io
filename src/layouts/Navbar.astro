@@ -7,6 +7,7 @@ function isActive(path: string) {
 ---
 <nav>
   <a href={`${base}/`} style={isActive('/')}>Home</a>
+  <a href={`${base}/blog`} style={currentPath.startsWith(`${base}/blog`) ? 'font-weight: bold; text-decoration: underline;' : ''}>Blog</a>
 </nav>
 <hr />
 

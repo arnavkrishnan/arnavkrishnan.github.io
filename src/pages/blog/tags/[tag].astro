@@ -1,0 +1,74 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
+  const tags = new Map<string, string>(); // lowercase slug -> display label
+
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      if (!tags.has(tag.toLowerCase())) tags.set(tag.toLowerCase(), tag);
+    }
+  }
+
+  return [...tags.entries()].map(([slug, label]) => ({
+    params: { tag: slug },
+    props: {
+      label,
+      posts: posts
+        .filter((p) => p.data.tags.some((t) => t.toLowerCase() === slug))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const base = '';
+const { label, posts } = Astro.props;
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+---
+<BlogLayout title={`${label} — What's New`} base={base}>
+  <h1>Posts tagged &ldquo;{label}&rdquo;</h1>
+  <p class="post-meta">
+    <a href={`${base}/blog`}>&larr; All posts</a>
+  </p>
+
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li>
+        <a href={`${base}/blog/${post.id}`}>{post.data.title}</a>
+        <span class="date"> &mdash; {fmt(post.data.date)}</span>
+        {post.data.tags.map((t) => (
+          <a class="tag" href={`${base}/blog/tags/${t.toLowerCase()}`}>{t}</a>
+        ))}
+        {post.data.description && <div class="desc">{post.data.description}</div>}
+      </li>
+    ))}
+  </ul>
+
+  <style>
+    .post-list {
+      list-style: none;
+      padding: 0;
+    }
+    .post-list li {
+      margin-bottom: 1rem;
+    }
+    .post-list .date {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .post-list .desc {
+      color: #444;
+      font-size: 0.9rem;
+      margin-top: 0.15rem;
+    }
+  </style>
+</BlogLayout>

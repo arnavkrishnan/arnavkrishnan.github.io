@@ -1,0 +1,105 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import BlogSidebar from '../components/BlogSidebar.astro';
+import 'katex/dist/katex.min.css';
+
+const { title, base = '', activeId } = Astro.props;
+---
+<BaseLayout title={title} base={base}>
+  <div class="blog-wrap">
+    <BlogSidebar base={base} activeId={activeId} />
+    <article class="blog-main">
+      <slot />
+    </article>
+  </div>
+
+  <style>
+    .blog-wrap {
+      display: flex;
+      gap: 2.5rem;
+      max-width: 1100px;
+      align-items: flex-start;
+    }
+    .blog-sidebar {
+      flex: 0 0 220px;
+      position: sticky;
+      top: 1rem;
+      border-right: 1px solid #ddd;
+      padding-right: 1.5rem;
+    }
+    .blog-main {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: 720px;
+    }
+    /* Post typography */
+    .blog-main :global(h1) {
+      margin-bottom: 0.15rem;
+    }
+    .blog-main :global(.post-meta) {
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 0;
+      margin-bottom: 1.75rem;
+    }
+    /* Tag pills */
+    :global(.tag) {
+      display: inline-block;
+      font-size: 0.75rem;
+      line-height: 1;
+      padding: 0.2rem 0.45rem;
+      margin-left: 0.35rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      color: #444;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    :global(.tag:hover) {
+      border-color: #888;
+      background: #f2f2f2;
+      text-decoration: none;
+    }
+    .blog-main :global(.post-tags) {
+      margin-left: 0.25rem;
+    }
+    .blog-main :global(p),
+    .blog-main :global(li) {
+      line-height: 1.6;
+    }
+    .blog-main :global(pre) {
+      overflow-x: auto;
+      padding: 0.75rem 1rem;
+      background: #f6f6f6;
+      border: 1px solid #e2e2e2;
+    }
+    .blog-main :global(blockquote) {
+      margin-left: 0;
+      padding-left: 1rem;
+      border-left: 3px solid #ddd;
+      color: #444;
+    }
+    /* Let display math scroll instead of overflowing */
+    .blog-main :global(.katex-display) {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.25rem 0;
+    }
+
+    @media (max-width: 720px) {
+      .blog-wrap {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .blog-sidebar {
+        flex: 1 1 auto;
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        padding-right: 0;
+        padding-bottom: 1rem;
+        width: 100%;
+      }
+    }
+  </style>
+</BaseLayout>
