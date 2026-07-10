@@ -20,17 +20,56 @@ const fmt = (d: Date) =>
     <a href={`${base}/blog`}>What&rsquo;s New</a>
   </h2>
   <p class="blog-sidebar-tagline">Ad hoc notes &amp; updates</p>
+  <div class="blog-sidebar-search">
+    <input
+      type="search"
+      id="blog-search-input"
+      placeholder="Search posts&hellip;"
+      aria-label="Search posts by keyword"
+    />
+  </div>
   <nav>
-    <ul>
+    <ul id="blog-search-list">
       {posts.map((post) => (
-        <li class={post.id === activeId ? 'active' : ''}>
+        <li
+          class={post.id === activeId ? 'active' : ''}
+          data-search={[post.data.title, post.data.description, ...post.data.tags]
+            .filter(Boolean)
+            .join(' ')
+            .toLowerCase()}
+        >
           <a href={`${base}/blog/${post.id}`}>{post.data.title}</a>
           <div class="date">{fmt(post.data.date)}</div>
         </li>
       ))}
     </ul>
+    <p id="blog-search-empty" class="blog-search-empty" hidden>No posts match your search.</p>
   </nav>
 </aside>
+
+<script>
+  const input = document.getElementById('blog-search-input') as HTMLInputElement | null;
+  const list = document.getElementById('blog-search-list');
+  const empty = document.getElementById('blog-search-empty');
+
+  if (input && list) {
+    const items = Array.from(list.querySelectorAll('li'));
+
+    input.addEventListener('input', () => {
+      const query = input.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      for (const item of items) {
+        const haystack = item.getAttribute('data-search') ?? '';
+        const matches = query === '' || haystack.includes(query);
+        (item as HTMLElement).hidden = !matches;
+        if (matches) visibleCount++;
+      }
+
+      if (empty) empty.hidden = visibleCount !== 0;
+    });
+  }
+</script>
 
 <style>
   .blog-sidebar {
@@ -49,6 +88,27 @@ const fmt = (d: Date) =>
   }
   .blog-sidebar-tagline {
     margin: 0 0 1rem;
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+  }
+  .blog-sidebar-search {
+    margin-bottom: 1rem;
+  }
+  .blog-sidebar-search input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+  }
+  .blog-sidebar-search input:focus {
+    outline: none;
+    border-color: #888;
+  }
+  .blog-search-empty {
     font-size: 0.85rem;
     color: #666;
     font-style: italic;

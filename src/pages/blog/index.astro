@@ -1,6 +1,6 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 const base = '';
 
@@ -8,67 +8,40 @@ const posts = (await getCollection('blog'))
   .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const allTags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+const latest = posts[0];
+const { Content } = latest ? await render(latest) : { Content: null };
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-US', {
+    weekday: 'long',
     year: 'numeric',
     month: 'long',
     day: 'numeric',
     timeZone: 'UTC',
   });
 ---
-<BlogLayout title="What's New" base={base}>
-  <h1>What&rsquo;s New</h1>
-  <p class="post-meta">Ad hoc notes &amp; updates</p>
+<BlogLayout title="What's New" base={base} activeId={latest?.id}>
+  {latest ? (
+    <>
+      <h1>{latest.data.title}</h1>
+      <p class="post-meta">
+        {fmt(latest.data.date)}
+        {latest.data.tags.length > 0 && (
+          <span class="post-tags">
+            {latest.data.tags.map((tag) => (
+              <a class="tag" href={`${base}/blog/tags/${tag.toLowerCase()}`}>{tag}</a>
+            ))}
+          </span>
+        )}
+      </p>
 
-  <p>
-    A running collection of short notes, with no particular rhyme or reason.
-  </p>
-
-  {allTags.length > 0 && (
-    <p class="tag-cloud">
-      Tags:
-      {allTags.map((tag) => (
-        <a class="tag" href={`${base}/blog/tags/${tag.toLowerCase()}`}>{tag}</a>
-      ))}
-    </p>
+      <Content />
+    </>
+  ) : (
+    <>
+      <h1>What&rsquo;s New</h1>
+      <p class="post-meta">Ad hoc notes &amp; updates</p>
+      <p>No posts yet.</p>
+    </>
   )}
-
-  <h2>All posts</h2>
-  <ul class="post-list">
-    {posts.map((post) => (
-      <li>
-        <a href={`${base}/blog/${post.id}`}>{post.data.title}</a>
-        <span class="date"> &mdash; {fmt(post.data.date)}</span>
-        {post.data.tags.map((tag) => (
-          <a class="tag" href={`${base}/blog/tags/${tag.toLowerCase()}`}>{tag}</a>
-        ))}
-        {post.data.description && <div class="desc">{post.data.description}</div>}
-      </li>
-    ))}
-  </ul>
-
-  <style>
-    .tag-cloud {
-      font-size: 0.9rem;
-      color: #666;
-    }
-    .post-list {
-      list-style: none;
-      padding: 0;
-    }
-    .post-list li {
-      margin-bottom: 1rem;
-    }
-    .post-list .date {
-      color: #666;
-      font-size: 0.9rem;
-    }
-    .post-list .desc {
-      color: #444;
-      font-size: 0.9rem;
-      margin-top: 0.15rem;
-    }
-  </style>
 </BlogLayout>
