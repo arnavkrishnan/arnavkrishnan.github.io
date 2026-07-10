@@ -19,11 +19,20 @@ const fmt = (d: Date) =>
     day: 'numeric',
     timeZone: 'UTC',
   });
+const older = posts[1] ?? null;
 ---
 <BlogLayout title="What's New" base={base} activeId={latest?.id}>
+  <h1>What&rsquo;s New</h1>
+  <p class="post-meta">Ad hoc notes &amp; updates</p>
+  <p>
+    A running collection of short notes, with no particular rhyme or reason.
+  </p>
+
+  <hr />
+
   {latest ? (
     <>
-      <h1>{latest.data.title}</h1>
+      <h2>{latest.data.title}</h2>
       <p class="post-meta">
         {fmt(latest.data.date)}
         {latest.data.tags.length > 0 && (
@@ -36,12 +45,28 @@ const fmt = (d: Date) =>
       </p>
 
       <Content />
+
+      <hr style="margin-top:2.5rem;" />
+      <nav class="post-nav">
+        <span>
+          {older && <a href={`${base}/blog/${older.id}`}>&larr; {older.data.title}</a>}
+        </span>
+        <span></span>
+      </nav>
     </>
   ) : (
-    <>
-      <h1>What&rsquo;s New</h1>
-      <p class="post-meta">Ad hoc notes &amp; updates</p>
-      <p>No posts yet.</p>
-    </>
+    <p>No posts yet.</p>
   )}
+
+  <style>
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+    .post-nav span {
+      max-width: 48%;
+    }
+  </style>
 </BlogLayout>
