@@ -119,7 +119,8 @@ export default function ZeroForcingFigure({
   const blackNow = snaps[round] || new Set();
   const blackPrev = round > 0 ? snaps[round - 1] : new Set();
   const done = blackNow.size === nodes.length;
-  const fresh = (id) => round > 0 && blackNow.has(id) && !blackPrev.has(id);
+  const fresh = (id) =>
+    round > 0 && round < snaps.length - 1 && blackNow.has(id) && !blackPrev.has(id);
 
   const edges = useMemo(() => {
     const seen = new Set();
