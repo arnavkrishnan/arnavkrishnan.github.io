@@ -1,6 +1,7 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { renderTitle, stripMath } from '../../lib/mathTitle';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog'))
@@ -31,8 +32,8 @@ const fmt = (d: Date) =>
     timeZone: 'UTC',
   });
 ---
-<BlogLayout title={`${post.data.title} — What's New`} base={base} activeId={post.id}>
-  <h1>{post.data.title}</h1>
+<BlogLayout title={`${stripMath(post.data.title)} — What's New`} base={base} activeId={post.id}>
+  <h1 set:html={renderTitle(post.data.title)}></h1>
   <p class="post-meta">
     {fmt(post.data.date)}
     {post.data.tags.length > 0 && (
@@ -49,10 +50,10 @@ const fmt = (d: Date) =>
   <hr style="margin-top:2.5rem;" />
   <nav class="post-nav">
     <span>
-      {older && <a href={`${base}/blog/${older.id}`}>&larr; {older.data.title}</a>}
+      {older && <a href={`${base}/blog/${older.id}`}>&larr; <span set:html={renderTitle(older.data.title)} /></a>}
     </span>
     <span>
-      {newer && <a href={`${base}/blog/${newer.id}`}>{newer.data.title} &rarr;</a>}
+      {newer && <a href={`${base}/blog/${newer.id}`}><span set:html={renderTitle(newer.data.title)} /> &rarr;</a>}
     </span>
   </nav>
 

@@ -1,0 +1,260 @@
+---
+title: "Lighting Up a Graph: the surprise hiding in $P(12,3)$"
+date: 2026-07-12
+description: "A game where one spark spreads across a graph, and a family of graphs that refuses to behave."
+tags: ["Math"]
+---
+
+import ZeroForcingFigure from '../../components/ZeroForcingFigure.jsx';
+
+Here is a little game. It has exactly one rule, and yet if you play it long
+enough you run straight into a genuinely open research question. Let me show you.
+
+## One rule
+
+Take any graph — some dots (call them *vertices*) with some lines between them
+(*edges*). Color a few of the dots black; leave the rest white. Now apply the
+only rule of the game, over and over:
+
+> **The rule.** If a black vertex has *exactly one* white neighbor, it forces
+> that neighbor to turn black.
+
+That's it. The word "exactly" is doing all the work. A black vertex with two
+white neighbors is stuck — it can't decide which one to color, so it colors
+neither. But a black vertex with a single white neighbor has no ambiguity, and
+that lone white neighbor flips.
+
+<figure style="margin:1.75rem auto; text-align:center; max-width:440px;">
+<svg viewBox="0 0 440 120" style="width:100%; height:auto;">
+  <line x1="60" y1="60" x2="140" y2="60" stroke="#bbb" stroke-width="1.6"/>
+  <line x1="140" y1="60" x2="220" y2="60" stroke="#bbb" stroke-width="1.6"/>
+  <line x1="300" y1="60" x2="380" y2="60" stroke="#bbb" stroke-width="1.6"/>
+  <circle cx="60" cy="60" r="9" fill="#111"/>
+  <circle cx="140" cy="60" r="9" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <circle cx="220" cy="60" r="9" fill="#fff" stroke="#333" stroke-width="1.6"/>
+  <text x="60" y="92" font-size="12" text-anchor="middle" fill="#777">black</text>
+  <text x="140" y="92" font-size="12" text-anchor="middle" fill="#c0392b">forced next →</text>
+  <circle cx="300" cy="60" r="9" fill="#111"/>
+  <circle cx="380" cy="60" r="9" fill="#111"/>
+</svg>
+<figcaption style="font-size:0.85rem; color:#555; max-width:400px; margin:0.5rem auto 0; line-height:1.5;">
+The black dot on the left sees one white neighbor, so it forces it. The black
+dot on the right sees only black — it does nothing.
+</figcaption>
+</figure>
+
+You keep applying the rule until nothing more can happen. If, when the dust
+settles, the *entire* graph is black, then your original black set was powerful
+enough to "light up" everything. We call such a starting set a **zero forcing
+set**, and the game is called **zero forcing**. (The name comes from linear
+algebra, where black vertices correspond to known zeros propagating through a
+matrix — but you don't need any of that to play.)
+
+The natural question almost asks itself:
+
+> **How *few* black dots do you need to guarantee the whole graph lights up?**
+
+That smallest number is the **zero forcing number** of the graph, written
+$Z(G)$. Small $Z(G)$ means the graph is easy to ignite from a tiny spark; large
+$Z(G)$ means it stubbornly resists.
+
+## A graph family with personality
+
+To have something concrete to play with, meet the **generalized Petersen
+graphs** $P(n,k)$. Each one is built from two rings of $n$ dots:
+
+- an **outer ring** $u_0, u_1, \dots, u_{n-1}$ connected in a cycle,
+- an **inner ring** $v_0, v_1, \dots, v_{n-1}$,
+- a **spoke** joining each $u_i$ to its partner $v_i$,
+- and inner edges that skip by $k$: each $v_i$ connects to $v_{i+k}$.
+
+Every vertex has exactly three edges, which makes these graphs pleasingly
+uniform to look at. The classic Petersen graph is $P(5,2)$; the one we care
+about today is $P(12,3)$, drawn below. Go ahead and click the dots — each click
+toggles a vertex black or white, and the graph immediately plays out the rule
+from whatever you've selected.
+
+<ZeroForcingFigure
+  client:visible
+  n={12}
+  k={3}
+  start={["u0", "u3", "u6", "u9"]}
+  editable={true}
+  height={380}
+  caption="P(12,3): outer ring, inner ring, spokes, and inner edges that skip by three. Click vertices to experiment, then press Play to watch the rule spread."
+/>
+
+Play with it for a minute. You'll notice how touchy the rule is — a set that
+looks generous can fizzle out immediately because every black dot has *two*
+white neighbors and nobody can force. Getting a cascade going is a bit of an
+art.
+
+## Seven sparks are enough
+
+So what is $Z(P(12,3))$? Here is the surprising part, and the reason I went down
+this rabbit hole. Take the **seven** outer vertices $u_0, u_1, \dots, u_6$ — just
+a contiguous arc along the outer ring — and light them up. Watch what happens.
+
+<ZeroForcingFigure
+  client:visible
+  n={12}
+  k={3}
+  start={["u0", "u1", "u2", "u3", "u4", "u5", "u6"]}
+  editable={false}
+  height={380}
+  caption="Seven consecutive outer vertices force all of P(12,3). Press Play, or step through round by round; freshly forced vertices flash red."
+/>
+
+Step through it slowly and you can watch the logic. In the first round, the
+*interior* of the arc — $u_1$ through $u_5$ — each has two black neighbors along
+the ring and a single white spoke below, so all five spokes fire and light up
+$v_1,\dots,v_5$. The endpoints $u_0$ and $u_6$ still have two white neighbors
+apiece, so they wait.
+
+Then the skip-by-three edges take over. A vertex like $v_4$ now has both of its
+inner neighbors sorted out except one, so it reaches across the middle and
+forces $v_7$. A few more of these, the newly-lit inner vertices push back up
+their own spokes, and the whole thing unzips. After five rounds every one of the
+$24$ vertices is black. Seven sparks, entire graph.
+
+Could you do it with **six**? You can check by hand for a while and keep
+failing, but the honest way to be sure is to try *all* of them. There are
+$\binom{24}{6} = 134{,}596$ six-vertex sets, a number small enough to hand to a
+computer, which runs the rule on every single one. None of them lights up the
+whole graph. So six is never enough, seven always can be, and
+
+$$
+Z(P(12,3)) = 7.
+$$
+
+## The family misbehaves
+
+Now the fun begins, because the obvious guess — "bigger graph, harder to light,
+bigger number" — is just wrong. Here is $Z(P(n,3))$ as $n$ grows, every value
+checked exhaustively:
+
+<div style="overflow-x:auto; margin:1.5rem 0;">
+<table style="border-collapse:collapse; margin:0 auto; font-size:0.9rem; min-width:520px;">
+<thead>
+<tr>
+<th style="text-align:left; padding:0.35rem 0.6rem; border-bottom:2px solid #333;">$n$</th>
+<th style="padding:0.35rem 0.55rem; border-bottom:2px solid #333;">7</th>
+<th style="padding:0.35rem 0.55rem; border-bottom:2px solid #333;">8</th>
+<th style="padding:0.35rem 0.55rem; border-bottom:2px solid #333;">9</th>
+<th style="padding:0.35rem 0.55rem; border-bottom:2px solid #333;">10</th>
+<th style="padding:0.35rem 0.55rem; border-bottom:2px solid #333; background:#fbeaea;">11</th>
+<th style="padding:0.35rem 0.55rem; border-bottom:2px solid #333; background:#fbeaea;">12</th>
+<th style="padding:0.35rem 0.55rem; border-bottom:2px solid #333;">13</th>
+<th style="padding:0.35rem 0.55rem; border-bottom:2px solid #333;">14</th>
+<th style="padding:0.35rem 0.55rem; border-bottom:2px solid #333;">15</th>
+<th style="padding:0.35rem 0.55rem; border-bottom:2px solid #333;">16</th>
+<th style="padding:0.35rem 0.55rem; border-bottom:2px solid #333;">…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left; padding:0.35rem 0.6rem;">$Z(P(n,3))$</td>
+<td style="text-align:center; padding:0.35rem 0.55rem;">6</td>
+<td style="text-align:center; padding:0.35rem 0.55rem;">6</td>
+<td style="text-align:center; padding:0.35rem 0.55rem;">6</td>
+<td style="text-align:center; padding:0.35rem 0.55rem;">8</td>
+<td style="text-align:center; padding:0.35rem 0.55rem; background:#fbeaea; font-weight:bold;">7</td>
+<td style="text-align:center; padding:0.35rem 0.55rem; background:#fbeaea; font-weight:bold;">7</td>
+<td style="text-align:center; padding:0.35rem 0.55rem;">8</td>
+<td style="text-align:center; padding:0.35rem 0.55rem;">8</td>
+<td style="text-align:center; padding:0.35rem 0.55rem;">8</td>
+<td style="text-align:center; padding:0.35rem 0.55rem;">8</td>
+<td style="text-align:center; padding:0.35rem 0.55rem;">8</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+Look at that sequence: $6, 6, 6, 8, 7, 7, 8, 8, 8, \dots$ It goes *up* to $8$ at
+$n=10$, then back *down* to $7$ for $n=11$ and $n=12$, then up to $8$ again and
+stays there. The number is not increasing, and it isn't even bumpy in a tidy
+way — it has a little dip carved out at exactly two values of $n$. Those two
+graphs, $P(11,3)$ and $P(12,3)$, are somehow easier to ignite than their smaller
+*and* their larger siblings.
+
+Why those two and nobody else? It comes back to our seven-vertex arc. That same
+"seven in a row" trick that lit up $P(12,3)$ turns out to force $P(11,3)$ as
+well — but for **no other** $n$. Watch it try, and stall, on $P(13,3)$:
+
+<ZeroForcingFigure
+  client:visible
+  n={13}
+  k={3}
+  start={["u0", "u1", "u2", "u3", "u4", "u5", "u6"]}
+  editable={false}
+  height={380}
+  caption="The same seven-vertex arc on P(13,3) gets going, then jams — it lights only 18 of the 26 vertices and can go no further. Eight white dots survive."
+/>
+
+The cascade starts identically, but with one more vertex around the ring the
+skip-by-three edges no longer line up the way they need to, and the whole thing
+grinds to a halt with a ring of survivors. The arc is a key that happens to fit
+only two locks.
+
+## But eight *always* works
+
+The dip is a small-graph accident. Once you step back and ask what happens for
+*large* $n$, the graphs settle down and behave. In fact eight vertices are always
+enough, no matter how big the graph gets:
+
+<ZeroForcingFigure
+  client:visible
+  n={16}
+  k={3}
+  start={["u0", "u1", "u2", "u3", "u4", "u5", "u6", "u7"]}
+  editable={false}
+  height={380}
+  caption="Eight consecutive outer vertices force P(16,3) — and the same argument works for every P(n,3)."
+/>
+
+And here you don't need a computer at all — just an idea. Light up eight
+consecutive outer vertices, $u_0$ through $u_7$. The same interior-spoke logic as
+before gets things moving, and a short chain of forces lets the arc extend itself
+by one: vertex $u_8$ turns black. But if $u_8$ can be forced from $u_0,\dots,u_7$,
+then by the perfect rotational symmetry of the graph — sliding every label up by
+one is a symmetry of $P(n,3)$ — the *shifted* arc $u_1,\dots,u_8$ must force
+$u_9$, and $u_2,\dots,u_9$ must force $u_{10}$, and so on all the way around the
+ring. So the entire outer cycle lights up. And once every outer vertex is black,
+each one stares down at a single white spoke and fires it, filling the inner ring
+too.
+
+That argument never once looked at a specific value of $n$. It gives, cleanly and
+for *every* $n \ge 9$,
+
+$$
+Z(P(n,3)) \le 8.
+$$
+
+## Where it gets stuck
+
+So we know a lot. We know the exact value of $Z(P(n,3))$ for every $n$ up to $20$;
+we know it dips to $7$ at $n=11,12$; and we know eight vertices always suffice.
+Staring at the table, the pattern past the dip is irresistible:
+
+$$
+Z(P(n,3)) = 8 \quad \text{for all } n \ge 13.
+$$
+
+The upper half of that — that eight is always *enough* — we just proved for all
+$n$. What's missing is the lower half: proving that seven is never enough once
+$n \ge 13$. Exhaustive search confirms it comfortably through $n = 20$, but a
+table, however long, is not a proof. Somewhere out at $n = 4000$ could lurk
+another lucky key, another arc that fits, another dip. The little misbehavior at
+$n = 11, 12$ is precisely the reason we can't just wave the pattern through: this
+family has already shown, once, that it is willing to surprise us.
+
+Closing that gap means ruling out *every* clever seven-vertex configuration, all
+at once, uniformly in $n$ — the kind of argument that doesn't come from computing
+harder but from understanding *why* seven sparks can't quite reach around a large
+ring. That's the open problem, and it's the part I find genuinely fun to think
+about.
+
+If you want to poke at any of this yourself — build your own graphs, drop sparks
+wherever you like, and watch them spread — I put together a little
+[zero forcing lab](/zero-forcing) to play in. It's a good way to develop a feel
+for how touchy that one rule really is.

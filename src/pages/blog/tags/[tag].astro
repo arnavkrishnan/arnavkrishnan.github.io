@@ -1,6 +1,7 @@
 ---
 import BlogLayout from '../../../layouts/BlogLayout.astro';
 import { getCollection } from 'astro:content';
+import { renderTitle } from '../../../lib/mathTitle';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
@@ -43,7 +44,7 @@ const fmt = (d: Date) =>
   <ul class="post-list">
     {posts.map((post) => (
       <li>
-        <a href={`${base}/blog/${post.id}`}>{post.data.title}</a>
+        <a href={`${base}/blog/${post.id}`} set:html={renderTitle(post.data.title)}></a>
         <span class="date"> &mdash; {fmt(post.data.date)}</span>
         {post.data.tags.map((t) => (
           <a class="tag" href={`${base}/blog/tags/${t.toLowerCase()}`}>{t}</a>

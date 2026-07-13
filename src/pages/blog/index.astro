@@ -1,6 +1,7 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { renderTitle } from '../../lib/mathTitle';
 
 const base = '';
 
@@ -32,7 +33,7 @@ const older = posts[1] ?? null;
 
   {latest ? (
     <>
-      <h2>{latest.data.title}</h2>
+      <h2 set:html={renderTitle(latest.data.title)}></h2>
       <p class="post-meta">
         {fmt(latest.data.date)}
         {latest.data.tags.length > 0 && (
@@ -49,7 +50,7 @@ const older = posts[1] ?? null;
       <hr style="margin-top:2.5rem;" />
       <nav class="post-nav">
         <span>
-          {older && <a href={`${base}/blog/${older.id}`}>&larr; {older.data.title}</a>}
+          {older && <a href={`${base}/blog/${older.id}`}>&larr; <span set:html={renderTitle(older.data.title)} /></a>}
         </span>
         <span></span>
       </nav>
