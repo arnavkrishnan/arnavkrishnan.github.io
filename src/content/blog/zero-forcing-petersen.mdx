@@ -1,25 +1,23 @@
 ---
-title: "Lighting Up a Graph: the surprise hiding in $P(12,3)$"
+title: "The zero forcing number of generalized Petersen graphs"
 date: 2026-07-12
-description: "A game where one spark spreads across a graph, and a family of graphs that refuses to behave."
+description: "Exact values of Z(P(n,3)), a uniform upper bound of 8, and a dip at n = 11, 12."
 tags: ["Math"]
 ---
 
 import ZeroForcingFigure from '../../components/ZeroForcingFigure.jsx';
 
-Let $G = (V,E)$ be a finite simple graph, $S \subseteq V$ colored black, $V \setminus S$ white.
+Let $G=(V,E)$ be a finite simple graph and $S \subseteq V$ black, $V\setminus S$ white.
 
 > **Color change rule.** A black vertex with exactly one white neighbor forces that neighbor black.
 
-Iterating until no force remains gives the closure $\mathrm{cl}(S)$. $S$ is a **zero forcing set** if $\mathrm{cl}(S) = V$, and $Z(G)$, the **zero forcing number**, is the minimum size of one. (Origin: minimum rank of graph-patterned symmetric matrices; irrelevant below.)
+Iterating to stability gives the closure $\mathrm{cl}(S)$. $S$ is a *zero forcing set* if $\mathrm{cl}(S)=V$; the *zero forcing number* $Z(G)$ is the least $|S|$ over such $S$.
 
-## The graph: $P(n,k)$
-
-The **generalized Petersen graph** $P(n,k)$ has vertex set
+The generalized Petersen graph $P(n,k)$ has
 $$
-V = \{u_0,\dots,u_{n-1}\} \cup \{v_0,\dots,v_{n-1}\},
+V=\{u_0,\dots,u_{n-1}\}\cup\{v_0,\dots,v_{n-1}\},
 $$
-outer cycle $u_i \sim u_{i+1}$, spokes $u_i \sim v_i$, inner edges $v_i \sim v_{i+k}$, indices mod $n$; $3$-regular on $2n$ vertices. $P(5,2)$ is the classic Petersen graph. Below, $P(12,3)$; click a vertex to toggle it.
+edges $u_i u_{i+1}$, $u_i v_i$, $v_i v_{i+k}$, indices mod $n$: cubic on $2n$ vertices, with $P(5,2)$ the Petersen graph. Fix $k=3$ throughout.
 
 <ZeroForcingFigure
   client:visible
@@ -28,12 +26,12 @@ outer cycle $u_i \sim u_{i+1}$, spokes $u_i \sim v_i$, inner edges $v_i \sim v_{
   start={["u0", "u3", "u6", "u9"]}
   editable={true}
   height={380}
-  caption="P(12,3): outer ring, inner ring, spokes, and inner edges that skip by three. Click vertices to experiment, then press Play to watch the rule spread."
+  caption="P(12,3). Click vertices to toggle, then Play."
 />
 
-## $Z(P(12,3)) = 7$
+## $Z(P(12,3))=7$
 
-Rashidi, Shajareh Poursalavati, and Tavakkoli (2020) claim $Z(P(n,3)) = 8$ for all $n \ge 12$. This is false at $n=12$: $Z(P(12,3)) = 7$, witnessed by $S = \{u_0,\dots,u_6\}$.
+Take $S=\{u_0,\dots,u_6\}$, indices mod $12$.
 
 <ZeroForcingFigure
   client:visible
@@ -42,31 +40,18 @@ Rashidi, Shajareh Poursalavati, and Tavakkoli (2020) claim $Z(P(n,3)) = 8$ for a
   start={["u0", "u1", "u2", "u3", "u4", "u5", "u6"]}
   editable={false}
   height={380}
-  caption="Seven consecutive outer vertices force all of P(12,3). Press Play, or step through round by round; freshly forced vertices flash red."
+  caption="Seven consecutive outer vertices force P(12,3)."
 />
 
-Indices mod $12$.
-
-**Round 1.** $i=1,\dots,5$: $u_i$ has black neighbors $u_{i-1},u_{i+1}$, white neighbor $v_i$, so $u_i \to v_i$. ($u_0,u_6$: two white neighbors, no force.)
-
-**Round 2.**
+For $1\le i\le 5$, $u_i$ has black neighbors $u_{i\pm1}$ and lone white neighbor $v_i$, so $u_i\to v_i$; $u_0$ and $u_6$ each still have two white neighbors. Then
 $$
-v_1 \to v_{10}, \quad v_2 \to v_{11}, \quad v_4 \to v_7, \quad v_5 \to v_8.
+v_1\to v_{10},\quad v_2\to v_{11},\quad v_4\to v_7,\quad v_5\to v_8
 $$
-($v_3$: inner neighbors $v_0,v_6$ both white, no force.)
+($v_3$ is blocked, both of $v_0,v_6$ white), after which $v_7,v_8,v_{10},v_{11}$ have both inner neighbors black and force their spokes $u_7,u_8,u_{10},u_{11}$. Now $u_0\to v_0$, $u_6\to v_6$, $u_8\to u_9$, and finally $v_6\to v_9$. All $24$ vertices are black, so $Z(P(12,3))\le 7$.
 
-**Round 3.** $v_7,v_8,v_{10},v_{11}$ have both inner neighbors black, so force their spokes: $v_7 \to u_7$, $v_8 \to u_8$, $v_{10}\to u_{10}$, $v_{11}\to u_{11}$.
+For the lower bound, none of the $\binom{24}{6}=134{,}596$ six-subsets forces (exhaustive, two independent implementations). Hence $Z(P(12,3))=7$.
 
-**Round 4.** $u_0 \to v_0$, $u_6 \to v_6$, $u_8 \to u_9$.
-
-**Round 5.** $v_6 \to v_9$, the last white vertex.
-
-$24$ of $24$ black, so $Z(P(12,3)) \le 7$. Lower bound: $\binom{24}{6} = 134{,}596$ six-vertex subsets, exhaustive search (two independent implementations), none forces. Hence
-$$
-Z(P(12,3)) = 7.
-$$
-
-## $Z(P(n,3))$ is not monotone
+## Non-monotonicity
 
 $$
 \begin{array}{c|cccccccccc}
@@ -76,9 +61,7 @@ Z(P(n,3)) & 6 & 6 & 6 & 8 & 7 & 7 & 8 & 8 & 8 & 8
 \end{array}
 $$
 
-Every entry exhaustive. $8$ at $n=10$, $7$ at $n=11,12$, $8$ from $n=13$ on — a two-value dip.
-
-$\{u_0,\dots,u_6\}$ forces $P(11,3)$ and $P(12,3)$, no other $P(n,3)$ for $10 \le n \le 300$ (verified computationally). On $P(13,3)$:
+Each entry is exhaustive. The value is $8$ at $n=10$, drops to $7$ at $n=11,12$, and returns to $8$ from $n=13$ on. Correspondingly, $\{u_0,\dots,u_6\}$ forces $P(n,3)$ only for $n=11,12$ in the range $10\le n\le 300$: on $P(13,3)$ the same arc stalls at $18$ of $26$ vertices, the skip-by-three edges no longer closing up around the ring.
 
 <ZeroForcingFigure
   client:visible
@@ -87,14 +70,12 @@ $\{u_0,\dots,u_6\}$ forces $P(11,3)$ and $P(12,3)$, no other $P(n,3)$ for $10 \l
   start={["u0", "u1", "u2", "u3", "u4", "u5", "u6"]}
   editable={false}
   height={380}
-  caption="The same seven-vertex arc on P(13,3) gets going, then jams — it lights only 18 of the 26 vertices and can go no further. Eight white dots survive."
+  caption="The same arc on P(13,3) jams, leaving eight white vertices."
 />
 
-One extra vertex around the ring and the skip-by-three edges no longer close up; the process halts with a ring of survivors.
+## $Z(P(n,3))\le 8$ for $n\ge 9$
 
-## $Z(P(n,3)) \le 8$ for all $n \ge 9$
-
-No computer needed here — the eight-vertex witness plus symmetry.
+Two properties of $\mathrm{cl}$ are immediate: monotonicity, $A\subseteq B \implies \mathrm{cl}(A)\subseteq\mathrm{cl}(B)$, and equivariance, $\mathrm{cl}(\varphi(A))=\varphi(\mathrm{cl}(A))$ for any automorphism $\varphi$. Let $\rho: u_i\mapsto u_{i+1},\, v_i\mapsto v_{i+1}$, an automorphism of $P(n,3)$, and $S=\{u_0,\dots,u_7\}$.
 
 <ZeroForcingFigure
   client:visible
@@ -103,27 +84,20 @@ No computer needed here — the eight-vertex witness plus symmetry.
   start={["u0", "u1", "u2", "u3", "u4", "u5", "u6", "u7"]}
   editable={false}
   height={380}
-  caption="Eight consecutive outer vertices force P(16,3) — and the same argument works for every P(n,3)."
+  caption="Eight consecutive outer vertices force P(16,3), and every P(n,3)."
 />
 
-Two facts about $\mathrm{cl}$, immediate from the rule: monotonicity ($A \subseteq B \implies \mathrm{cl}(A) \subseteq \mathrm{cl}(B)$) and equivariance ($\mathrm{cl}(\varphi(A)) = \varphi(\mathrm{cl}(A))$ for automorphism $\varphi$). The rotation $\rho: u_i \mapsto u_{i+1}, v_i \mapsto v_{i+1} \pmod n$ is an automorphism of $P(n,3)$. Let $S = \{u_0,\dots,u_7\}$.
+First, $u_8\in\mathrm{cl}(S)$: force $u_i\to v_i$ for $1\le i\le 6$, then $v_4\to v_7$, then $u_7\to u_8$. Every index used lies in $\{0,\dots,8\}$ and so is distinct mod $n$ for $n\ge 9$, making each step valid as written.
 
-*Step 1: $u_8 \in \mathrm{cl}(S)$.* $u_i \to v_i$ for $i=1,\dots,6$; then $v_4 \to v_7$; then $u_7 \to u_8$. All indices in $\{0,\dots,8\}$, distinct mod $n$ for $n \ge 9$, so each step holds as written.
+Next, $\mathrm{cl}(S)$ is $\rho$-invariant: $\rho(S)=\{u_1,\dots,u_8\}\subseteq\mathrm{cl}(S)$, so $\rho(\mathrm{cl}(S))=\mathrm{cl}(\rho(S))\subseteq\mathrm{cl}(S)$, with equality since $\rho$ is a bijection of a finite set.
 
-*Step 2: $\mathrm{cl}(S)$ is $\rho$-invariant.* $\rho(S) = \{u_1,\dots,u_8\} \subseteq \mathrm{cl}(S)$, so $\rho(\mathrm{cl}(S)) = \mathrm{cl}(\rho(S)) \subseteq \mathrm{cl}(\mathrm{cl}(S)) = \mathrm{cl}(S)$; $\rho$ a bijection on a finite set gives equality.
-
-*Step 3: $\mathrm{cl}(S) = V$.* $\mathrm{cl}(S) \ni u_0$ and is $\rho$-invariant, and $\rho$'s orbit of $u_0$ is the whole outer cycle, so every $u_i \in \mathrm{cl}(S)$. A white $v_i$ would be $u_i$'s sole white neighbor, forcing it — contradiction. So $\mathrm{cl}(S) = V$.
-
+Finally, $u_0\in\mathrm{cl}(S)$ and its $\rho$-orbit is the whole outer cycle, so $u_i\in\mathrm{cl}(S)$ for all $i$; a white $v_i$ would then be the unique white neighbor of $u_i$ and be forced. Thus $\mathrm{cl}(S)=V$ and
 $$
-Z(P(n,3)) \le 8 \quad \text{for all } n \ge 9.
+Z(P(n,3))\le 8, \qquad n\ge 9.
 $$
 
-## What's open
+## Remarks
 
-Exhaustive search gives $Z(P(n,3))$ for $7 \le n \le 20$, stabilizing at $8$ from $n=13$, conjecturally
-$$
-Z(P(n,3)) = 8 \quad \text{for all } n \ge 13.
-$$
-Upper bound: proved above, unconditionally. Lower bound: checked only through $n=20$. The $n=11,12$ dip is the reason not to trust extrapolation here — it's exactly the kind of accident a finite table would hide. Closing the gap means excluding every seven-vertex forcing set uniformly in $n$, not computing further.
+Exhaustive search gives $Z(P(n,3))$ for $7\le n\le 20$, constant at $8$ from $n=13$, suggesting $Z(P(n,3))=8$ for all $n\ge 13$. The upper bound above is unconditional; the matching lower bound is only verified to $n=20$, and closing the gap means ruling out every seven-vertex set uniformly in $n$ rather than extending the table. The dip at $n=11,12$ is the reason to distrust extrapolation here.
 
 [Zero forcing lab](/zero-forcing).
