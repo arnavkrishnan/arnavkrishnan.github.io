@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DocCard from '../components/DocCard.astro';
+
+const base = '';
+
+const rotations = [
+  {
+    slug: 'assembly',
+    name: 'Assembly',
+    week: 'Week of August 17',
+    lead: 'Ethan',
+    summary: [
+      'We started with things like Loctite, grease, and batteries. We use blue Loctite most of the time, rarely use green, and were told never to use red. One detail I hadn\'t known was that the bottle color doesn\'t tell you which kind is inside. For gears, we use lithium grease, not WD-40. We also talked about why we keep competition and practice batteries separate, since batteries degrade over time and their voltage drops under load.',
+      'Later in the week, I practiced using the pneumatic rivet gun and drilling rivets out. Removing them takes some care: the drill bit has to be the right size so you don\'t enlarge the original hole, and some spots are hard to reach. We also assembled a swerve module with Kraken motors. That meant greasing the gearbox and putting Loctite on 1–3 threads of each metal-to-metal screw that didn\'t have a nut.'
+    ],
+    images: ['Blue Loctite 243 thread-locker', 'Riveting practice on aluminum tube', 'Swerve module with a Kraken motor', 'Swerve module gearbox during assembly']
+  },
+  {
+    slug: 'cnc',
+    name: 'CNC',
+    week: 'Week of August 24',
+    lead: 'Farhan',
+    summary: [
+      'After installing Fusion, I worked with Farhan to model a plate with a large circular opening, two small holes, and two rounded rectangles. One rectangle went all the way through the plate, while the other was a pocket. Setting up the toolpaths was the harder part for me. Even though those two rectangles looked similar in the model, they needed different machining operations.',
+      'On Friday, we cut the plate on the CNC router. We clamped the material down, watched the cut, and vacuumed up the chips. The part came out with the right shape, but the edge of the large opening was still rough after deburring. I think the material may have been vibrating while it was being cut. If I did it again, I would try clamping closer to that area.'
+    ],
+    images: ['Plate modeled in Fusion', 'Toolpath simulation for the large opening', 'Cutting on the CNC router', 'Finished CNC-cut part']
+  },
+  {
+    slug: 'machining',
+    name: 'Machining',
+    week: 'Week of August 31',
+    lead: null,
+    summary: [
+      'I drilled six holes in a block using the drill press. Before drilling, I used a zeroing bit and the digital readout to set a reference point for the measurements. Every time the block moved, I had to check the zero again. I also found that if I fed the bit too quickly, it would wander when it first touched the metal.',
+      'On the lathe, I drilled a hole down the center of a hex shaft, then tapped it by hand. I turned the tap one turn forward and half a turn back to clear the chips and keep it from snapping. I hadn\'t tapped a hole before, so it was nice to test it with a screw and have it thread in cleanly.'
+    ],
+    images: ['Workpiece in the drill press vise', 'Digital readout after zeroing', 'Drilling the practice block', 'Tapped hole in the end of a hex shaft']
+  },
+  {
+    slug: 'prototyping',
+    name: 'Prototyping',
+    week: 'Week of September 8',
+    lead: 'Will',
+    summary: [
+      'Our task was to pick up and release a PVC cross fitting. Its shape made that awkward, especially because it could land in different positions. I sketched a hook arm and a two-arm pinching mechanism, but our group decided to try an intake with two sets of soft compliant wheels. Drills drove the wheels through belts, and the wheels squeezed the cross to pull it in. We drew the side plates and belt layout in Onshape, laser cut the plates, and put it together. I built one half.',
+      'The intake sort of worked. It pulled the cross in and held it while the wheels were spinning, but we ran into several problems. The belt lengths we estimated in CAD didn\'t match the belts we had, and the tension pulled the hot-glued bearings out. Depending on how the cross landed, we also had to rotate the intake by as much as 90° to grab it. Next time, I would measure the actual parts before modeling, secure the bearings properly, and test more positions of the cross.'
+    ],
+    images: ['The PVC cross fitting', 'Prototype side plate and belt path in Onshape', 'Laser-cut side plate and hex shafts', 'Assembled prototype with belts and wheels']
+  },
+  {
+    slug: 'code',
+    name: 'Code',
+    week: 'Week of September 14',
+    lead: null,
+    summary: [
+      'I was the only person in my group this week, so I did the setup and debugging on my own. I installed WPILib 2026 and Phoenix Tuner X, went over the Driver Station safety shortcuts, and reviewed some Java, especially lambdas. Then I made a command-based project for team 114. Adding Phoenix 6 and DogLog broke the build, and I had to use the 2025 versions of both libraries. Once I had figured it out for the first library, fixing the second was much quicker.',
+      'I checked the Kraken\'s encoder in Tuner X by turning the motor by hand and watching the position and velocity plots. When I moved it back and forth like a sine wave, the velocity plot was a shifted sine wave, which was cool to see. I wrote a Testboard subsystem and RobotContainer, then used DogLog to send motor data to Elastic. After that, I switched from constant voltage to a PID controller with a 6 V limit. I increased kP until the motor oscillated, then added kD until it settled. I didn\'t need kI.'
+    ],
+    images: ['Testboard subsystem in Java', 'Successful Gradle build', 'Position and velocity plots in Tuner X', 'Configuring the Talon FX in Tuner X']
+  },
+  {
+    slug: 'cad',
+    name: 'CAD',
+    week: 'Week of September 21',
+    lead: 'Aner',
+    summary: [
+      'We followed Stage 1A of the FRCDesign.org course and built its example swerve drivetrain in the team Onshape workspace. I made the frame tubes and used Tube Converter to add the holes, then imported and fastened four motors. For the belly pan, I mirrored the corner cutouts and used a linear pattern and mirrors to make the diagonal ribs. I also added mounting holes for the power distribution hub.',
+      'I was rustier at Onshape than I thought. One mistake was forgetting to make my mirror line a construction line, which left an extra vertical rib down the middle of the belly pan. Onshape catches some mistakes for you, but something like that can still look like a valid model. I need more practice checking my sketches and setting up features so I can change the model without having to redo everything.'
+    ],
+    images: ['Power distribution hub mounted on the belly pan', 'Building the rib pattern', 'Belly pan with frame tube', 'Completed swerve drivetrain']
+  },
+  {
+    slug: 'electrical',
+    name: 'Electrical',
+    week: 'Week of September 28',
+    lead: 'Ishika',
+    summary: [
+      'We went over the robot\'s wiring, starting with the 12 V battery, main breaker, and power distribution hub. The hub splits the power into separately fused channels. We also talked about wire sizes: battery wires carry more current and need to be much thicker than signal wires. For communication, we looked at the radio, the Ethernet connection to the RoboRIO, and the twisted yellow-and-green CAN wires between devices. I practiced stripping and crimping wires, with one set of crimp wings gripping the bare copper and the other gripping the insulation.',
+      'At the end of the week, Ishika put electrical faults in the robot for us to find. The flashing lights on the motor controllers led us to check the CAN wiring, where we found two bad connections. Fixing those got the robot running again. It helped to have a reason for checking a particular connection instead of just trying wires at random.'
+    ],
+    images: ['Power distribution hub and wiring', 'Crimping and stripping tools', 'Crimping a connector', 'Debugging the robot\'s wiring']
+  }
+];
+---
+
+<BaseLayout title="Robotics II | Quarter 1 Rotations" base={base}>
+  <section style="max-width:900px; margin:0 auto; padding:2rem 1rem;">
+    <h1 style="margin-bottom:0.25rem;">Robotics II: Quarter 1 Rotations</h1>
+
+    <p style="color:#444; margin-top:0; line-height:1.5;">
+      This quarter, I spent a week with each of the seven technical sub-teams. These are some of the things I worked on, what went well, and what I had trouble with. I've included photos and the full weekly reports below, along with my thoughts on the rotations and what I want to do in Quarter 2.
+    </p>
+
+    <nav style="display:flex; gap:0.5rem; margin:1rem 0 2rem 0; flex-wrap:wrap;">
+      {rotations.map((r) => (
+        <a href={`#${r.slug}`} style="padding:0.5rem 0.75rem; background:#f0f4ff; border-radius:8px; text-decoration:none; color:#083a8a;">
+          {r.name}
+        </a>
+      ))}
+      <a href="#reflection" style="padding:0.5rem 0.75rem; background:#f7fff6; border-radius:8px; text-decoration:none; color:#0b5d2b;">
+        Reflection
+      </a>
+      <a href="#next" style="padding:0.5rem 0.75rem; background:#fff8e6; border-radius:8px; text-decoration:none; color:#8a4b00;">
+        Quarter 2
+      </a>
+    </nav>
+
+    {rotations.map((r, i) => (
+      <section id={r.slug} style="margin-bottom:2.5rem;">
+        <h2 style="margin-bottom:0.25rem;">{i + 1}. {r.name}</h2>
+        <p style="color:#666; margin-top:0; font-size:0.9rem;">
+          {r.week}{r.lead ? ` · Lead: ${r.lead}` : ''}
+        </p>
+
+        {r.summary.map((p) => (
+          <p style="line-height:1.5;">{p}</p>
+        ))}
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:0.75rem; margin-top:1rem;">
+          {r.images.map((caption, k) => (
+            <figure style="margin:0;">
+              <a href={`${base}/images/robotics-ii/${r.slug}/${k + 1}.jpg`} target="_blank" rel="noopener">
+                <img
+                  src={`${base}/images/robotics-ii/${r.slug}/${k + 1}.jpg`}
+                  alt={caption}
+                  loading="lazy"
+                  style="width:100%; height:160px; object-fit:cover; border:1px solid #ddd; border-radius:6px;"
+                />
+              </a>
+              <figcaption style="font-size:0.8rem; color:#666; margin-top:0.25rem;">{caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <DocCard
+          title={`Weekly Report: ${r.name} (${r.week})`}
+          pdfHref={`${base}/documents/robotics-ii/${r.slug}.pdf`}
+        />
+      </section>
+    ))}
+
+    <section id="reflection" style="margin-bottom:2.5rem;">
+      <h2>Overall Reflection</h2>
+
+      <p style="line-height:1.5;">
+        Before the rotations, I mostly thought about each sub-team's own job. Working with all seven made it easier to see how much they depend on each other. A decision in CAD, for example, can become a problem for the people making or assembling the part.
+      </p>
+
+      <p style="line-height:1.5;">
+        Prototyping is where we can try a mechanism and find problems before committing to a full design. CAD gives us the dimensions and parts to work from. CNC and machining make those parts, whether that's cutting a plate or drilling and tapping a shaft. Assembly puts them together and makes sure they stay together. Electrical handles the power and connections, and code uses those connections to read sensors and control the motors. Going through each job gave me a better idea of what has to happen before a robot can actually run.
+      </p>
+
+      <p style="line-height:1.5;">
+        A lot of our problems came from small things we hadn't checked. Our prototype's belt lengths were wrong, and the tension ended up pulling the bearings out. On the drill press, forgetting to re-zero the block would have put the holes in the wrong places. The CAN connections and vendor library versions caused problems too, even though the rest of the wiring or code could be fine. I want to get better about checking measurements and setup early, especially when someone else is going to use what I've made.
+      </p>
+
+      <p style="line-height:1.5;">
+        It also made me think more about what the other teams need. A part can look fine in CAD but still be difficult to machine, assemble, or reach later for repairs. For code, I need to know things like the gear ratio, where the encoder is, and which CAN ID belongs to each device. Even on the testboard, tuning the PID controller depended on the motor being mounted and wired correctly and the encoder giving the right readings.
+      </p>
+    </section>
+
+    <section id="next" style="margin-bottom:2rem;">
+      <h2>Quarter 2 Focus</h2>
+
+      <p style="line-height:1.5;">
+        <strong>Primary: Code.</strong> Code was the rotation I enjoyed most, and it's where I want to spend most of my time next quarter. I got through the intro on my own, from installing the tools and fixing the library versions to writing the subsystem and tuning the PID controller. AP Computer Science and <a href={`${base}/aden-course`}>ADEN</a> helped me feel comfortable getting started. In ADEN, I worked with sensors, interrupts, and finite state machines on the RSLK robots. I also liked seeing the math show up in the motor plots; the relationship between position and velocity made more sense when I could watch it happen. Next quarter, I want to work on an actual robot subsystem, learn more about command-based code and closed-loop control, and practice using simulation and logs to debug.
+      </p>
+
+      <p style="line-height:1.5;">
+        <strong>Secondary: CAD.</strong> I also want to keep working on CAD because I lost some of the Onshape skills I used to have. I'd like to do more of the FRCDesign.org course and get better at making models that are easy to edit. Knowing the mechanical design would help with code too. Things like gear ratios, sensor positions, and how far a mechanism can move all affect how I program it, so I'd like to understand those details better.
+      </p>
+    </section>
+  </section>
+</BaseLayout>
